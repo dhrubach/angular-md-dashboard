@@ -1,8 +1,17 @@
 <md-sidenav-container>
-	<md-toolbar-row>
-		<span>Third Line</span>
-		<span class="example-spacer"></span>
-		<md-icon class="example-icon">favorite</md-icon>
-		<md-icon class="example-icon">delete</md-icon>
-	</md-toolbar-row>
+
+	<md-sidenav #sidenav mode="side" class="app-sidenav">
+		Sidenav
+	</md-sidenav>
+
+	<md-toolbar color="primary">
+		<button md-button color="primary">
+      		<i class="material-icons app-toolbar-menu">menu</i>
+    	</button> Angular Material2 Dashboard
+
+		<span class="app-toolbar-filler"></span>
+
+		<button md-raised-button color="accent">TOGGLE DARK THEME</button>
+	</md-toolbar>
+
 </md-sidenav-container>

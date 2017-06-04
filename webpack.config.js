@@ -39,10 +39,19 @@ const config = {
 			},
 			{
 				test: /\.css$/,
+				exclude: /src\\components/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: 'css-loader'
 				})
+			},
+			{
+				test: /\.css$/,
+				include: /src\\components/,
+				use: [
+					{ loader: 'to-string-loader' },
+					{ loader: 'css-loader' }
+				]
 			},
 			{
 				test: /\.html$/,
@@ -73,7 +82,8 @@ const config = {
 			name: 'manifest',
 		}),
 		new ExtractTextPlugin({
-			filename: 'style.css'
+			filename: 'style.css',
+			allChunks: true,
 		}),
 		new HtmlPlugin({
 			template: './src/index.ejs',
@@ -94,7 +104,7 @@ const config = {
 		}),
 	],
 	resolve: {
-		extensions: ['.ts', '.js']
+		extensions: ['.ts', '.js', '.css']
 	},
 	devtool: 'cheap-module-source-map'
 };

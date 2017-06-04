@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
+	MdButtonModule,
 	MdSidenavModule,
 	MdToolbarModule,
 } from '@angular/material';
@@ -16,6 +17,7 @@ import { DashboardAppComponent } from './components';
 		BrowserAnimationsModule,
 		BrowserModule,
 		FormsModule,
+		MdButtonModule,
 		MdSidenavModule,
 		MdToolbarModule,
 	],
