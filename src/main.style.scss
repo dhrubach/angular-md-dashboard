@@ -1,0 +1,12 @@
+@import '../node_modules/normalize.css/normalize.css';
+@import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+.mat-list-item {
+	padding: 15px 15px;
+}

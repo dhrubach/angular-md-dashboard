@@ -8,6 +8,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { MainComponent } from './main.module';
 
-import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+import './main.style.scss';
 
 platformBrowserDynamic().bootstrapModule(MainComponent);

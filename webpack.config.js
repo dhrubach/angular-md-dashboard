@@ -54,6 +54,26 @@ const config = {
 				]
 			},
 			{
+				test: /\.scss$/,
+				include: /src\\components/,
+				use: [
+					{ loader: 'to-string-loader' },
+					{ loader: 'css-loader' },
+					{ loader: 'sass-loader'},
+				]
+			},
+			{
+				test: /\.scss$/,
+				exclude: /src\\components/,
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [
+						{ loader: 'css-loader' },
+						{ loader: 'sass-loader' },
+					]
+				})
+			},
+			{
 				test: /\.html$/,
 				exclude: /node_modules/,
 				use: 'raw-loader'
