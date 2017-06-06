@@ -1,0 +1,5 @@
+@mixin box-shadow() {
+	box-shadow: 1px 1px 18px 4px rgba(57, 50, 50, 0.43);
+	-webkit-box-shadow: 1px 1px 18px 4px rgba(57, 50, 50, 0.43);
+	-moz-box-shadow: 1px 1px 18px 4px rgba(57, 50, 50, 0.43);
+}

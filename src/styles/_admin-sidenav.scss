@@ -1,0 +1,14 @@
+@import 'admin-variables';
+@import 'admin-mixins';
+
+md-sidenav-container {
+	height: 100vh;
+}
+
+md-sidenav {
+	@include box-shadow();
+}
+
+.mat-list-item {
+	margin: $selectedListItemMargin $selectedListItemMargin;
+}
