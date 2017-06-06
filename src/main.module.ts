@@ -9,24 +9,23 @@ import {
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Route, RouterModule } from '@angular/router';
 
 import {
-	DashboardAppComponent,
+	AppComponent,
+	DashboardComponent,
 	SideNavComponent,
 } from './components';
-
-const routes: Route[] = [
-	{ path: '', component: DashboardAppComponent},
-];
+import { AppRoutingModule } from './main-routing.module';
 
 @NgModule({
-	bootstrap: [DashboardAppComponent],
+	bootstrap: [AppComponent],
 	declarations: [
-		DashboardAppComponent,
+		AppComponent,
+		DashboardComponent,
 		SideNavComponent,
 	],
 	imports: [
+		AppRoutingModule,
 		BrowserAnimationsModule,
 		BrowserModule,
 		FormsModule,
@@ -35,9 +34,6 @@ const routes: Route[] = [
 		MdListModule,
 		MdSidenavModule,
 		MdToolbarModule,
-		RouterModule.forRoot(routes, {
-			useHash: true,
-		}),
 	],
 	providers: [],
 })

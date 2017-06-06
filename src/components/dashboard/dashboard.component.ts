@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'dashboard-app',
-	styles: [require('./dashboard.component.scss')],
+	selector: 'adm-dashboard',
 	template: require('./dashboard.template.html'),
 })
-export class DashboardAppComponent { }
+export class DashboardComponent { }
