@@ -8,27 +8,9 @@
 	</div>
 	<div class="adm-sidenav-content">
 		<md-nav-list>
-			<a md-list-item href="#" routerLinkActive="adm-sidenav-list-item-selected" routerLink="">
-				<md-icon md-list-icon>apps</md-icon>
-				<p>Dashboard</p>
-			</a>
-		</md-nav-list>
-		<md-nav-list>
-			<a md-list-item href="#">
-				<md-icon>person</md-icon>
-				<p>Users</p>
-			</a>
-		</md-nav-list>
-		<md-nav-list>
-			<a md-list-item href="#">
-				<md-icon>error</md-icon>
-				<p>Exceptions</p>
-			</a>
-		</md-nav-list>
-		<md-nav-list>
-			<a md-list-item href="#">
-				<md-icon>settings</md-icon>
-				<p>Settings</p>
+			<a md-list-item *ngFor="let item of listItems" routerLink="{{item.routerLink}}" routerLinkActive="adm-sidenav-list-item-selected">
+				<md-icon md-list-icon class="adm-sidenav-content-icon">{{item.iconLigatureName}}</md-icon>
+				<p>{{item.title}}</p>
 			</a>
 		</md-nav-list>
 	</div>
