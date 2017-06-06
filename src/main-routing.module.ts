@@ -4,11 +4,13 @@ import { Route, RouterModule } from '@angular/router';
 import { routes } from './routes';
 
 @NgModule({
-	imports: [
-		RouterModule.forRoot(routes)
-	],
 	exports: [
-		RouterModule
-	]
+		RouterModule,
+	],
+	imports: [
+		RouterModule.forRoot(routes, {
+			useHash: true,
+		}),
+	],
 })
 export class AppRoutingModule { }

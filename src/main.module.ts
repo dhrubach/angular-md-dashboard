@@ -13,7 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
 	AppComponent,
 	DashboardComponent,
+	ExceptionsComponent,
+	SettingsComponent,
 	SideNavComponent,
+	UserComponent,
 } from './components';
 import { AppRoutingModule } from './main-routing.module';
 
@@ -22,7 +25,10 @@ import { AppRoutingModule } from './main-routing.module';
 	declarations: [
 		AppComponent,
 		DashboardComponent,
+		ExceptionsComponent,
+		SettingsComponent,
 		SideNavComponent,
+		UserComponent,
 	],
 	imports: [
 		AppRoutingModule,

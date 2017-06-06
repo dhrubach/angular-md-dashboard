@@ -1,8 +1,16 @@
-import { Route } from '@angular/router'
+import { Route } from '@angular/router';
 
-import { DashboardComponent } from './components';
+import {
+	DashboardComponent,
+	ExceptionsComponent,
+	SettingsComponent,
+	UserComponent,
+} from './components';
 
 export const routes: Route[] = [
 	{ path: 'dashboard', component: DashboardComponent },
-	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+	{ path: 'exception', component: ExceptionsComponent },
+	{ path: 'settings', component: SettingsComponent },
+	{ path: 'user', component: UserComponent },
+	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
