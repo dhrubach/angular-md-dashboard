@@ -2,7 +2,6 @@
 @import '../../styles/admin-mixins';
 
 .adm-sidenav {
-
 	&-header {
 		position: relative;
 		background-color: $primaryBackgroundColor;
@@ -10,38 +9,38 @@
 		z-index: 4;
 	}
 
-		&-title {
-			padding: 15px 15px 10px 25px;
-			color: lighten(#000, 30%);
+	&-title {
+		padding: 15px 15px 10px 25px;
+		color: lighten(#000, 30%);
 
-			&::after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				height: 1px;
-				left: 25px;
-				width: 65%;
-				background-color: rgba(180, 180, 180, 0.3);
-			}
-
-			&-text {
-				text-transform: uppercase;
-				font-size: $fontSizeHeader;
-				font-weight: 400;
-				line-height: 25px;
-			}
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			height: 1px;
+			left: 25px;
+			width: 65%;
+			background-color: rgba(180, 180, 180, 0.3);
 		}
+
+		&-text {
+			text-transform: uppercase;
+			font-size: $fontSizeHeader;
+			font-weight: 400;
+			line-height: 25px;
+		}
+	}
 }
 
 .adm-sidenav-content {
 	position: relative;
 	width: $sideNavigationWidth;
-	overflow : auto;
+	overflow: auto;
 	height: calc(100vh - #{$sideNavigationHeaderHeight});
 	background-color: $primaryBackgroundColor;
 
 	&-icon {
-		padding-right: 0px !important;
+		padding-right: 0 !important; /* stylelint-disable-line declaration-no-important */
 		color: darken($materialIconColor, 10%);
 	}
 
@@ -64,6 +63,5 @@
 
 		background-color: $listItemHighlightColor;
 		border-radius: 5px;
-
 	}
 }

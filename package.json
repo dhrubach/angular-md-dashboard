@@ -58,6 +58,8 @@
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-webpack-plugin": "^0.7.0",
     "to-string-loader": "^1.1.5",
     "ts-loader": "^2.1.0",
     "tslint": "^5.4.2",

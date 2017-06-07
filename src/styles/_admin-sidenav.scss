@@ -1,6 +1,7 @@
 @import 'admin-variables';
 @import 'admin-mixins';
 
+/* stylelint-disable  selector-type-no-unknown */
 md-sidenav-container {
 	height: 100vh;
 }
@@ -8,6 +9,7 @@ md-sidenav-container {
 md-sidenav {
 	@include box-shadow();
 }
+/* stylelint-enable */
 
 .mat-list-item {
 	margin: $selectedListItemMargin $selectedListItemMargin;

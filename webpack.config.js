@@ -5,6 +5,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const config = {
 	entry: './src/main.ts',
@@ -122,9 +123,10 @@ const config = {
 			Tether: 'tether',
 			'window.Tether': 'tether',
 		}),
+		new StylelintPlugin(),
 	],
 	resolve: {
-		extensions: ['.ts', '.js', '.css']
+		extensions: ['.ts', '.js', '.css', '.scss']
 	},
 	devtool: 'cheap-module-source-map'
 };
