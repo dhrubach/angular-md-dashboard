@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
 	MdButtonModule,
+	MdCardModule,
 	MdIconModule,
 	MdListModule,
 	MdSidenavModule,
@@ -36,6 +37,7 @@ import { AppRoutingModule } from './main-routing.module';
 		BrowserModule,
 		FormsModule,
 		MdButtonModule,
+		MdCardModule,
 		MdIconModule,
 		MdListModule,
 		MdSidenavModule,
