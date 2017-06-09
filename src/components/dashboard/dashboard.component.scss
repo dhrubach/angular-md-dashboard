@@ -1,11 +1,83 @@
+@import '../../styles/admin-variables';
+@import '../../styles/admin-mixins';
+
 .card-container {
+	position: relative;
 	display: flex;
 	align-content: space-between;
-	justify-content: center;
+	justify-content: space-between;
+	padding-top: 20px;
+
+	&__card-item {
+		background-color: #fff;
+		box-sizing: border-box;
+		margin: 10px;
+		width: 300px;
+	}
 }
 
-.card-container__card-item {
-	background-color: #fff;
-	box-sizing: border-box;
-	margin: 10px;
+.card-container__card-header {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 20px;
+
+	&-text {
+		flex: 0 1 auto;
+		font-size: 20px;
+		line-height: 20px;
+	}
+}
+
+.card-container__card-icon-container {
+	@include box-shadow();
+
+	position: absolute;
+	height: 60px;
+	width: 60px;
+	padding: 10px;
+	margin: -15px 5px;
+	border-radius: 2px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	/* stylelint-disable declaration-colon-space-after */
+
+	&--is-exception {
+		background: -webkit-linear-gradient(#ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ff7403 100%);
+		background:    -moz-linear-gradient(#ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ff7403 100%);
+		background:      -o-linear-gradient(#ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ff7403 100%);
+		background:         linear-gradient(to top right, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ff7403 100%);
+	}
+
+	&--is-server {
+		background: -webkit-linear-gradient(bottom left, #f8e7e9 0%, #d86472 0%, #ca2b3d 0%, #f5b2ba 100%);
+		background:    -moz-linear-gradient(bottom left, #f8e7e9 0%, #d86472 0%, #ca2b3d 0%, #f5b2ba 100%);
+		background:      -o-linear-gradient(bottom left, #f8e7e9 0%, #d86472 0%, #ca2b3d 0%, #f5b2ba 100%);
+		background:         linear-gradient(to top right, #f8e7e9 0%, #d86472 0%, #ca2b3d 0%, #f5b2ba 100%);
+	}
+
+	&--is-user {
+		background: -webkit-linear-gradient(#d2ff52 0%, #5be026 100%);
+		background:    -moz-linear-gradient(#d2ff52 0%, #5be026 100%);
+		background:      -o-linear-gradient(#d2ff52 0%, #5be026 100%);
+		background:         linear-gradient(to top right, #d2ff52 0%, #5be026 100%);
+	}
+
+	/* stylelint-enable declaration-colon-space-after */
+}
+
+.card-container__card-icon {
+	color: #fff;
+	font-size: 40px;
+	line-height: 40px;
+}
+
+.card-container__card-content {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid rgba(180, 180, 180, 0.3);
 }
