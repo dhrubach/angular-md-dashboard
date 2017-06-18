@@ -43,7 +43,10 @@ const config = {
 				exclude: /src\\components/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					use: 'css-loader'
+					use: [
+						{ loader: 'css-loader' },
+						{ loader: 'postcss-loader' },
+					]
 				})
 			},
 			{
@@ -51,7 +54,8 @@ const config = {
 				include: /src\\components/,
 				use: [
 					{ loader: 'to-string-loader' },
-					{ loader: 'css-loader' }
+					{ loader: 'css-loader' },
+					{ loader: 'postcss-loader' },
 				]
 			},
 			{
@@ -59,8 +63,15 @@ const config = {
 				include: /src\\components/,
 				use: [
 					{ loader: 'to-string-loader' },
-					{ loader: 'css-loader' },
-					{ loader: 'sass-loader'},
+					{
+						loader: 'css-loader',
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: 'sass-loader',
+						options: { importLoaders: 1 },
+					},
+					{ loader: 'postcss-loader' },
 				]
 			},
 			{
@@ -71,6 +82,7 @@ const config = {
 					use: [
 						{ loader: 'css-loader' },
 						{ loader: 'sass-loader' },
+						{ loader: 'postcss-loader' },
 					]
 				})
 			},
@@ -83,7 +95,7 @@ const config = {
 				test: /\.(ttf|eof|svg)(\?[\s\S]+)?$/,
 				use: 'file-loader'
 			},
-						{
+			{
 				test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
 				loader: 'url-loader',
 				options: {
@@ -95,7 +107,7 @@ const config = {
 	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
-			minChunks: function(module) {
+			minChunks: function (module) {
 				return module && module.context && module.context.indexOf('node_modules') > -1;
 			}
 		}),

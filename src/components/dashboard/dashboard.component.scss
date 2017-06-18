@@ -4,15 +4,17 @@
 .card-container {
 	position: relative;
 	display: flex;
+	flex-flow: row wrap;
 	align-content: space-between;
-	justify-content: space-between;
+	justify-content: space-around;
 	padding-top: 20px;
 
 	&__card-item {
 		background-color: #fff;
 		box-sizing: border-box;
-		margin: 10px;
-		width: 300px;
+		margin: 25px 10px 10px;
+		min-width: 350px;
+		width: 350px;
 	}
 }
 
@@ -47,24 +49,15 @@
 	/* stylelint-disable declaration-colon-space-after */
 
 	&--is-exception {
-		background: -webkit-linear-gradient(#ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ff7403 100%);
-		background:    -moz-linear-gradient(#ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ff7403 100%);
-		background:      -o-linear-gradient(#ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ff7403 100%);
-		background:         linear-gradient(to top right, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ffa23f 0%, #ff7403 100%);
+		background: linear-gradient(to top right, #fad1a3 0%, #e69f47 47%, #eb9028 100%);
 	}
 
 	&--is-server {
-		background: -webkit-linear-gradient(bottom left, #f8e7e9 0%, #d86472 0%, #ca2b3d 0%, #f5b2ba 100%);
-		background:    -moz-linear-gradient(bottom left, #f8e7e9 0%, #d86472 0%, #ca2b3d 0%, #f5b2ba 100%);
-		background:      -o-linear-gradient(bottom left, #f8e7e9 0%, #d86472 0%, #ca2b3d 0%, #f5b2ba 100%);
-		background:         linear-gradient(to top right, #f8e7e9 0%, #d86472 0%, #ca2b3d 0%, #f5b2ba 100%);
+		background: linear-gradient(to top right, #f8e7e9 0%, #d86472 47%, #ca2b3d 100%);
 	}
 
 	&--is-user {
-		background: -webkit-linear-gradient(#d2ff52 0%, #5be026 100%);
-		background:    -moz-linear-gradient(#d2ff52 0%, #5be026 100%);
-		background:      -o-linear-gradient(#d2ff52 0%, #5be026 100%);
-		background:         linear-gradient(to top right, #d2ff52 0%, #5be026 100%);
+		background: linear-gradient(to top right, #d2ff52 0%, #5be026 100%);
 	}
 
 	/* stylelint-enable declaration-colon-space-after */
