@@ -1,30 +1,25 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {
-	MdButtonModule,
-	MdCardModule,
-	MdIconModule,
-	MdListModule,
-	MdSidenavModule,
-	MdToolbarModule,
-} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
 	AppComponent,
+	ChartComponent,
 	DashboardComponent,
 	ExceptionsComponent,
 	SettingsComponent,
 	SideNavComponent,
 	UserComponent,
 } from './components';
+import { AppMaterialModule } from './main-material.module';
 import { AppRoutingModule } from './main-routing.module';
 
 @NgModule({
 	bootstrap: [AppComponent],
 	declarations: [
 		AppComponent,
+		ChartComponent,
 		DashboardComponent,
 		ExceptionsComponent,
 		SettingsComponent,
@@ -32,16 +27,11 @@ import { AppRoutingModule } from './main-routing.module';
 		UserComponent,
 	],
 	imports: [
+		AppMaterialModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		BrowserModule,
 		FormsModule,
-		MdButtonModule,
-		MdCardModule,
-		MdIconModule,
-		MdListModule,
-		MdSidenavModule,
-		MdToolbarModule,
 	],
 	providers: [],
 })
