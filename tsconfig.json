@@ -12,6 +12,22 @@
             "dom",
             "es2015"
         ],
-        "skipLibCheck": true
-    }
+        "skipLibCheck": true,
+		"typeRoots": [
+			"node_modules/@types"
+		],
+		"types": [
+			"chalk",
+			"chartist",
+			"node",
+			"source-map",
+			"tapable",
+			"uglify-js",
+			"webpack"
+		]
+    },
+	"exclude": [
+		"node_modules",
+		"dist"
+	]
 }
