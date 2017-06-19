@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ChartistModule } from 'ng-chartist';
+
 import {
 	AppComponent,
 	ChartComponent,
@@ -31,6 +33,7 @@ import { AppRoutingModule } from './main-routing.module';
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		BrowserModule,
+		ChartistModule,
 		FormsModule,
 	],
 	providers: [],

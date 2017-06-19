@@ -1,4 +1,5 @@
 export * from './app/app.component';
+export * from './chart/chart.component';
 export * from './dashboard/dashboard.component';
 export * from './exceptions/exceptions.component';
 export * from './settings/settings.component';
