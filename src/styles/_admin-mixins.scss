@@ -1,5 +1,27 @@
+@import './admin-variables';
+
 @mixin box-shadow() {
 	box-shadow: 1px 1px 18px 4px rgba(57, 50, 50, 0.43);
 	-webkit-box-shadow: 1px 1px 18px 4px rgba(57, 50, 50, 0.43);
 	-moz-box-shadow: 1px 1px 18px 4px rgba(57, 50, 50, 0.43);
+}
+
+@mixin respond-to($media) {
+	@if $media == smartphones {
+		@media only screen and (max-width: #{$tablet-width - 1px}) {
+			@content;
+		}
+	}
+
+	@else if $media == tablet {
+		@media only screen and (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+			@content;
+		}
+	}
+
+	@else if $media == desktop {
+		@media only screen and (min-width: #{$desktop-width}) {
+			@content;
+		}
+	}
 }

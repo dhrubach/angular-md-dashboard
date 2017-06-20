@@ -9,12 +9,21 @@
 	justify-content: space-around;
 	padding-top: 20px;
 
+	@include respond-to(tablet) {
+		flex-flow: column;
+		justify-content: center;
+		align-items: center;
+	}
+
 	&__card-item {
 		background-color: #fff;
 		box-sizing: border-box;
 		margin: 25px 10px 10px;
-		min-width: 350px;
-		width: 350px;
+		width: 300px;
+
+		@include respond-to(tablet) {
+			width: 550px;
+		}
 	}
 }
 
@@ -73,4 +82,20 @@
 	margin-top: 10px;
 	padding-top: 10px;
 	border-top: 1px solid rgba(180, 180, 180, 0.3);
+}
+
+.chart-container {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	padding-top: 20px;
+
+	@include respond-to(tablet) {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 }

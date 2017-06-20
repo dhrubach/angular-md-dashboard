@@ -1,27 +1,21 @@
 @import '../../styles/admin-variables';
 @import '../../styles/admin-mixins';
 
-.chart-container {
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-	padding-top: 20px;
+.chart-container__chart-item {
+	background-color: #fff;
+	box-sizing: border-box;
+	margin: 10px;
+	min-height: 250px;
+	width: 450px;
+	padding: 18px;
 
-	&__chart-item {
-		background-color: #fff;
-		box-sizing: border-box;
-		margin: 25px 10px 10px;
-		min-width: 550px;
-		min-height: 300px;
+	@include respond-to(tablet) {
 		width: 550px;
 	}
+}
 
-	.mat-card-footer {
-		position: relative;
-	}
+.mat-card-footer {
+	position: relative;
 }
 
 .chart-container__chart-header {
@@ -34,6 +28,7 @@
 		flex: 0 1 auto;
 		font-size: 20px;
 		line-height: 20px;
+		margin-left: -15px;
 	}
 }
 
@@ -44,6 +39,10 @@
 
 	&--is-proposal {
 		background: linear-gradient(to top right, #a1dd9d 0%, #60d058 100%);
+	}
+
+	&--is-accounts {
+		background: linear-gradient(to top right, #93cede 0%, #49a5bf 100%);
 	}
 }
 
@@ -60,4 +59,9 @@
 		font-size: 15px;
 		line-height: 15px;
 	}
+}
+
+.chart-container__chart-footer-icon {
+	padding: 5px;
+	color: darken($materialIconColor, 10%);
 }
