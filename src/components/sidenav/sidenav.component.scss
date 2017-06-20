@@ -5,7 +5,7 @@
 	&-header {
 		position: relative;
 		background-color: $primaryBackgroundColor;
-		height: $sideNavigationHeaderHeight;
+		height: $sidenav-header-height;
 		z-index: 4;
 	}
 
@@ -36,7 +36,7 @@
 	position: relative;
 	width: $sideNavigationWidth;
 	overflow: auto;
-	height: calc(100vh - #{$sideNavigationHeaderHeight});
+	height: calc(100% - #{$sidenav-header-height});
 	background-color: $primaryBackgroundColor;
 
 	&-icon {
