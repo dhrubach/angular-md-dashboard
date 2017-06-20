@@ -16,36 +16,10 @@ export class ChartComponent {
 	constructor() {
 		this.type = 'Line';
 		this.data = {
-			"labels": [
-				"Monday",
-				"Tuesday",
-				"Wednesday",
-				"Thursday",
-				"Friday"
+			labels: [ 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
+			series: [
+				[ 10, 50, 40, 55, 100, 30, 10],
 			],
-			"series": [
-				[
-					12,
-					9,
-					7,
-					8,
-					5
-				],
-				[
-					2,
-					1,
-					3.5,
-					7,
-					3
-				],
-				[
-					1,
-					3,
-					4,
-					5,
-					6
-				]
-			]
 		};
 	}
 }

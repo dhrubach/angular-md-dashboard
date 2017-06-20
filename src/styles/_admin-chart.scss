@@ -1,0 +1,11 @@
+@import './admin-variables';
+
+.ct-grid,
+.ct-series-a .ct-line,
+.ct-series-a .ct-point {
+	stroke: $line-chart-stroke-color;
+}
+
+.ct-label {
+	color: $line-chart-label-color;
+}
