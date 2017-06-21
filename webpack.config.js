@@ -6,6 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 const config = {
 	entry: './src/main.ts',
@@ -81,7 +82,11 @@ const config = {
 					fallback: 'style-loader',
 					use: [
 						{ loader: 'css-loader' },
-						{ loader: 'sass-loader' },
+						{ loader: 'resolve-url-loader' },
+						{
+							loader: 'sass-loader',
+							options: { sourceMap: true },
+						},
 						{ loader: 'postcss-loader' },
 					]
 				})
@@ -92,7 +97,7 @@ const config = {
 				use: 'raw-loader'
 			},
 			{
-				test: /\.(ttf|eof|svg)(\?[\s\S]+)?$/,
+				test: /\.(ttf|eof|svg|eot)(\?[\s\S]+)?$/,
 				use: 'file-loader'
 			},
 			{
@@ -136,6 +141,7 @@ const config = {
 			'window.Tether': 'tether',
 		}),
 		new StylelintPlugin(),
+		new FriendlyErrorsPlugin(),
 	],
 	resolve: {
 		extensions: ['.ts', '.js', '.css', '.scss']
