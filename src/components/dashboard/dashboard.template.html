@@ -1,45 +1,5 @@
 <div class="card-container">
-	<md-card class="card-container__card-item">
-		<md-card-header class="card-container__card-header">
-			<div class="card-container__card-icon-container card-container__card-icon-container--is-exception">
-				<md-icon class="card-container__card-icon">error</md-icon>
-			</div>
-			<div class="card-container__card-header-text">+20 Exceptions</div>
-		</md-card-header>
-		<md-card-content class="card-container__card-content">
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Conse quuntur, rem, animi. Harum dolor sequi provident temporibus
-				nihi l quasi doloremque sapiente.
-			</p>
-		</md-card-content>
-	</md-card>
-	<md-card class="card-container__card-item">
-		<md-card-header class="card-container__card-header">
-			<div class="card-container__card-icon-container card-container__card-icon-container--is-server">
-				<md-icon class="card-container__card-icon">computer</md-icon>
-			</div>
-			<div class="card-container__card-header-text">Servers Online</div>
-		</md-card-header>
-		<md-card-content class="card-container__card-content">
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Conse quuntur, rem, animi. Harum dolor sequi provident temporibus
-				nihi l quasi doloremque sapiente.
-			</p>
-		</md-card-content>
-	</md-card>
-	<md-card class="card-container__card-item">
-		<md-card-header class="card-container__card-header">
-			<div class="card-container__card-icon-container card-container__card-icon-container--is-user">
-				<md-icon class="card-container__card-icon">error</md-icon>
-			</div>
-			<div class="card-container__card-header-text">+5 Online</div>
-		</md-card-header>
-		<md-card-content class="card-container__card-content">
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Conse quuntur, rem, animi. Harum dolor sequi provident temporibus
-				nihi l quasi doloremque sapiente.
-			</p>
-		</md-card-content>
-	</md-card>
+	<adm-card 	*ngFor="let card of cards" [content]="card.content" [header]="card.header"
+				[icon]="card.icon" [type]="card.type"></adm-card>
 </div>
 <adm-chart class="chart-container"></adm-chart>

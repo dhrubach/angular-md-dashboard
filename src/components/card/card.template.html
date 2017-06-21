@@ -1,0 +1,14 @@
+<md-card class="card-item">
+	<md-card-header class="card-item__card-header">
+		<div class="card-item__card-icon-container"
+			 [class.card-item__card-icon-container--is-exception]="type === 'exception'"
+			 [class.card-item__card-icon-container--is-server]="type === 'server'"
+			 [class.card-item__card-icon-container--is-user]="type === 'user'">
+			<md-icon class="card-item__card-icon">{{icon}}</md-icon>
+		</div>
+		<div class="card-item__card-header-text">{{header}}</div>
+	</md-card-header>
+	<md-card-content class="card-item__card-content">
+		<p>{{content}}</p>
+	</md-card-content>
+</md-card>

@@ -7,6 +7,7 @@ import { ChartistModule } from 'ng-chartist';
 
 import {
 	AppComponent,
+	CardComponent,
 	ChartComponent,
 	DashboardComponent,
 	ExceptionsComponent,
@@ -21,6 +22,7 @@ import { AppRoutingModule } from './main-routing.module';
 	bootstrap: [AppComponent],
 	declarations: [
 		AppComponent,
+		CardComponent,
 		ChartComponent,
 		DashboardComponent,
 		ExceptionsComponent,
