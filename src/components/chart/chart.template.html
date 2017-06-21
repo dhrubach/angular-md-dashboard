@@ -1,24 +1,12 @@
-<md-card class="chart-container__chart-item">
-	<md-card-header class="chart-container__chart-header">
-		<div class="chart-container__chart-header-text">Proposals</div>
+<md-card class="chart-item">
+	<md-card-header class="chart-item__chart-header">
+		<div class="chart-item__chart-header-text">{{header}}</div>
 	</md-card-header>
-	<md-card-content class="chart-container__chart-content chart-container__chart-content--is-proposal">
-		<x-chartist [data]="data[0]" [type]="type" [events]="event"></x-chartist>
+	<md-card-content class="chart-item__chart-content chart-item__chart-content--is-{{dataType}}">
+		<x-chartist [data]="data" [type]="type" [events]="event"></x-chartist>
 	</md-card-content>
-	<md-card-footer class="chart-container__chart-footer">
-		<md-icon class="chart-container__chart-footer-icon">timer</md-icon>
-		<span class="chart-container__chart-footer-text">Updated 5 mins back</span>
-	</md-card-footer>
-</md-card>
-<md-card class="chart-container__chart-item">
-	<md-card-header class="chart-container__chart-header">
-		<div class="chart-container__chart-header-text">New Accounts</div>
-	</md-card-header>
-	<md-card-content class="chart-container__chart-content chart-container__chart-content--is-accounts">
-		<x-chartist [data]="data[1]" [type]="type" [events]="event"></x-chartist>
-	</md-card-content>
-	<md-card-footer class="chart-container__chart-footer">
-		<md-icon class="chart-container__chart-footer-icon">timer</md-icon>
-		<span class="chart-container__chart-footer-text">Updated 5 mins back</span>
+	<md-card-footer class="chart-item__chart-footer">
+		<md-icon class="chart-item__chart-footer-icon">timer</md-icon>
+		<span class="chart-item__chart-footer-text">Updated 5 mins back</span>
 	</md-card-footer>
 </md-card>

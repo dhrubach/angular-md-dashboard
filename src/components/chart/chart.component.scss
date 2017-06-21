@@ -1,7 +1,7 @@
 @import '../../styles/admin-variables';
 @import '../../styles/admin-mixins';
 
-.chart-container__chart-item {
+.chart-item {
 	background-color: #fff;
 	box-sizing: border-box;
 	margin: 10px;
@@ -18,7 +18,7 @@
 	position: relative;
 }
 
-.chart-container__chart-header {
+.chart-item__chart-header {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -32,7 +32,7 @@
 	}
 }
 
-.chart-container__chart-content {
+.chart-item__chart-content {
 	@include box-shadow();
 
 	color: #fff;
@@ -46,7 +46,7 @@
 	}
 }
 
-.chart-container__chart-footer {
+.chart-item__chart-footer {
 	box-sizing: border-box;
 	padding-top: 15px;
 	border-top: 1px solid rgba(180, 180, 180, 0.3);
@@ -61,7 +61,7 @@
 	}
 }
 
-.chart-container__chart-footer-icon {
+.chart-item__chart-footer-icon {
 	padding: 5px;
 	color: darken($materialIconColor, 10%);
 }

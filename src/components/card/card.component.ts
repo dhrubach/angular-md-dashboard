@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-interface CardData {
+interface ICardData {
 	content: string;
 	header: string;
 	icon: string;
@@ -19,4 +19,4 @@ class CardComponent {
 	@Input() private type: 'exception' | 'server' | 'user';
 }
 
-export { CardData, CardComponent };
+export { CardComponent, ICardData };
