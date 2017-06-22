@@ -3,31 +3,35 @@
 
 .card-container {
 	position: relative;
+
 	display: flex;
-	flex-flow: row wrap;
 	align-content: space-between;
+	flex-flow: row wrap;
 	justify-content: space-around;
+
 	padding-top: 20px;
 
 	@include respond-to(tablet) {
+		align-items: center;
 		flex-flow: column;
 		justify-content: center;
-		align-items: center;
 	}
 }
 
 .chart-container {
 	position: relative;
+
 	display: flex;
+	align-items: center;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-around;
-	align-items: center;
+
 	padding-top: 20px;
 
 	@include respond-to(tablet) {
+		align-items: center;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
 	}
 }

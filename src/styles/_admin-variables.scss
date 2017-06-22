@@ -1,19 +1,21 @@
-$fontStack: "Roboto", "Helvetica", "Arial", sans-serif;
-$fontSize: 14px;
-$fontSizeHeader: 16px;
+$font-stack: "Roboto", "Helvetica", "Arial", sans-serif;
+$font-size-default: 14px;
+$font-size-header: 20px;
+$font-size-footer: 15px;
 
-$primaryDarkColor: #000;
-$primaryBackgroundColor: #fafafa;
-$listItemHighlightColor: #ffd740;
-$materialIconColor: #a9afbb;
+$primary-dark-color: #000;
+$primary-background-color: #fafafa;
+$list-item-highlight-color: #ffd740;
+$material-icon-color: #a9afbb;
 $line-chart-stroke-color: #fff;
 $line-chart-label-color: #fff;
 
-$sideNavigationWidth: 250px;
+$side-navigation-width: 250px;
 $sidenav-header-height: 50px;
-$selectedListItemMargin: 15px;
+$selected-list-item-margin: 15px;
 
-$primaryContentLeftPadding: 15px;
+$primary-content-left-padding: 15px;
+$primary-border-radius: 3px;
 
 $tablet-width: 768px;
 $desktop-width: 1240px;

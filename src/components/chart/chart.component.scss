@@ -2,12 +2,13 @@
 @import '../../styles/admin-mixins';
 
 .chart-item {
-	background-color: #fff;
 	box-sizing: border-box;
-	margin: 10px;
-	min-height: 250px;
 	width: 450px;
+	min-height: 250px;
+	margin: 10px;
 	padding: 18px;
+
+	background-color: #fff;
 
 	@include respond-to(tablet) {
 		width: 550px;
@@ -20,22 +21,25 @@
 
 .chart-item__chart-header {
 	display: flex;
-	justify-content: flex-start;
 	align-items: center;
+	justify-content: flex-start;
+
 	padding-bottom: 20px;
 
 	&-text {
-		flex: 0 1 auto;
-		font-size: 20px;
+		font-size: $font-size-header;
 		line-height: 20px;
+
+		flex: 0 1 auto;
+
 		margin-left: -15px;
 	}
 }
 
 .chart-item__chart-content {
-	@include box-shadow();
-
 	color: #fff;
+
+	@include box-shadow();
 
 	&--is-proposal {
 		background: linear-gradient(to top right, #a1dd9d 0%, #60d058 100%);
@@ -47,21 +51,25 @@
 }
 
 .chart-item__chart-footer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
 	box-sizing: border-box;
 	padding-top: 15px;
+
 	border-top: 1px solid rgba(180, 180, 180, 0.3);
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
 
 	&-text {
-		flex: 0 1 auto;
-		font-size: 15px;
+		font-size: $font-size-footer;
 		line-height: 15px;
+
+		flex: 0 1 auto;
 	}
 }
 
 .chart-item__chart-footer-icon {
 	padding: 5px;
-	color: darken($materialIconColor, 10%);
+
+	color: darken($material-icon-color, 10%);
 }

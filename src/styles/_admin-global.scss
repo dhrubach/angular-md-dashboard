@@ -1,12 +1,12 @@
 @import 'admin-variables';
 
 html {
-	font-family: $fontStack;
+	font-family: $font-stack;
 }
 
 body {
 	padding-bottom: 0;
-	font-size: $fontSize;
+	font-size: $font-size-default;
 }
 
 h1,
@@ -15,7 +15,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: $fontStack;
+	font-family: $font-stack;
 	font-weight: 300;
 	line-height: 1.5em;
 }

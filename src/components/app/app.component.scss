@@ -1,10 +1,19 @@
 @import '../../styles/admin-variables';
 
+/* stylelint-disable  selector-type-no-unknown */
+
+md-sidenav-container {
+	height: 100vh;
+}
+
+/* stylelint-enable selector-type-no-unknown */
+
 .main-content-wrapper {
 	padding-bottom: 0;
-	margin-left: $sideNavigationWidth;
+	margin-left: $side-navigation-width;
 	padding-left: 15px;
 	height: 100%;
+	overflow: hidden;
 }
 
 .app-toolbar-menu {

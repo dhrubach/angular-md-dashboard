@@ -2,10 +2,11 @@
 @import '../../styles/admin-mixins';
 
 .card-item {
-	background-color: #fff;
 	box-sizing: border-box;
-	margin: 25px 10px 10px;
 	width: 300px;
+	margin: 25px 10px 10px;
+
+	background-color: #fff;
 
 	@include respond-to(tablet) {
 		width: 550px;
@@ -14,31 +15,36 @@
 
 .card-item__card-header {
 	display: flex;
+	align-items: center;
 	flex-flow: row nowrap;
 	justify-content: space-between;
-	align-items: center;
+
 	padding-bottom: 20px;
 
 	&-text {
-		flex: 0 1 auto;
-		font-size: 20px;
+		font-size: $font-size-header;
 		line-height: 20px;
+
+		flex: 0 1 auto;
 	}
 }
 
 .card-item__card-icon-container {
-	@include box-shadow();
-
 	position: absolute;
-	height: 60px;
-	width: 60px;
-	padding: 10px;
-	margin: -15px 5px;
-	border-radius: 2px;
+
 	display: flex;
-	flex-direction: column;
 	align-items: center;
+	flex-direction: column;
 	justify-content: center;
+
+	width: 60px;
+	height: 60px;
+	margin: -15px 5px;
+	padding: 10px;
+
+	border-radius: 2px;
+
+	@include box-shadow();
 
 	/* stylelint-disable declaration-colon-space-after */
 
@@ -58,13 +64,15 @@
 }
 
 .card-item__card-icon {
-	color: #fff;
 	font-size: 40px;
 	line-height: 40px;
+
+	color: #fff;
 }
 
 .card-item__card-content {
 	margin-top: 10px;
 	padding-top: 10px;
+
 	border-top: 1px solid rgba(180, 180, 180, 0.3);
 }

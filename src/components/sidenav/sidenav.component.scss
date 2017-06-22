@@ -4,44 +4,55 @@
 .adm-sidenav {
 	&-header {
 		position: relative;
-		background-color: $primaryBackgroundColor;
-		height: $sidenav-header-height;
 		z-index: 4;
+
+		height: $sidenav-header-height;
+
+		background-color: $primary-background-color;
 	}
 
 	&-title {
 		padding: 15px 15px 10px 25px;
+
 		color: lighten(#000, 30%);
 
 		&::after {
-			content: '';
 			position: absolute;
 			bottom: 0;
-			height: 1px;
 			left: 25px;
+
 			width: 65%;
+			height: 1px;
+
+			content: '';
+
 			background-color: rgba(180, 180, 180, 0.3);
 		}
 
 		&-text {
-			text-transform: uppercase;
-			font-size: $fontSizeHeader;
+			font-size: $font-size-header;
 			font-weight: 400;
 			line-height: 25px;
+
+			text-transform: uppercase;
 		}
 	}
 }
 
 .adm-sidenav-content {
 	position: relative;
-	width: $sideNavigationWidth;
+
 	overflow: auto;
+
+	width: $side-navigation-width;
 	height: calc(100% - #{$sidenav-header-height});
-	background-color: $primaryBackgroundColor;
+
+	background-color: $primary-background-color;
 
 	&-icon {
 		padding-right: 0 !important; /* stylelint-disable-line declaration-no-important */
-		color: darken($materialIconColor, 10%);
+
+		color: darken($material-icon-color, 10%);
 	}
 
 	a {
@@ -53,15 +64,16 @@
 	}
 
 	p {
-		padding-left: 15px;
-		font-size: $fontSize;
+		font-size: $font-size-default;
 		line-height: 30px;
+
+		padding-left: 15px;
 	}
 
 	.adm-sidenav-list-item-selected {
-		@include box-shadow();
-
-		background-color: $listItemHighlightColor;
 		border-radius: 5px;
+		background-color: $list-item-highlight-color;
+
+		@include box-shadow();
 	}
 }
