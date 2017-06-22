@@ -1,1 +1,14 @@
-<h1>users</h1>
+<div class="user-grid-container">
+	<md-card class="card-item">
+		<md-card-header class="card-item__card-header">
+			<div class="card-item__card-header-text">Application Users</div>
+		</md-card-header>
+		<md-card-content class="card-item__card-content">
+			<ag-grid-angular #agGrid
+				style="width: 100%; height: 450px;"
+				class="ag-material card-item__card-content-grid" [gridOptions]="gridOptions"
+				[columnDefs]="columnDefs" [rowData]="rowData">
+			</ag-grid-angular>
+		</md-card-content>
+	</md-card>
+</div>

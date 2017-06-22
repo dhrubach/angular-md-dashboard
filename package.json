@@ -45,6 +45,8 @@
   "devDependencies": {
     "@types/chartist": "^0.9.35",
     "@types/webpack": "^2.2.16",
+    "ag-grid": "^10.1.0",
+    "ag-grid-angular": "^10.1.0",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-runtime": "^6.23.0",

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AgGridModule } from 'ag-grid-angular/main';
 import { ChartistModule } from 'ng-chartist';
 
 import {
@@ -31,6 +32,7 @@ import { AppRoutingModule } from './main-routing.module';
 		UserComponent,
 	],
 	imports: [
+		AgGridModule.withComponents([]),
 		AppMaterialModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
