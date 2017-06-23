@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 
 import { GridOptions } from 'ag-grid/main';
+import * as _ from 'lodash';
+
+import { GridItemStatusComponent } from '../shared/grid-item-status/grid-item-status.component';
+import { IUser, UserDataService } from './users.service';
 
 @Component({
 	selector: 'admin-user',
@@ -9,32 +13,36 @@ import { GridOptions } from 'ag-grid/main';
 })
 export class UserComponent {
 	private gridOptions: GridOptions;
-	private rowData: any[];
+	private rowData: IUser[];
 	private columnDefs: any[];
+	private onlineUsers: number;
 
-	constructor() {
+	constructor(private dataService: UserDataService) {
 		this.gridOptions = {
 			onGridReady: () => {
 				this.gridOptions.api.sizeColumnsToFit();
 			},
 			rowHeight: 48,
 		};
+
 		this.columnDefs = [
-			{ headerName: 'Dashboard', field: 'make' },
-			{ headerName: 'Model', field: 'model' },
-			{ headerName: 'Price', field: 'price' },
+			{ headerName: 'User ID', field: 'user', pinned: 'left', maxWidth: '125'},
+			{ headerName: 'Session Created', field: 'created' },
+			{ headerName: 'Session Expires', field: 'expires' },
+			{ headerName: 'Last Access Time', field: 'access'},
+			{ headerName: 'Time Remaining (mm:ss)', field: 'remaining'},
+			{
+				cellRendererFramework: GridItemStatusComponent,
+				field: 'status',
+				headerName: 'Status',
+				sort: 'asc',
+			},
 		];
-		this.rowData = [
-			{ make: 'Toyota', model: 'Celica', price: 35000 },
-			{ make: 'Ford', model: 'Mondeo', price: 32000 },
-			{ make: 'Porsche', model: 'Boxter', price: 72000 },
-			{ make: 'Toyota', model: 'Celica', price: 35000 },
-			{ make: 'Ford', model: 'Mondeo', price: 32000 },
-			{ make: 'Porsche', model: 'Boxter', price: 72000 },
-			{ make: 'Toyota', model: 'Celica', price: 35000 },
-			{ make: 'Ford', model: 'Mondeo', price: 32000 },
-			{ make: 'Porsche', model: 'Boxter', price: 72000 },
-			{ make: 'Porsche', model: 'Boxter', price: 72000 },
-		];
+
+		this.rowData = this.dataService.getData();
+
+		this.onlineUsers = _.filter(this.rowData, (data) => {
+			return data.status === 'online';
+		}).length;
 	}
 }

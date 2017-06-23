@@ -1,0 +1,25 @@
+@import '../../../styles/admin-variables';
+@import '../../../styles/admin-mixins';
+
+@mixin status-circle() {
+	width: 20px;
+	height: 20px;
+
+	content: '';
+
+	border-radius: 10px;
+}
+
+.grid-row__cell-status {
+	&--is-online {
+		background: green;
+
+		@include status-circle();
+	}
+
+	&--is-offline {
+		background: red;
+
+		@include status-circle();
+	}
+}

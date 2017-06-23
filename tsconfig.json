@@ -19,6 +19,7 @@
 		"types": [
 			"chalk",
 			"chartist",
+			"lodash",
 			"node",
 			"source-map",
 			"tapable",

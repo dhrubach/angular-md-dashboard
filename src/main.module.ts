@@ -12,9 +12,11 @@ import {
 	ChartComponent,
 	DashboardComponent,
 	ExceptionsComponent,
+	GridItemStatusComponent,
 	SettingsComponent,
 	SideNavComponent,
 	UserComponent,
+	UserDataService,
 } from './components';
 import { AppMaterialModule } from './main-material.module';
 import { AppRoutingModule } from './main-routing.module';
@@ -27,12 +29,15 @@ import { AppRoutingModule } from './main-routing.module';
 		ChartComponent,
 		DashboardComponent,
 		ExceptionsComponent,
+		GridItemStatusComponent,
 		SettingsComponent,
 		SideNavComponent,
 		UserComponent,
 	],
 	imports: [
-		AgGridModule.withComponents([]),
+		AgGridModule.withComponents([
+			GridItemStatusComponent,
+		]),
 		AppMaterialModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
@@ -40,6 +45,6 @@ import { AppRoutingModule } from './main-routing.module';
 		ChartistModule,
 		FormsModule,
 	],
-	providers: [],
+	providers: [UserDataService],
 })
 export class MainComponent { }
