@@ -7,8 +7,9 @@
 	display: flex;
 	align-content: space-between;
 	flex-flow: row wrap;
-	justify-content: space-around;
+	justify-content: space-between;
 
+	margin: 0 20px;
 	padding-top: 20px;
 
 	@include respond-to(tablet) {
@@ -25,8 +26,9 @@
 	align-items: center;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-between;
 
+	margin: 0 20px;
 	padding-top: 20px;
 
 	@include respond-to(tablet) {
