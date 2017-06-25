@@ -1,0 +1,20 @@
+.ag-header-cell[colid='status'] {
+	.ag-header-cell-label {
+		text-align: center;
+	}
+}
+
+.ag-body-container {
+	.ag-row {
+		.ag-cell-value[colid='status'] {
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			justify-content: center;
+		}
+
+		.ag-cell-value[colid='remaining'] {
+			text-align: right;
+		}
+	}
+}

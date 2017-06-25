@@ -97,6 +97,46 @@ class UserDataService {
 				status: 'orphan',
 				user: 'QWER3',
 			},
+			{
+				access: '04/22/2017 20:36:13',
+				created: '04/22/2017 20:23:13',
+				expires: '04/22/2017 20:38:13',
+				remaining: '',
+				status: 'orphan',
+				user: 'GHJK7',
+			},
+			{
+				access: '01/12/2017 20:36:13',
+				created: '01/12/2017 20:23:13',
+				expires: '01/12/2017 20:38:13',
+				remaining: '',
+				status: 'orphan',
+				user: 'RTYH5',
+			},
+			{
+				access: '06/21/2017 09:31:51',
+				created: '06/21/2017 09:30:23',
+				expires: '06/21/2017 09:45:23',
+				remaining: '',
+				status: 'online',
+				user: 'AZXS1',
+			},
+			{
+				access: '02/03/2017 20:36:13',
+				created: '02/03/2017 20:23:13',
+				expires: '02/03/2017 20:38:13',
+				remaining: '',
+				status: 'orphan',
+				user: 'IUYT5',
+			},
+			{
+				access: '06/21/2017 09:33:30',
+				created: '06/21/2017 09:31:23',
+				expires: '06/21/2017 09:46:23',
+				remaining: '',
+				status: 'online',
+				user: 'POLP5',
+			},
 		];
 
 		this.setTimeRemaining();

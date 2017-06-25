@@ -1,0 +1,11 @@
+@import 'admin-variables';
+@import 'admin-mixins';
+
+.ag-bl .ag-paging-panel {
+	display: flex;
+	align-items: center;
+	flex-direction: row nowrap;
+	justify-content: space-between;
+
+	padding-top: 15px;
+}
