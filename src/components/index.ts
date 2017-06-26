@@ -4,6 +4,7 @@ export * from './chart/chart.component';
 export * from './dashboard/dashboard.component';
 export * from './exceptions/exceptions.component';
 export * from './shared/grid-item-status/grid-item-status.component';
+export * from './shared/grid-pagination/grid-pagination.component';
 export * from './settings/settings.component';
 export * from './sidenav/sidenav.component';
 export * from './users/users.component';

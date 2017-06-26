@@ -1,0 +1,43 @@
+@import '../../../styles/admin-variables';
+@import '../../../styles/admin-mixins';
+
+.card-item__card-content-pagination {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+
+	&-left-text {
+		font-size: $font-size-default;
+		font-weight: 500;
+		line-height: 14px;
+
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+
+		box-sizing: border-box;
+		width: 150px;
+		height: 36px;
+		padding: 3px;
+
+		border-radius: 4px;
+		background-color: $primary-pallete-color;
+	}
+
+	&-right-action {
+		.mat-raised-button {
+			margin-right: 10px;
+		}
+
+		&-text {
+			font-size: $font-size-default;
+			font-weight: 500;
+
+			padding-right: 10px;
+		}
+	}
+}

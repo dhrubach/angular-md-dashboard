@@ -1,0 +1,34 @@
+<div class="card-item__card-content-pagination">
+	<div class="card-item__card-content-pagination-left-text">
+		<span>{{startIndex}} to {{lastIndex}} of {{totalRecords}}</span>
+	</div>
+	<div class="card-item__card-content-pagination-right-action">
+		<button md-raised-button
+				color="accent"
+				(click)="refreshPageView('first')"
+				[disabled]="disableFirstAndPrevious">
+			First
+		</button>
+		<button md-raised-button
+				color="accent"
+				(click)="refreshPageView('previous')"
+				[disabled]="disableFirstAndPrevious">
+			Previous
+		</button>
+		<span class="card-item__card-content-pagination-right-action-text">
+			Page {{currentPage + 1}} of {{totalPage}}
+		</span>
+		<button md-raised-button
+				color="accent"
+				(click)="refreshPageView('next')"
+				[disabled]="disableNextAndLast">
+			Next
+		</button>
+		<button md-raised-button
+				color="accent"
+				(click)="refreshPageView('last')"
+				[disabled]="disableNextAndLast">
+			Last
+		</button>
+	</div>
+</div>

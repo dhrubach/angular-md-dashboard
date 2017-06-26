@@ -1,9 +1,15 @@
+import { AfterViewInit, ViewChild } from '@angular/core';
 import { Component } from '@angular/core';
 
-import { ColDef, GridOptions } from 'ag-grid/main';
+import { ColDef, Events, GridOptions } from 'ag-grid/main';
 import * as _ from 'lodash';
 
 import { GridItemStatusComponent } from '../shared/grid-item-status/grid-item-status.component';
+import {
+	GridPaginationComponent,
+	IPagination,
+	PaginationActionType,
+} from '../shared/grid-pagination/grid-pagination.component';
 import { IUser, UserDataService } from './users.service';
 
 @Component({
@@ -17,15 +23,25 @@ export class UserComponent {
 	private columnDefs: ColDef[];
 	private onlineUsers: number;
 
+	@ViewChild(GridPaginationComponent)
+	private paginationComponent: GridPaginationComponent;
+
 	constructor(private dataService: UserDataService) {
 		this.gridOptions = {
-			onGridReady: () => { },
+			onGridReady: () => {
+				this.onPaginationPageLoaded();
+			},
 			onGridSizeChanged: () => {
 				this.gridOptions.api.sizeColumnsToFit();
+				this.gridOptions.api.addEventListener(
+					Events.EVENT_PAGINATION_CHANGED,
+					this.onPaginationPageLoaded.bind(this),
+				);
 			},
 			pagination: true,
 			paginationAutoPageSize: true,
 			rowHeight: 48,
+			suppressPaginationPanel: true,
 		};
 
 		this.columnDefs = [
@@ -48,5 +64,34 @@ export class UserComponent {
 		this.onlineUsers = _.filter(this.rowData, (data) => {
 			return data.status === 'online';
 		}).length;
+	}
+
+	public onPaginationPageLoaded(): void {
+		const config: IPagination = {
+			currentPage: this.gridOptions.api.paginationGetCurrentPage(),
+			pageSize: this.gridOptions.api.paginationGetPageSize(),
+			totalPage: this.gridOptions.api.paginationGetTotalPages(),
+			totalRecords: this.gridOptions.api.paginationGetRowCount(),
+		};
+
+		this.paginationComponent.setActionButtonState(config);
+		this.paginationComponent.setPageLabels(config);
+	}
+
+	private refreshPageView(buttonType: PaginationActionType) {
+		switch (buttonType) {
+			case PaginationActionType.first:
+				this.gridOptions.api.paginationGoToFirstPage();
+				break;
+			case PaginationActionType.previous:
+				this.gridOptions.api.paginationGoToPreviousPage();
+				break;
+			case PaginationActionType.next:
+				this.gridOptions.api.paginationGoToNextPage();
+				break;
+			case PaginationActionType.last:
+				this.gridOptions.api.paginationGoToLastPage();
+				break;
+		}
 	}
 }
