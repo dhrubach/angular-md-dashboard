@@ -24,7 +24,7 @@ export class UserComponent {
 				this.gridOptions.api.sizeColumnsToFit();
 			},
 			pagination: true,
-			paginationPageSize: 10,
+			paginationAutoPageSize: true,
 			rowHeight: 48,
 		};
 
