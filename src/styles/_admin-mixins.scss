@@ -18,4 +18,10 @@
 			@content;
 		}
 	}
+
+	@else if $media == tablet-landscape {
+		@media only screen and (max-height: #{$tablet-landscape-height}) {
+			@content;
+		}
+	}
 }
