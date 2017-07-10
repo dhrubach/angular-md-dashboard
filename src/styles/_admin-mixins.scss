@@ -7,20 +7,14 @@
 }
 
 @mixin respond-to($media) {
-	@if $media == smartphones {
-		@media only screen and (max-width: #{$tablet-width - 1px}) {
-			@content;
-		}
-	}
-
-	@else if $media == tablet {
-		@media only screen and (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+	@if $media == tablet {
+		@media only screen and (max-width: #{$horizontal-display-width - 1px}) {
 			@content;
 		}
 	}
 
 	@else if $media == desktop {
-		@media only screen and (min-width: #{$desktop-width}) {
+		@media only screen and (min-width: #{$horizontal-display-width}) {
 			@content;
 		}
 	}

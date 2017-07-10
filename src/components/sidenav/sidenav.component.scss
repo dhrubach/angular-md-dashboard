@@ -45,7 +45,7 @@
 	overflow: auto;
 
 	width: $side-navigation-width;
-	height: calc(100% - #{$sidenav-header-height});
+	height: calc(100vh - #{$sidenav-header-height});
 
 	background-color: $primary-background-color;
 
@@ -76,4 +76,8 @@
 
 		@include box-shadow();
 	}
+}
+
+.mat-sidenav {
+	height: 100vh;
 }

@@ -37,3 +37,14 @@
 		justify-content: center;
 	}
 }
+
+.dashboard-container {
+	position: relative;
+
+	box-sizing: border-box;
+	height: calc(100vh - 64px);
+
+	@include respond-to(tablet) {
+		overflow-y: scroll;
+	}
+}
