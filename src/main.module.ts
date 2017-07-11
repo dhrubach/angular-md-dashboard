@@ -17,7 +17,6 @@ import {
 	SettingsComponent,
 	SideNavComponent,
 	UserComponent,
-	UserDataService,
 } from './components';
 import { AppMaterialModule } from './main-material.module';
 import { AppRoutingModule } from './main-routing.module';
@@ -47,6 +46,6 @@ import { AppRoutingModule } from './main-routing.module';
 		ChartistModule,
 		FormsModule,
 	],
-	providers: [UserDataService],
+	providers: [],
 })
 export class MainComponent { }

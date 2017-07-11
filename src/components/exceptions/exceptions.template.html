@@ -1,1 +1,17 @@
-<h1>exceptions</h1>
+<div class="exception-grid-container">
+	<md-card class="card-item">
+		<md-card-header class="card-item__card-header">
+			<div class="card-item__card-header-text">Exceptions</div>
+		</md-card-header>
+		<md-card-content class="card-item__card-content">
+			<ag-grid-angular #agGrid
+				style="width: 100%; height: 85%;"
+				class="ag-material card-item__card-content-grid"
+				[gridOptions]="gridOptions"
+			 	[columnDefs]="masterColumnDefs"
+				[rowData]="rowData">
+			</ag-grid-angular>
+			<grid-pagination (onActionButtonClick)="refreshPageView($event)"></grid-pagination>
+		</md-card-content>
+	</md-card>
+</div>

@@ -1,0 +1,63 @@
+@import '../../styles/admin-variables';
+@import '../../styles/admin-mixins';
+
+.exception-grid-container {
+	position: relative;
+
+	display: flex;
+	align-items: flex-start;
+	flex-direction: row nowrap;
+	justify-content: center;
+
+	box-sizing: border-box;
+	height: calc(100% - 64px);
+	margin: 0 20px;
+	padding: 20px 0;
+}
+
+.card-item {
+	position: relative;
+
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+}
+
+.card-item__card-header {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 100%;
+	height: 60px;
+
+	/* override margin-top set by material.css */
+	margin-top: -40px !important; /* stylelint-disable-line declaration-no-important */
+	padding-left: 10px;
+
+	border-radius: $primary-border-radius;
+	background: linear-gradient(to top right, #ffd22e 0%, #efe552 100%);
+
+	@include box-shadow();
+
+	&-text {
+		font-size: $font-size-header;
+		line-height: 20px;
+	}
+
+	&-secondary-text {
+		font-size: $font-size-default;
+		line-height: 14px;
+
+		padding-top: 5px;
+
+		color: lighten($primary-dark-color, 40%);
+	}
+}
+
+.card-item__card-content {
+	height: 100%;
+	margin-top: 10px;
+	padding-top: 10px;
+}

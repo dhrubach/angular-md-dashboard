@@ -1,5 +1,4 @@
-import { AfterViewInit, ViewChild } from '@angular/core';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { ColDef, Events, GridOptions } from 'ag-grid/main';
 import * as _ from 'lodash';
@@ -13,6 +12,7 @@ import {
 import { IUser, UserDataService } from './users.service';
 
 @Component({
+	providers: [UserDataService],
 	selector: 'admin-user',
 	styles: [require('./users.component.scss')],
 	template: require('./users.template.html'),
