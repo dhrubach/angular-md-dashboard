@@ -10,6 +10,7 @@ md-sidenav-container {
 /* stylelint-enable selector-type-no-unknown */
 
 .main-content-wrapper {
+	min-width: $main-content-min-width;
 	height: 100vh;
 	margin-left: $side-navigation-width;
 	padding-bottom: 0;
