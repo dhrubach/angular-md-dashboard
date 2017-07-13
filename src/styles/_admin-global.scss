@@ -5,8 +5,9 @@ html {
 }
 
 body {
-	padding-bottom: 0;
 	font-size: $font-size-default;
+
+	padding-bottom: 0;
 }
 
 h1,
@@ -18,4 +19,18 @@ h6 {
 	font-family: $font-stack;
 	font-weight: 300;
 	line-height: 1.5em;
+}
+
+body.yellow-submarine::-webkit-scrollbar,
+body.yellow-submarine ::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+
+	background: #98a3a3;
+}
+
+body.yellow-submarine::-webkit-scrollbar-thumb,
+body.yellow-submarine ::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background: darken($list-item-highlight-color, 10%);
 }

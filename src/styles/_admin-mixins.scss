@@ -20,7 +20,7 @@
 	}
 
 	@else if $media == tablet-landscape {
-		@media only screen and (max-height: #{$tablet-landscape-height}) {
+		@media only screen and (max-height: #{$tablet-landscape-height - 1px}) {
 			@content;
 		}
 	}

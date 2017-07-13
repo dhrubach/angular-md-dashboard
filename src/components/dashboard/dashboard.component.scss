@@ -41,8 +41,14 @@
 .dashboard-container {
 	position: relative;
 
+	overflow-y: hidden;
+
 	box-sizing: border-box;
 	height: calc(100vh - 64px);
+
+	@include respond-to(tablet-landscape) {
+		overflow-y: scroll;
+	}
 
 	@include respond-to(tablet) {
 		overflow-y: scroll;

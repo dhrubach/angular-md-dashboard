@@ -14,3 +14,8 @@ md-sidenav {
 .mat-list-item {
 	margin: $selected-list-item-margin $selected-list-item-margin;
 }
+
+/* override overflow:auto set by material.css */
+.mat-sidenav-content {
+	overflow-y: hidden !important; /* stylelint-disable-line declaration-no-important */
+}
