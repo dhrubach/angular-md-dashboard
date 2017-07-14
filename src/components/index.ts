@@ -3,6 +3,7 @@ export * from './card/card.component';
 export * from './chart/chart.component';
 export * from './dashboard/dashboard.component';
 export * from './exceptions/exceptions.component';
+export * from './exceptions/detail-panel/detail-panel.component';
 export * from './shared/grid-item-status/grid-item-status.component';
 export * from './shared/grid-pagination/grid-pagination.component';
 export * from './settings/settings.component';

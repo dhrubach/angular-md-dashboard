@@ -44,7 +44,7 @@ export class DashboardComponent {
 					nihi l quasi doloremque sapiente.
 				`,
 				header: '+10 Users Online',
-				icon: 'error',
+				icon: 'person',
 				type: 'user',
 			},
 		];

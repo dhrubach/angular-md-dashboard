@@ -11,6 +11,7 @@ import {
 	CardComponent,
 	ChartComponent,
 	DashboardComponent,
+	DetailPanelComponent,
 	ExceptionsComponent,
 	GridItemStatusComponent,
 	GridPaginationComponent,
@@ -28,6 +29,7 @@ import { AppRoutingModule } from './main-routing.module';
 		CardComponent,
 		ChartComponent,
 		DashboardComponent,
+		DetailPanelComponent,
 		ExceptionsComponent,
 		GridItemStatusComponent,
 		GridPaginationComponent,
@@ -37,6 +39,7 @@ import { AppRoutingModule } from './main-routing.module';
 	],
 	imports: [
 		AgGridModule.withComponents([
+			DetailPanelComponent,
 			GridItemStatusComponent,
 		]),
 		AppMaterialModule,

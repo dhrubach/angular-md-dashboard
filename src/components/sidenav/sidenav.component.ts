@@ -24,7 +24,7 @@ export class SideNavComponent implements OnInit {
 				title: 'Users',
 			},
 			{
-				iconLigatureName: 'person',
+				iconLigatureName: 'error',
 				routerLink: 'exception',
 				title: 'Exceptions',
 			},

@@ -1,90 +1,82 @@
-import { Component, ViewChild } from '@angular/core';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ColDef, Events, GridOptions } from 'ag-grid/main';
 
-import {
-	GridPaginationComponent,
-	IPagination,
-	PaginationActionType,
-} from '../shared/grid-pagination/grid-pagination.component';
+import { filter, forEach } from 'lodash-es';
+
+import { DetailPanelComponent } from './detail-panel/detail-panel.component';
+import { DetailPanelService, IDetail } from './detail-panel/detail-panel.service';
 import { ExceptionsDataService, IException } from './exceptions.service';
 
 @Component({
-	providers: [ExceptionsDataService],
+	providers: [ExceptionsDataService, DetailPanelService],
 	selector: 'admin-exceptions',
 	styles: [require('./exceptions.component.scss')],
 	template: require('./exceptions.template.html'),
 })
-export class ExceptionsComponent {
+export class ExceptionsComponent implements OnInit {
+
 	private gridOptions: GridOptions;
 	private rowData: IException[];
 	private masterColumnDefs: ColDef[];
 	private detailColumnDefs: ColDef[];
 
-	@ViewChild(GridPaginationComponent)
-	private paginationComponent: GridPaginationComponent;
+	constructor(
+		private exceptionDataService: ExceptionsDataService,
+		private detailsPanelService: DetailPanelService,
+	) { }
 
-	constructor(private dataService: ExceptionsDataService) {
+	public ngOnInit(): void {
 		this.gridOptions = {
-			onGridReady: () => {
-				this.onPaginationPageLoaded();
+			fullWidthCellRenderer: DetailPanelComponent,
+			getNodeChildDetails: (record: IException) => {
+				if (record && record.childRecords && record.childRecords.length) {
+					return {
+						children: [record.childRecords],
+						group: true,
+						key: record.errorCode,
+					};
+				} else {
+					return null;
+				}
 			},
-			onGridSizeChanged: () => {
-				this.gridOptions.api.sizeColumnsToFit();
-				this.gridOptions.api.addEventListener(
-					Events.EVENT_PAGINATION_CHANGED,
-					this.onPaginationPageLoaded.bind(this),
-				);
+			getRowHeight: (params) => {
+				const rowIsDetailRow = params.node.level === 1;
+				return rowIsDetailRow ? 200 : 40;
 			},
-			pagination: true,
-			paginationAutoPageSize: true,
-			rowHeight: 48,
-			suppressPaginationPanel: true,
+			isFullWidthCell: (rowNode) => {
+				return rowNode.level === 1;
+			},
+			onGridReady: (params) => {
+				params.api.sizeColumnsToFit();
+			},
+			pagination: false,
 		};
 
 		this.masterColumnDefs = [
 			{
 				cellRenderer: 'group',
-				cellRendererParams: {
-					suppressCount: true,
-				},
-				field: 'startDate',
-				headerName: 'Time of Occurance',
-				suppressSizeToFit: true,
-				width: 200,
+				field: 'errorCode',
+				headerName: 'Status Code',
+				width: 150,
 			},
-			{ field: 'errorCode', headerName: 'Status Code', width: 200 },
-			{ field: 'typeOfError', headerName: 'Type of Error', width: 250 },
+			{ headerName: 'Type of Error', field: 'typeOfError', width: 150 },
 		];
 
-		this.rowData = this.dataService.getData();
+		this.rowData = this.prepareGridData();
 	}
 
-	public onPaginationPageLoaded(): void {
-		const config: IPagination = {
-			currentPage: this.gridOptions.api.paginationGetCurrentPage(),
-			pageSize: this.gridOptions.api.paginationGetPageSize(),
-			totalPage: this.gridOptions.api.paginationGetTotalPages(),
-			totalRecords: this.gridOptions.api.paginationGetRowCount(),
-		};
-		this.paginationComponent.setActionButtonState(config);
-		this.paginationComponent.setPageLabels(config);
-	}
+	private prepareGridData(): IException[] {
+		const exceptionDataServiceData = this.exceptionDataService.getData();
+		const detailsPanelServiceData = this.detailsPanelService.getData();
 
-	private refreshPageView(buttonType: PaginationActionType) {
-		switch (buttonType) {
-			case PaginationActionType.first:
-				this.gridOptions.api.paginationGoToFirstPage();
-				break;
-			case PaginationActionType.previous:
-				this.gridOptions.api.paginationGoToPreviousPage();
-				break;
-			case PaginationActionType.next:
-				this.gridOptions.api.paginationGoToNextPage();
-				break;
-			case PaginationActionType.last:
-				this.gridOptions.api.paginationGoToLastPage();
-				break;
-		}
+		forEach(exceptionDataServiceData, (exception) => {
+			const detailsDataByErrorCode =
+				filter(detailsPanelServiceData, (detail) => {
+					return detail.errorCode === exception.errorCode;
+				});
+			exception.childRecords = detailsDataByErrorCode;
+		});
+
+		return exceptionDataServiceData;
 	}
 }
