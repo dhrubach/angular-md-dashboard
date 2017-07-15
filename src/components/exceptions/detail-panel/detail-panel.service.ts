@@ -124,6 +124,78 @@ class DetailPanelService {
 					at bazClass.methodThree()
 				`,
 			},
+			{
+				errorCode: 500,
+				extra: [{ exception: 'DbConnectionException' }],
+				fileName: 'DbExecute.cs',
+				message: 'unknown exception thrown by database server',
+				timestamp: '04/12/2017 06:03:23',
+				trace: `
+					at fooClass.methodOne()
+					at barClass.methodTwo()
+					at bazClass.methodThree()
+				`,
+			},
+			{
+				errorCode: 500,
+				extra: [{ exception: 'DbConnectionException' }],
+				fileName: 'DbExecute.cs',
+				message: 'unknown exception thrown by database server',
+				timestamp: '04/12/2017 06:03:23',
+				trace: `
+					at fooClass.methodOne()
+					at barClass.methodTwo()
+					at bazClass.methodThree()
+				`,
+			},
+			{
+				errorCode: 500,
+				extra: [{ exception: 'DbConnectionException' }],
+				fileName: 'DbExecute.cs',
+				message: 'unknown exception thrown by database server',
+				timestamp: '04/12/2017 06:03:23',
+				trace: `
+					at fooClass.methodOne()
+					at barClass.methodTwo()
+					at bazClass.methodThree()
+				`,
+			},
+			{
+				errorCode: 401,
+				extra: [{ user: 'TEST04' }],
+				fileName: 'NA',
+				message: 'authentication failed for user',
+				timestamp: '06/20/2017 12:30:34',
+				trace: `
+					at fooClass.methodOne()
+					at barClass.methodTwo()
+					at bazClass.methodThree()
+				`,
+			},
+			{
+				errorCode: 401,
+				extra: [{ user: 'TEST04' }],
+				fileName: 'NA',
+				message: 'authentication failed for user',
+				timestamp: '06/20/2017 12:30:34',
+				trace: `
+					at fooClass.methodOne()
+					at barClass.methodTwo()
+					at bazClass.methodThree()
+				`,
+			},
+			{
+				errorCode: 401,
+				extra: [{ user: 'TEST04' }],
+				fileName: 'NA',
+				message: 'authentication failed for user',
+				timestamp: '06/20/2017 12:30:34',
+				trace: `
+					at fooClass.methodOne()
+					at barClass.methodTwo()
+					at bazClass.methodThree()
+				`,
+			},
 		];
 	}
 

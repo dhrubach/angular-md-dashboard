@@ -1,0 +1,22 @@
+#exception-grid {
+	.ag-body {
+		.ag-full-width-viewport {
+			.ag-full-width-container {
+				.ag-row-level-1.ag-row-hover {
+					background-color: #fff !important; /* stylelint-disable-line declaration-no-important */
+				}
+			}
+		}
+	}
+
+	.ag-body {
+		.ag-full-width-viewport {
+			.ag-body-container {
+				.ag-cell {
+					padding-top: 9px;
+					padding-bottom: 9px;
+				}
+			}
+		}
+	}
+}

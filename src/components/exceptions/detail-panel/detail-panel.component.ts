@@ -1,39 +1,41 @@
 import { Component } from '@angular/core';
 
-import { ColDef, Grid, GridOptions, ICellRendererComp, ICellRendererParams } from 'ag-grid/main';
+import { ICellRendererAngularComp } from 'ag-grid-angular/main';
+import {
+	ColDef,
+	GridOptions,
+	IAfterGuiAttachedParams,
+	ICellRendererParams,
+} from 'ag-grid/main';
 
 @Component({
-	template: '',
+	styles: [require('./detail-panel.component.scss')],
+	template: require('./detail-panel.template.html'),
 })
-export class DetailPanelComponent implements ICellRendererComp {
+export class DetailPanelComponent implements ICellRendererAngularComp {
 
 	private params: ICellRendererParams;
 	private detailGridOptions: GridOptions;
 	private detailColumnDefinitions: ColDef[];
-	private eGui: HTMLElement;
 
-	public init(params: ICellRendererParams): void {
+	public refresh?(params: any): void {
+		throw new Error('Method not implemented.');
+	}
+
+	public agInit(params: ICellRendererParams): void {
 		this.params = params;
 
 		this.detailColumnDefinitions = [
-			{ headerName: 'Timestamp', field: 'timestamp', width: 100 },
-			{ headerName: 'Message', field: 'message', width: 100 },
-			{ headerName: 'FileName', field: 'fileName', width: 100 },
+			{ headerName: 'Timestamp', field: 'timestamp', width: 90 },
+			{ headerName: 'Message', field: 'message', width: 90 },
+			{ headerName: 'FileName', field: 'fileName', width: 90 },
 		];
 
-		const eDiv = document.createElement('div');
-		eDiv.innerHTML = `
-			<ag-grid-angular style="width: 100%; height: 100%;" class="ag-material"
-				[gridOptions]="detailGridOptions" [columnDefs]="columnDefs" [rowData]="rowData">
-			</ag-grid-angular>
-		`;
-
-		this.eGui = eDiv.firstElementChild as HTMLElement;
 		this.setUpDetailGrid(this.params);
 	}
 
-	public getGui(): HTMLElement {
-		return this.eGui;
+	public afterGuiAttached?(params?: IAfterGuiAttachedParams): void {
+		throw new Error('Method not implemented.');
 	}
 
 	private setUpDetailGrid(records: ICellRendererParams): void {
@@ -43,9 +45,7 @@ export class DetailPanelComponent implements ICellRendererComp {
 				params.api.sizeColumnsToFit();
 			},
 			rowData: records.node.parent.data.childRecords,
-			rowHeight: 40,
+			rowHeight: 30,
 		};
-
-		new Grid(this.eGui, this.detailGridOptions); // tslint:disable:no-unused-expression
 	}
 }

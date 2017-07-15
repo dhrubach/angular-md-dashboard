@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ColDef, Events, GridOptions } from 'ag-grid/main';
 
-import { filter, forEach } from 'lodash-es';
+import { filter, forEach, reverse, sortBy } from 'lodash-es';
 
 import { DetailPanelComponent } from './detail-panel/detail-panel.component';
 import { DetailPanelService, IDetail } from './detail-panel/detail-panel.service';
@@ -27,7 +27,8 @@ export class ExceptionsComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.gridOptions = {
-			fullWidthCellRenderer: DetailPanelComponent,
+			animateRows: true,
+			fullWidthCellRendererFramework: DetailPanelComponent,
 			getNodeChildDetails: (record: IException) => {
 				if (record && record.childRecords && record.childRecords.length) {
 					return {
@@ -55,6 +56,9 @@ export class ExceptionsComponent implements OnInit {
 		this.masterColumnDefs = [
 			{
 				cellRenderer: 'group',
+				cellRendererParams: {
+					suppressCount: false,
+				},
 				field: 'errorCode',
 				headerName: 'Status Code',
 				width: 150,
@@ -74,9 +78,11 @@ export class ExceptionsComponent implements OnInit {
 				filter(detailsPanelServiceData, (detail) => {
 					return detail.errorCode === exception.errorCode;
 				});
-			exception.childRecords = detailsDataByErrorCode;
+			exception.childRecords = detailsDataByErrorCode || [];
 		});
 
-		return exceptionDataServiceData;
+		return reverse(sortBy(exceptionDataServiceData, (exception) => {
+			return exception && exception.childRecords.length || 0;
+		}));
 	}
 }
