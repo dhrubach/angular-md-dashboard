@@ -1,0 +1,12 @@
+<md-card class="bar-chart-item">
+	<md-card-header class="bar-chart-item__chart-header">
+		<div class="bar-chart-item__chart-header-text">{{header}}</div>
+	</md-card-header>
+	<md-card-content class="bar-chart-item__chart-content">
+		<x-chartist [data] = "data" [type] = "type" [events] = "event"></x-chartist>
+	</md-card-content>
+	<md-card-footer class="bar-chart-item__chart-footer">
+		<md-icon class="bar-chart-item__chart-footer-icon">timer</md-icon>
+		<span class="bar-chart-item__chart-footer-text">Updated 10 mins back</span>
+	</md-card-footer>
+</md-card>

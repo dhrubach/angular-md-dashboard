@@ -1,12 +1,22 @@
-<div class="exception-grid-container">
-	<md-card class="card-item">
-		<md-card-header class="card-item__card-header">
-			<div class="card-item__card-header-text">Exceptions</div>
-		</md-card-header>
-		<md-card-content class="card-item__card-content">
-			<ag-grid-angular #agGrid style="width: 100%; height: 85%;" class="ag-material card-item__card-content-grid" [gridOptions]="gridOptions"
-			 [columnDefs]="masterColumnDefs" [rowData]="rowData" id="exception-grid">
-			</ag-grid-angular>
-		</md-card-content>
-	</md-card>
+<div class="exception-container">
+	<div class="exception-container-charts">
+		<div class="exception-container-charts__bar">
+			<bar-chart *ngFor="let chart of charts" [header]="chart.header" [data]="chart.data"></bar-chart>
+		</div>
+		<div class="exception-container-charts__bar">
+			<bar-chart *ngFor="let chart of charts" [header]="chart.header" [data]="chart.data"></bar-chart>
+		</div>
+	</div>
+	<div class="exception-container-grid">
+		<md-card class="card-item">
+			<md-card-header class="card-item__card-header">
+				<div class="card-item__card-header-text">Exceptions</div>
+			</md-card-header>
+			<md-card-content class="card-item__card-content">
+				<ag-grid-angular #agGrid style="width: 100%; height: 85%;" class="ag-material card-item__card-content-grid" [gridOptions]="gridOptions"
+				 [columnDefs]="masterColumnDefs" [rowData]="rowData" id="exception-grid">
+				</ag-grid-angular>
+			</md-card-content>
+		</md-card>
+	</div>
 </div>
