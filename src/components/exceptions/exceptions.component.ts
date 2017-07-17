@@ -79,8 +79,8 @@ export class ExceptionsComponent implements OnInit {
 						[10, 50, 40, 55, 100, 30, 10],
 					],
 				},
-				header: 'Proposals',
-				type: 'proposal',
+				header: 'Last 7 days',
+				type: 'exception',
 			},
 		];
 	}

@@ -13,11 +13,12 @@
 
 .bar-chart-item__chart-header {
 	display: flex;
-	background-color: #fff;
 	align-items: center;
 	justify-content: flex-start;
 
 	padding-bottom: 20px;
+
+	background-color: #fff;
 
 	&-text {
 		font-size: $font-size-header;
@@ -30,14 +31,17 @@
 }
 
 .bar-chart-item__chart-content {
+	min-height: 170px;
+
 	@include box-shadow();
 
-	background: linear-gradient(to top right, gray 0%, white 100%);
+	&--is-exception {
+		background: linear-gradient(to top right, #fad1a3 0%, #e69f47 47%, #eb9028 100%);
+	}
 }
 
 .bar-chart-item__chart-footer {
 	display: flex;
-	background-color: #fff;
 	align-items: center;
 	justify-content: flex-start;
 
@@ -45,6 +49,7 @@
 	padding-top: 15px;
 
 	border-top: 1px solid rgba(180, 180, 180, 0.3);
+	background-color: #fff;
 
 	&-text {
 		font-size: $font-size-footer;

@@ -7,7 +7,7 @@ import * as Chartist from 'chartist';
 interface IBarChartData {
 	header: string;
 	data: Chartist.IChartistData;
-	type: 'proposal' | 'accounts'
+	type: 'exception';
 }
 
 @Component({
@@ -18,6 +18,7 @@ interface IBarChartData {
 class BarChartComponent {
 	private event: ChartEvent;
 	private type: ChartType;
+	private options: Chartist.IBarChartOptions;
 
 	@Input() private header: string;
 	@Input() private data: Chartist.IChartistData;
@@ -37,6 +38,16 @@ class BarChartComponent {
 						},
 					});
 				}
+			},
+		};
+		this.options = {
+			axisX: {
+				offset: 15,
+				showLabel: true,
+			},
+			axisY: {
+				offset: 20,
+				showLabel: true,
 			},
 		};
 	}

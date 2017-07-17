@@ -2,8 +2,8 @@
 	<md-card-header class="bar-chart-item__chart-header">
 		<div class="bar-chart-item__chart-header-text">{{header}}</div>
 	</md-card-header>
-	<md-card-content class="bar-chart-item__chart-content">
-		<x-chartist [data] = "data" [type] = "type" [events] = "event"></x-chartist>
+	<md-card-content class="bar-chart-item__chart-content bar-chart-item__chart-content--is-{{dataType}}">
+		<x-chartist [data]="data" [type]="type" [events]="event" [options]="options"></x-chartist>
 	</md-card-content>
 	<md-card-footer class="bar-chart-item__chart-footer">
 		<md-icon class="bar-chart-item__chart-footer-icon">timer</md-icon>
