@@ -1,10 +1,12 @@
 <div class="exception-container">
 	<div class="exception-container-charts">
 		<div class="exception-container-charts__bar">
-			<bar-chart *ngFor="let chart of charts" [header]="chart.header" [data]="chart.data" [dataType]="chart.type"></bar-chart>
+			<adm-chart [header]="chart.header" [data]="chart.data"
+				[dataType]="chart.type" [type]="chart.chartType"></adm-chart>
 		</div>
 		<div class="exception-container-charts__bar">
-			<bar-chart *ngFor="let chart of charts" [header]="chart.header" [data]="chart.data"></bar-chart>
+			<adm-chart [header]="chart.header" [data]="chart.data"
+				[dataType]="chart.type" [type]="chart.chartType"></adm-chart>
 		</div>
 	</div>
 	<div class="exception-container-grid">

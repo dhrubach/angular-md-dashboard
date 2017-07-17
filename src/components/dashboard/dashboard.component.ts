@@ -51,6 +51,7 @@ export class DashboardComponent {
 
 		this.charts = [
 			{
+				chartType: 'Line',
 				data:
 				{
 					labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
@@ -62,6 +63,7 @@ export class DashboardComponent {
 				type: 'proposal',
 			},
 			{
+				chartType: 'Line',
 				data:
 				{
 					labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],

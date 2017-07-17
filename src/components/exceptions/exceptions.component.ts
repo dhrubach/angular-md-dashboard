@@ -3,7 +3,7 @@ import { ColDef, Events, GridOptions } from 'ag-grid/main';
 
 import { filter, forEach, reverse, sortBy } from 'lodash-es';
 
-import { IBarChartData } from './../bar-chart/bar-chart.component';
+import { IChartData } from './../chart/chart.component';
 import { DetailPanelComponent } from './detail-panel/detail-panel.component';
 import { DetailPanelService, IDetail } from './detail-panel/detail-panel.service';
 import { ExceptionsDataService, IException } from './exceptions.service';
@@ -20,7 +20,7 @@ export class ExceptionsComponent implements OnInit {
 	private rowData: IException[];
 	private masterColumnDefs: ColDef[];
 	private detailColumnDefs: ColDef[];
-	private charts: IBarChartData[];
+	private chart: IChartData;
 
 	constructor(
 		private exceptionDataService: ExceptionsDataService,
@@ -70,19 +70,18 @@ export class ExceptionsComponent implements OnInit {
 
 		this.rowData = this.prepareGridData();
 
-		this.charts = [
+		this.chart = {
+			chartType: 'Bar',
+			data:
 			{
-				data:
-				{
-					labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-					series: [
-						[10, 50, 40, 55, 100, 30, 10],
-					],
-				},
-				header: 'Last 7 days',
-				type: 'exception',
+				labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+				series: [
+					[10, 50, 40, 55, 100, 30, 10],
+				],
 			},
-		];
+			header: 'Last 7 days',
+			type: 'exception',
+		};
 	}
 
 	private prepareGridData(): IException[] {

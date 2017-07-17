@@ -7,7 +7,8 @@ import * as Chartist from 'chartist';
 interface IChartData {
 	header: string;
 	data: Chartist.IChartistData;
-	type: 'proposal' | 'accounts';
+	type: 'proposal' | 'accounts' | 'exception';
+	chartType: 'Line' | 'Bar' | 'Pie';
 }
 
 @Component({
@@ -16,15 +17,16 @@ interface IChartData {
 	template: require('./chart.template.html'),
 })
 class ChartComponent {
-	private type: ChartType;
-	private event: ChartEvent;
 
+	private event: ChartEvent;
+	private options: Chartist.ILineChartOptions | Chartist.IBarChartOptions;
+
+	@Input() private type: ChartType;
 	@Input() private header: string;
 	@Input() private data: Chartist.IChartistData[];
 	@Input() private dataType: string;
 
 	constructor() {
-		this.type = 'Line';
 		this.event = {
 			draw: (data) => {
 				if (data.type === 'line' || data.type === 'area') {
@@ -37,7 +39,27 @@ class ChartComponent {
 							to: data.path.clone().stringify(),
 						},
 					});
+				} else if (data.type === 'bar') {
+					data.element.animate({
+						y2: {
+							begin: 50,
+							dur: 700,
+							from: data.y1,
+							to: data.y2,
+						},
+					});
 				}
+			},
+		};
+
+		this.options = {
+			axisX: {
+				offset: 15,
+				showLabel: true,
+			},
+			axisY: {
+				offset: 20,
+				showLabel: true,
 			},
 		};
 	}

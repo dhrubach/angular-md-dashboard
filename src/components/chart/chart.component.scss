@@ -48,6 +48,10 @@
 	&--is-accounts {
 		background: linear-gradient(to top right, #93cede 0%, #49a5bf 100%);
 	}
+
+	&--is-exception {
+		background: linear-gradient(to top right, #fad1a3 0%, #e69f47 47%, #eb9028 100%);
+	}
 }
 
 .chart-item__chart-footer {

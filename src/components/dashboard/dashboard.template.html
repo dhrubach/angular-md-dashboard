@@ -3,6 +3,7 @@
 		<adm-card *ngFor="let card of cards" [content]="card.content" [header]="card.header" [icon]="card.icon" [type]="card.type"></adm-card>
 	</div>
 	<div class="chart-container">
-		<adm-chart *ngFor="let chart of charts" [header]="chart.header" [data]="chart.data" [dataType]="chart.type"></adm-chart>
+		<adm-chart *ngFor="let chart of charts" [header]="chart.header"
+			[data]="chart.data" [dataType]="chart.type" [type]="chart.chartType"></adm-chart>
 	</div>
 </div>
