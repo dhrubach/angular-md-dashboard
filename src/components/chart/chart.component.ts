@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { ChartEvent, ChartType } from 'ng-chartist';
 
@@ -16,17 +16,17 @@ interface IChartData {
 	styles: [require('./chart.component.scss')],
 	template: require('./chart.template.html'),
 })
-class ChartComponent {
+class ChartComponent implements OnInit {
 
 	private event: ChartEvent;
-	private options: Chartist.ILineChartOptions | Chartist.IBarChartOptions;
+	private options: Chartist.ILineChartOptions | Chartist.IBarChartOptions | Chartist.IPieChartOptions;
 
 	@Input() private type: ChartType;
 	@Input() private header: string;
 	@Input() private data: Chartist.IChartistData[];
 	@Input() private dataType: string;
 
-	constructor() {
+	public ngOnInit(): void {
 		this.event = {
 			draw: (data) => {
 				if (data.type === 'line' || data.type === 'area') {
@@ -52,17 +52,29 @@ class ChartComponent {
 			},
 		};
 
-		this.options = {
-			axisX: {
-				offset: 15,
-				showLabel: true,
-			},
-			axisY: {
-				offset: 20,
-				showLabel: true,
-			},
-		};
+		if (this.type === 'Pie') {
+			this.options = {
+				chartPadding: 20,
+				startAngle: 270,
+				donut: true,
+				donutWidth: 30,
+				showLabel: false,
+				total: 100,
+			};
+		} else {
+			this.options = {
+				axisX: {
+					offset: 15,
+					showLabel: true,
+				},
+				axisY: {
+					offset: 20,
+					showLabel: true,
+				},
+			};
+		}
 	}
+
 }
 
 export { ChartComponent, IChartData };

@@ -21,6 +21,7 @@ export class ExceptionsComponent implements OnInit {
 	private masterColumnDefs: ColDef[];
 	private detailColumnDefs: ColDef[];
 	private chart: IChartData;
+	private donut: IChartData;
 
 	constructor(
 		private exceptionDataService: ExceptionsDataService,
@@ -82,6 +83,15 @@ export class ExceptionsComponent implements OnInit {
 			header: 'Last 7 days',
 			type: 'exception',
 		};
+
+		this.donut = {
+			chartType: 'Pie',
+			data: {
+				series: [10, 5, 25, 10],
+			},
+			header: 'Top 4 Types',
+			type: 'exception',
+		}
 	}
 
 	private prepareGridData(): IException[] {
