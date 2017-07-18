@@ -9,3 +9,11 @@
 .ct-label {
 	color: $line-chart-label-color;
 }
+
+.ct-bar {
+	stroke-width: $bar-chart-width;
+}
+
+.ct-series-a .ct-bar {
+	stroke: $bar-chart-stroke-color;
+}

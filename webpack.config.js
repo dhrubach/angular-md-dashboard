@@ -139,6 +139,7 @@ const config = {
 			tether: 'tether',
 			Tether: 'tether',
 			'window.Tether': 'tether',
+			Chartist: 'chartist',
 		}),
 		new StylelintPlugin(),
 		new FriendlyErrorsPlugin(),

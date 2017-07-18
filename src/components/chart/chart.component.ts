@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ChartEvent, ChartType } from 'ng-chartist';
 
 import * as Chartist from 'chartist';
+import './plugins/chartist-bar-labels';
 
 interface IChartData {
 	header: string;
@@ -72,6 +73,12 @@ class ChartComponent implements OnInit {
 					showLabel: true,
 				},
 			};
+
+			if(this.type === 'Bar') {
+				this.options.plugins = [
+					Chartist.plugins.ctBarLabels(),
+				];
+			}
 		}
 	}
 
