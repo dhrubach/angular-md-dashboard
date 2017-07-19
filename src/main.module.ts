@@ -8,6 +8,7 @@ import { ChartistModule } from 'ng-chartist';
 
 import {
 	AppComponent,
+	BarChartComponent,
 	CardComponent,
 	ChartComponent,
 	DashboardComponent,
@@ -15,6 +16,9 @@ import {
 	ExceptionsComponent,
 	GridItemStatusComponent,
 	GridPaginationComponent,
+	HostChartDirective,
+	LineChartComponent,
+	PieChartComponent,
 	SettingsComponent,
 	SideNavComponent,
 	UserComponent,
@@ -26,6 +30,7 @@ import { AppRoutingModule } from './main-routing.module';
 	bootstrap: [AppComponent],
 	declarations: [
 		AppComponent,
+		BarChartComponent,
 		CardComponent,
 		ChartComponent,
 		DashboardComponent,
@@ -33,10 +38,14 @@ import { AppRoutingModule } from './main-routing.module';
 		ExceptionsComponent,
 		GridItemStatusComponent,
 		GridPaginationComponent,
+		HostChartDirective,
+		LineChartComponent,
+		PieChartComponent,
 		SettingsComponent,
 		SideNavComponent,
 		UserComponent,
 	],
+	entryComponents: [BarChartComponent, LineChartComponent, PieChartComponent],
 	imports: [
 		AgGridModule.withComponents([
 			DetailPanelComponent,

@@ -1,0 +1,12 @@
+@import '../../styles/admin-variables';
+@import '../../styles/admin-mixins';
+
+.pie-chart-item__content {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+
+	background: linear-gradient(to top right, #faf2fa 0%, #ebe2eb 100%);
+}

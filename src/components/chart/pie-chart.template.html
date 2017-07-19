@@ -2,8 +2,9 @@
 	<md-card-header class="chart-item__chart-header">
 		<div class="chart-item__chart-header-text">{{config.header}}</div>
 	</md-card-header>
-	<md-card-content class="chart-item__chart-content chart-item__chart-content--is-{{config.type}}">
+	<md-card-content class="chart-item__chart-content pie-chart-item__content">
 		<x-chartist [data]="config.data" [type]="config.chartType" [events]="event" [options]="options"></x-chartist>
+		<div class="pie-chart-item__info"></div>
 	</md-card-content>
 	<md-card-footer class="chart-item__chart-footer">
 		<md-icon class="chart-item__chart-footer-icon">timer</md-icon>

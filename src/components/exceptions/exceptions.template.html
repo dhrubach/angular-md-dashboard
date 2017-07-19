@@ -1,9 +1,7 @@
 <div class="exception-container">
 	<div class="exception-container-charts">
-		<adm-chart [header]="barChart.header" [data]="barChart.data" [dataType]="barChart.type"
-			[type]="barChart.chartType"></adm-chart>
-		<adm-chart [header]="pieChart.header" [data]="pieChart.data" [dataType]="pieChart.type"
-			[type]="pieChart.chartType"></adm-chart>
+		<adm-chart [config]="barChart"></adm-chart>
+		<adm-chart [config]="pieChart"></adm-chart>
 	</div>
 	<div class="exception-container-grid">
 		<md-card class="card-item">
