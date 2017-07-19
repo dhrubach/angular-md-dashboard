@@ -20,8 +20,8 @@ export class ExceptionsComponent implements OnInit {
 	private rowData: IException[];
 	private masterColumnDefs: ColDef[];
 	private detailColumnDefs: ColDef[];
-	private chart: IChartData;
-	private donut: IChartData;
+	private barChart: IChartData;
+	private pieChart: IChartData;
 
 	constructor(
 		private exceptionDataService: ExceptionsDataService,
@@ -29,6 +29,12 @@ export class ExceptionsComponent implements OnInit {
 	) { }
 
 	public ngOnInit(): void {
+		this.prepareExceptionGrid();
+		this.prepareExceptionBarChart();
+		this.prepareExceptionPieChart();
+	}
+
+	private prepareExceptionGrid(): void {
 		this.gridOptions = {
 			animateRows: true,
 			fullWidthCellRendererFramework: DetailPanelComponent,
@@ -70,28 +76,32 @@ export class ExceptionsComponent implements OnInit {
 		];
 
 		this.rowData = this.prepareGridData();
+	}
 
-		this.chart = {
+	private prepareExceptionBarChart(): void {
+		this.barChart = {
 			chartType: 'Bar',
 			data:
 			{
 				labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
 				series: [
-					[10, 50, 40, 55, 100, 30, 10],
+					[74, 50, 40, 55, 100, 30, 10],
 				],
 			},
 			header: 'Last 7 days',
 			type: 'exception',
 		};
+	}
 
-		this.donut = {
+	private prepareExceptionPieChart(): void {
+		this.pieChart = {
 			chartType: 'Pie',
 			data: {
 				series: [10, 5, 25, 10],
 			},
 			header: 'Top 4 Types',
-			type: 'exception',
-		}
+			type: 'default',
+		};
 	}
 
 	private prepareGridData(): IException[] {

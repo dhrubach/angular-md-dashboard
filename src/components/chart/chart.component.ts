@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import * as Chartist from 'chartist';
 import { ChartEvent, ChartType } from 'ng-chartist';
 
-import * as Chartist from 'chartist';
 import './plugins/chartist-bar-labels';
 
 interface IChartData {
 	header: string;
 	data: Chartist.IChartistData;
-	type: 'proposal' | 'accounts' | 'exception';
+	type: 'proposal' | 'accounts' | 'exception' | 'default';
 	chartType: 'Line' | 'Bar' | 'Pie';
 }
 
@@ -30,56 +30,79 @@ class ChartComponent implements OnInit {
 	public ngOnInit(): void {
 		this.event = {
 			draw: (data) => {
-				if (data.type === 'line' || data.type === 'area') {
-					data.element.animate({
-						d: {
-							begin: 600,
-							dur: 700,
-							easing: Chartist.Svg.Easing.easeOutQuint,
-							from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-							to: data.path.clone().stringify(),
-						},
-					});
-				} else if (data.type === 'bar') {
-					data.element.animate({
-						y2: {
-							begin: 50,
-							dur: 700,
-							from: data.y1,
-							to: data.y2,
-						},
-					});
+				switch (data.type) {
+					case 'line':
+						this.animateLineChart(data);
+						break;
+					case 'bar':
+						this.animateBarChart(data);
+						break;
+					case 'pie':
+						this.animatePieChart(data);
+						break;
 				}
 			},
 		};
 
 		if (this.type === 'Pie') {
-			this.options = {
-				chartPadding: 20,
-				startAngle: 270,
-				donut: true,
-				donutWidth: 30,
-				showLabel: false,
-				total: 100,
-			};
+			this.preparePieChartOptions();
 		} else {
-			this.options = {
-				axisX: {
-					offset: 15,
-					showLabel: true,
-				},
-				axisY: {
-					offset: 20,
-					showLabel: true,
-				},
-			};
-
-			if(this.type === 'Bar') {
-				this.options.plugins = [
-					Chartist.plugins.ctBarLabels(),
-				];
-			}
+			this.prepareLineOrBarChartOptions();
 		}
+	}
+
+	private animateLineChart(data: any): void {
+		data.element.animate({
+			d: {
+				begin: 600,
+				dur: 700,
+				easing: Chartist.Svg.Easing.easeOutQuint,
+				from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+				to: data.path.clone().stringify(),
+			},
+		});
+	}
+
+	private animateBarChart(data: any): void {
+		data.element.animate({
+			y2: {
+				begin: 50,
+				dur: 700,
+				from: data.y1,
+				to: data.y2,
+			},
+		});
+	}
+
+	private animatePieChart(data: any): void {
+	}
+
+	private prepareLineOrBarChartOptions(): void {
+		this.options = {
+			axisX: {
+				offset: 15,
+				showLabel: true,
+			},
+			axisY: {
+				offset: 20,
+				showLabel: true,
+			},
+		};
+
+		if (this.type === 'Bar') {
+			this.options.plugins = [
+				Chartist.plugins.ctBarLabels(),
+			];
+		}
+	}
+
+	private preparePieChartOptions(): void {
+		this.options = {
+			chartPadding: 20,
+			donut: true,
+			donutWidth: 30,
+			showLabel: false,
+		};
 	}
 
 }
