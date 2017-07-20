@@ -2,9 +2,21 @@
 	<md-card-header class="chart-item__chart-header">
 		<div class="chart-item__chart-header-text">{{config.header}}</div>
 	</md-card-header>
-	<md-card-content class="chart-item__chart-content pie-chart-item__content">
+	<md-card-content class="chart-item__chart-content pie-chart-item__chart-content">
 		<x-chartist [data]="config.data" [type]="config.chartType" [events]="event" [options]="options"></x-chartist>
-		<div class="pie-chart-item__info"></div>
+		<div class="pie-chart-item__table-container">
+			<table class="pie-chart-item__table">
+				<tbody>
+					<tr class="pie-chart-item__table-row" *ngFor="let statusCodeItem of statusCodeDataList; let i = index">
+						<td class="pie-chart-item__table-column-name">
+							<div class="pie-chart-item__table-column-marker"></div>
+							{{statusCodeItem.meta}}
+						</td>
+						<td class="pie-chart-item__table-column-value">{{statusCodeItem.value}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</md-card-content>
 	<md-card-footer class="chart-item__chart-footer">
 		<md-icon class="chart-item__chart-footer-icon">timer</md-icon>

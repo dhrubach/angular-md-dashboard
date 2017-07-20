@@ -10,10 +10,30 @@
 	color: $line-chart-label-color;
 }
 
+// bar chart
+
 .ct-bar {
 	stroke-width: $bar-chart-width;
 }
 
 .ct-series-a .ct-bar {
 	stroke: $bar-chart-stroke-color;
+}
+
+// pie chart
+
+.ct-series-a .ct-slice-donut:hover {
+	stroke: darken($pie-chart-stroke-color-series-a, 10%);
+}
+
+.ct-series-b .ct-slice-donut:hover {
+	stroke: darken($pie-chart-stroke-color-series-b, 10%);
+}
+
+.ct-series-c .ct-slice-donut:hover {
+	stroke: darken($pie-chart-stroke-color-series-c, 10%);
+}
+
+.ct-series-d .ct-slice-donut:hover {
+	stroke: darken($pie-chart-stroke-color-series-d, 10%);
 }

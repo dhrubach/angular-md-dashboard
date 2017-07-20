@@ -97,9 +97,27 @@ export class ExceptionsComponent implements OnInit {
 		this.pieChart = {
 			chartType: 'Pie',
 			data: {
-				series: [10, 5, 25, 10],
+				labels: ['500', '401', '400', '404'],
+				series: [
+					{
+						meta: '500',
+						value: 10,
+					},
+					{
+						meta: '401',
+						value: 5,
+					},
+					{
+						meta: '400',
+						value: 25,
+					},
+					{
+						meta: '404',
+						value: 15,
+					},
+				],
 			},
-			header: 'Top 4 Types',
+			header: 'Top 4 Exception Status Codes',
 			type: 'default',
 		};
 	}

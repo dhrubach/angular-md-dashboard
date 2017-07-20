@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 import { ChartEvent, ChartType } from 'ng-chartist';
 
-import { BaseChartComponent } from './base-chart.component';
+import { BaseChartComponent, IChartData } from './base-chart.component';
 
 @Component({
 	styles: [require('./chart.component.scss'), require('./pie-chart.component.scss')],
@@ -11,12 +11,24 @@ import { BaseChartComponent } from './base-chart.component';
 })
 export class PieChartComponent extends BaseChartComponent implements OnInit {
 
+	private statusCodeDataList: Chartist.IChartistSeriesData[] | number[] | number[][];
+
 	constructor() {
 		super();
 	}
 
 	public ngOnInit(): void {
 		this.event = {
+			created: (chart) => {
+				if (chart && chart.svg) {
+					const nodeList: any = chart.svg._node.childNodes;
+					if (nodeList && nodeList.length) {
+						(nodeList as SVGGElement[]).forEach((gElement) => {
+							gElement.addEventListener('click', this.onPieElementClick.bind(this));
+						});
+					}
+				}
+			},
 			draw: (data) => {
 				if (data.type === 'slice') {
 
@@ -46,6 +58,11 @@ export class PieChartComponent extends BaseChartComponent implements OnInit {
 						'stroke-dashoffset': -pathLength + 'px',
 					});
 
+					data.element.attr({
+						'data-label': data.meta,
+						'data-value': data.value,
+					});
+
 					data.element.animate(animationDefinition, false);
 				}
 			},
@@ -57,6 +74,21 @@ export class PieChartComponent extends BaseChartComponent implements OnInit {
 			donutWidth: 30,
 			showLabel: false,
 		};
+
+		this.prepareStatusCodeTableData(this.config.data);
 	}
 
+	private onPieElementClick($event: MouseEvent): void {
+		/*
+		* Typescript definition does not define a 'dataset' property on SVGElement.
+		* Cast 'target' to HTMLElement as a work around
+		*/
+		const dataset: DOMStringMap = ($event.target as HTMLElement).dataset;
+		if (dataset) {
+		}
+	}
+
+	private prepareStatusCodeTableData(data: Chartist.IChartistData): void {
+		this.statusCodeDataList = data.series;
+	}
 }
