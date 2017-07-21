@@ -12,6 +12,7 @@ import { BaseChartComponent, IChartData } from './base-chart.component';
 export class PieChartComponent extends BaseChartComponent implements OnInit {
 
 	private statusCodeDataList: Chartist.IChartistSeriesData[] | number[] | number[][];
+	private highlightStatusCodeRow: number;
 
 	constructor() {
 		super();
@@ -24,7 +25,8 @@ export class PieChartComponent extends BaseChartComponent implements OnInit {
 					const nodeList: any = chart.svg._node.childNodes;
 					if (nodeList && nodeList.length) {
 						(nodeList as SVGGElement[]).forEach((gElement) => {
-							gElement.addEventListener('click', this.onPieElementClick.bind(this));
+							gElement.addEventListener('mouseover', this.onPieElementMouseOver.bind(this));
+							gElement.addEventListener('mouseout', this.onPieElementMouseOut.bind(this));
 						});
 					}
 				}
@@ -59,8 +61,7 @@ export class PieChartComponent extends BaseChartComponent implements OnInit {
 					});
 
 					data.element.attr({
-						'data-label': data.meta,
-						'data-value': data.value,
+						'data-index': data.index,
 					});
 
 					data.element.animate(animationDefinition, false);
@@ -78,14 +79,19 @@ export class PieChartComponent extends BaseChartComponent implements OnInit {
 		this.prepareStatusCodeTableData(this.config.data);
 	}
 
-	private onPieElementClick($event: MouseEvent): void {
+	private onPieElementMouseOver($event: MouseEvent) {
 		/*
 		* Typescript definition does not define a 'dataset' property on SVGElement.
 		* Cast 'target' to HTMLElement as a work around
 		*/
 		const dataset: DOMStringMap = ($event.target as HTMLElement).dataset;
 		if (dataset) {
+			this.highlightStatusCodeRow = +dataset.index;
 		}
+	}
+
+	private onPieElementMouseOut($event: MouseEvent) {
+		this.highlightStatusCodeRow = -1;
 	}
 
 	private prepareStatusCodeTableData(data: Chartist.IChartistData): void {

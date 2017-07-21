@@ -43,10 +43,7 @@
 
 	color: lighten($primary-dark-color, 40%);
 
-	&-column-name {
-		border-bottom: 1px solid lighten($primary-dark-color, 80%);
-	}
-
+	&-column-name,
 	&-column-value {
 		border-bottom: 1px solid lighten($primary-dark-color, 80%);
 	}
@@ -81,5 +78,15 @@
 
 			@include column-marker();
 		}
+	}
+}
+
+.pie-chart-item__table-row {
+	&--is-focus-in {
+		background: lighten($primary-pallete-color, 20%);
+	}
+
+	&--is-focus-out {
+		background-color: transparent;
 	}
 }

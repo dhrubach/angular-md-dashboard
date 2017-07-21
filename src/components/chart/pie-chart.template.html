@@ -7,7 +7,9 @@
 		<div class="pie-chart-item__table-container">
 			<table class="pie-chart-item__table">
 				<tbody>
-					<tr class="pie-chart-item__table-row" *ngFor="let statusCodeItem of statusCodeDataList; let i = index">
+					<tr class="pie-chart-item__table-row" *ngFor="let statusCodeItem of statusCodeDataList; let i = index"
+						[class.pie-chart-item__table-row--is-focus-in]="highlightStatusCodeRow === i"
+						[class.pie-chart-item__table-row--is-focus-out]="highlightStatusCodeRow === -1">
 						<td class="pie-chart-item__table-column-name">
 							<div class="pie-chart-item__table-column-marker"></div>
 							{{statusCodeItem.meta}}

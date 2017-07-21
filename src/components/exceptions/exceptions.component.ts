@@ -101,19 +101,19 @@ export class ExceptionsComponent implements OnInit {
 				series: [
 					{
 						meta: '500',
-						value: 10,
-					},
-					{
-						meta: '401',
-						value: 5,
-					},
-					{
-						meta: '400',
 						value: 25,
 					},
 					{
-						meta: '404',
+						meta: '401',
 						value: 15,
+					},
+					{
+						meta: '400',
+						value: 10,
+					},
+					{
+						meta: '404',
+						value: 7,
 					},
 				],
 			},
