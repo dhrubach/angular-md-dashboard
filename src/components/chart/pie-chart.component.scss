@@ -83,10 +83,12 @@
 
 .pie-chart-item__table-row {
 	&--is-focus-in {
-		background: lighten($primary-pallete-color, 20%);
+		background: lighten($primary-pallete-color, 10%);
+		font-weight: bold;
 	}
 
 	&--is-focus-out {
 		background-color: transparent;
+		font-weight: inherit;
 	}
 }
