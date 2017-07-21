@@ -22,8 +22,7 @@
 
 // pie chart
 
-.ct-chart-donut .ct-label,
-.ct-chart-donut .ct-label-total-sum {
+@mixin label-text() {
 	font-size: 16px;
 	font-weight: 100;
 	font-style: italic;
@@ -31,12 +30,18 @@
 	stroke: lighten($primary-dark-color, 40%);
 }
 
-.ct-chart-donut .ct-label {
-	visibility: hidden;
-}
+.ct-chart-donut {
+	.ct-label {
+		visibility: hidden;
 
-.ct-chart-donut .ct-label-total-sum {
-	visibility: visible;
+		@include label-text();
+	}
+
+	.ct-label-total {
+		visibility: visible;
+
+		@include label-text();
+	}
 }
 
 .ct-series-a .ct-slice-donut:hover {

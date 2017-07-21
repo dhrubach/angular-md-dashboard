@@ -5,6 +5,8 @@ import { ChartEvent, ChartType } from 'ng-chartist';
 
 import { BaseChartComponent, IChartData } from './base-chart.component';
 
+import './plugins/chartist-donut-label';
+
 @Component({
 	styles: [require('./chart.component.scss'), require('./pie-chart.component.scss')],
 	template: require('./pie-chart.template.html'),
@@ -22,41 +24,13 @@ export class PieChartComponent extends BaseChartComponent implements OnInit {
 		this.event = {
 			created: (chart) => {
 				if (chart && chart.svg) {
-
-					const chartDataSeries = [];
-					let pathValue = -1;
-					let totalDataSum = 0;
-
 					const nodeList: any = chart.svg._node.childNodes;
 					if (nodeList && nodeList.length) {
 						(nodeList as SVGGElement[]).forEach((gElement, index) => {
 							gElement.addEventListener('mouseover', this.onPieElementMouseOver.bind(this));
 							gElement.addEventListener('mouseout', this.onPieElementMouseOut.bind(this));
-							pathValue = +(gElement.firstElementChild.getAttribute('ct:value')) || 0;
-							chartDataSeries.push({ index, pathValue });
-							totalDataSum += pathValue;
 						});
 					}
-
-					const labelGroup = chart.svg.elem('g', null, null);
-					const center = {
-						x: chart.chartRect.x1 + chart.chartRect.width() / 2,
-						y: chart.chartRect.y2 + chart.chartRect.height() / 2,
-					};
-
-					labelGroup.elem('text', {
-						'dx': center.x,
-						'dy': center.y,
-						'text-anchor': 'middle',
-					}, 'ct-label-total-sum').text(totalDataSum);
-
-					chartDataSeries.forEach((data) => {
-						labelGroup.elem('text', {
-							'dx': center.x,
-							'dy': center.y,
-							'text-anchor': 'middle',
-						}, 'ct-label').text(data.pathValue);
-					});
 				}
 			},
 			draw: (data) => {
@@ -101,6 +75,9 @@ export class PieChartComponent extends BaseChartComponent implements OnInit {
 			chartPadding: 5,
 			donut: true,
 			donutWidth: 30,
+			plugins: [
+				Chartist.plugins.ctDonutLabels(),
+			],
 			showLabel: false,
 		};
 
@@ -116,66 +93,10 @@ export class PieChartComponent extends BaseChartComponent implements OnInit {
 		if (dataset) {
 			this.highlightStatusCodeRow = +dataset.index;
 		}
-
-		this.setVisibilityOfSVGTextElement(
-			$event.target as SVGGElement,
-			+dataset.index,
-			'visible',
-			'ct-label',
-		);
-
-		this.setVisibilityOfSVGTextElement(
-			$event.target as SVGGElement,
-			0,
-			'hidden',
-			'ct-label-total-sum',
-		);
-
 	}
 
 	private onPieElementMouseOut($event: MouseEvent) {
 		this.highlightStatusCodeRow = -1;
-		const dataset: DOMStringMap = ($event.target as HTMLElement).dataset;
-
-		this.setVisibilityOfSVGTextElement(
-			$event.target as SVGGElement,
-			+dataset.index,
-			'hidden',
-			'ct-label',
-		);
-
-		this.setVisibilityOfSVGTextElement(
-			$event.target as SVGGElement,
-			0,
-			'visible',
-			'ct-label-total-sum',
-		);
-
-	}
-
-	private setVisibilityOfSVGTextElement(
-		element: SVGElement,
-		index: number,
-		visibility: string,
-		textNodeClassName: string): void {
-			const ownerSVGElement = element.ownerSVGElement;
-			const highlightedSVGTextNode: SVGTextElement =
-				this.retrieveSVGTextElement(ownerSVGElement, index, textNodeClassName);
-			if (highlightedSVGTextNode) {
-				highlightedSVGTextNode.style.visibility = visibility;
-			}
-	}
-
-	private retrieveSVGTextElement(
-		ownerSVGElement: SVGElement,
-		index: number,
-		textNodeClassName: string): SVGTextElement {
-			let labelNode: SVGTextElement;
-			if (ownerSVGElement) {
-				const textLabelNodes = ownerSVGElement.getElementsByClassName(textNodeClassName);
-				labelNode = textLabelNodes[index] as SVGTextElement;
-			}
-			return labelNode;
 	}
 
 	private prepareStatusCodeTableData(data: Chartist.IChartistData): void {
