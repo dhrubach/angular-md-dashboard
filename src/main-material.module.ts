@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import {
 	MdButtonModule,
 	MdCardModule,
+	MdCheckboxModule,
 	MdIconModule,
 	MdListModule,
 	MdSidenavModule,
@@ -12,6 +13,7 @@ import {
 	exports: [
 		MdButtonModule,
 		MdCardModule,
+		MdCheckboxModule,
 		MdIconModule,
 		MdListModule,
 		MdSidenavModule,

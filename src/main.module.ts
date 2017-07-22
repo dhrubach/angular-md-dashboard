@@ -21,6 +21,7 @@ import {
 	PieChartComponent,
 	SettingsComponent,
 	SideNavComponent,
+	StatusFilterComponent,
 	UserComponent,
 } from './components';
 import { AppMaterialModule } from './main-material.module';
@@ -43,6 +44,7 @@ import { AppRoutingModule } from './main-routing.module';
 		PieChartComponent,
 		SettingsComponent,
 		SideNavComponent,
+		StatusFilterComponent,
 		UserComponent,
 	],
 	entryComponents: [BarChartComponent, LineChartComponent, PieChartComponent],
@@ -50,6 +52,7 @@ import { AppRoutingModule } from './main-routing.module';
 		AgGridModule.withComponents([
 			DetailPanelComponent,
 			GridItemStatusComponent,
+			StatusFilterComponent,
 		]),
 		AppMaterialModule,
 		AppRoutingModule,

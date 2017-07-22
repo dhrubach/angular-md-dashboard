@@ -12,5 +12,6 @@ export * from './shared/grid-item-status/grid-item-status.component';
 export * from './shared/grid-pagination/grid-pagination.component';
 export * from './settings/settings.component';
 export * from './sidenav/sidenav.component';
+export * from './users/statusFilter/statusFilter.component';
 export * from './users/users.component';
 export * from './users/users.service';

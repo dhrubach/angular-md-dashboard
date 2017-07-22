@@ -11,6 +11,8 @@ import {
 } from '../shared/grid-pagination/grid-pagination.component';
 import { IUser, UserDataService } from './users.service';
 
+import { StatusFilterComponent } from './statusFilter/statusFilter.component';
+
 @Component({
 	providers: [UserDataService],
 	selector: 'admin-user',
@@ -28,6 +30,8 @@ export class UserComponent {
 
 	constructor(private dataService: UserDataService) {
 		this.gridOptions = {
+			enableFilter: true,
+			enableSorting: true,
 			onGridReady: () => {
 				this.onPaginationPageLoaded();
 			},
@@ -53,6 +57,7 @@ export class UserComponent {
 			{
 				cellRendererFramework: GridItemStatusComponent,
 				field: 'status',
+				filterFramework: StatusFilterComponent,
 				headerName: 'Status',
 				sort: 'asc',
 				width: 200,

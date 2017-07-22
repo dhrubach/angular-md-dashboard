@@ -1,0 +1,28 @@
+@import '../../../styles/_admin-variables';
+@import '../../../styles/_admin-mixins';
+
+.status-filter-container {
+	font-family: $font-stack;
+	font-size: $font-size-default;
+
+	position: relative;
+
+	width: 100px;
+	height: 100px;
+
+	border: 0;
+
+	@include box-shadow();
+}
+
+.status-filter-container__status-options {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	flex-flow: column nowrap;
+	justify-content: space-around;
+
+	box-sizing: border-box;
+	height: 100%;
+}
