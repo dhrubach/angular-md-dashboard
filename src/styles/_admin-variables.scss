@@ -1,13 +1,27 @@
+// fonts
+
 $font-stack: "Roboto", "Helvetica", "Arial", sans-serif;
 $font-size-default: 14px;
 $font-size-header: 20px;
 $font-size-footer: 15px;
 
+// colors : default
+
 $primary-dark-color: #000;
 $primary-background-color: #fafafa;
-$primary-pallete-color: #ffd740;
-$list-item-highlight-color: #ffd740;
+
+// colors : theme
+
+$theme-pallete-color-a: #ffd740;
+$theme-pallete-color-b: #26a69a;
+$theme-pallete-color-c: #e57373;
+
+// colors : elements
+
 $material-icon-color: #a9afbb;
+
+// colors : chart
+
 $line-chart-stroke-color: #fff;
 $line-chart-label-color: #fff;
 $bar-chart-stroke-color: #fd4245;
@@ -16,6 +30,8 @@ $pie-chart-stroke-color-series-b: #f05b4f;
 $pie-chart-stroke-color-series-c: #f4c63d;
 $pie-chart-stroke-color-series-d: #d17905;
 
+// width / height
+
 $side-navigation-width: 250px;
 $sidenav-header-height: 50px;
 $main-content-min-width: 1200px;
@@ -23,9 +39,13 @@ $user-grid-min-height: 700px;
 $exception-grid-min-height: 400px;
 $bar-chart-width: 25px;
 
+// margin / padding / border
+
 $selected-list-item-margin: 15px;
 $primary-content-left-padding: 15px;
 $primary-border-radius: 3px;
+
+// responsive dimensions
 
 $tablet-landscape-height: 640px;
 $horizontal-display-width: 1362px;

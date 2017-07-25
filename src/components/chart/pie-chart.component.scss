@@ -83,7 +83,7 @@
 
 .pie-chart-item__table-row {
 	&--is-focus-in {
-		background: lighten($primary-pallete-color, 10%);
+		background: lighten($theme-pallete-color-a, 10%);
 		font-weight: bold;
 	}
 

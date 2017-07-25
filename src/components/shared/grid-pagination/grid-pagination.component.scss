@@ -4,8 +4,7 @@
 .card-item__card-content-pagination {
 	display: flex;
 	align-items: center;
-	flex-direction: row;
-	flex-wrap: nowrap;
+	flex-flow: row nowrap;
 	justify-content: space-between;
 
 	&-left-text {
@@ -15,8 +14,7 @@
 
 		display: flex;
 		align-items: center;
-		flex-direction: row;
-		flex-wrap: nowrap;
+		flex-flow: row nowrap;
 		justify-content: center;
 
 		box-sizing: border-box;
@@ -25,7 +23,7 @@
 		padding: 3px;
 
 		border-radius: 4px;
-		background-color: $primary-pallete-color;
+		background-color: $theme-pallete-color-a;
 	}
 
 	&-right-action {

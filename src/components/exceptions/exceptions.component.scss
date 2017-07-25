@@ -16,8 +16,7 @@
 
 	display: flex;
 	align-items: center;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-flow: row nowrap;
 	justify-content: space-between;
 
 	box-sizing: border-box;
@@ -31,8 +30,7 @@
 
 	display: flex;
 	align-items: center;
-	flex-direction: row;
-	flex-wrap: nowrap;
+	flex-flow: row nowrap;
 	justify-content: center;
 
 	box-sizing: border-box;
@@ -63,9 +61,9 @@
 	padding-left: 10px;
 
 	border-radius: $primary-border-radius;
-	background: linear-gradient(to top right, #ffd22e 0%, #efe552 100%);
 
 	@include box-shadow();
+	@include linear-gradient('color-a');
 
 	&-text {
 		font-size: $font-size-header;

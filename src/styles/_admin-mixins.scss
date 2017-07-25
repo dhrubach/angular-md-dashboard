@@ -25,3 +25,9 @@
 		}
 	}
 }
+
+@mixin linear-gradient($theme) {
+	@if $theme == 'color-a' {
+		background: linear-gradient(to top right, #ffd22e 0%, #efe552 100%);
+	}
+}

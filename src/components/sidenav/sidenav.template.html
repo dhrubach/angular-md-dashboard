@@ -1,16 +1,19 @@
 <md-sidenav mode="side" opened="true">
-	<div class="adm-sidenav-header">
-		<div class="adm-sidenav-title">
-			<span class="adm-sidenav-title-text">
+	<div class="sidenav-header-container">
+		<div class="sidenav-header-container__title">
+			<span class="sidenav-header-container__title-text">
 				Admin Dashboard
 			</span>
 		</div>
 	</div>
-	<div class="adm-sidenav-content">
-		<md-nav-list>
-			<a md-list-item *ngFor="let item of listItems" routerLink="{{item.routerLink}}" routerLinkActive="adm-sidenav-list-item-selected">
-				<md-icon md-list-icon class="adm-sidenav-content-icon">{{item.iconLigatureName}}</md-icon>
-				<p>{{item.title}}</p>
+	<div class="sidenav-container">
+		<md-nav-list class="sidenav-container-list">
+			<a md-list-item *ngFor="let item of listItems" class="sidenav-container-list__item"
+				routerLink="{{item.routerLink}}" routerLinkActive="sidenav-container-list__item--is-selected" >
+					<md-icon md-list-icon class="sidenav-container-list__icon">
+						{{item.iconLigatureName}}
+					</md-icon>
+				<p class="sidenav-container-list__item-text">{{item.title}}</p>
 			</a>
 		</md-nav-list>
 	</div>

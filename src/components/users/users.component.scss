@@ -39,9 +39,9 @@
 	padding-left: 10px;
 
 	border-radius: $primary-border-radius;
-	background: linear-gradient(to top right, #ffd22e 0%, #efe552 100%);
 
 	@include box-shadow();
+	@include linear-gradient('color-a');
 
 	&-text {
 		font-size: $font-size-header;

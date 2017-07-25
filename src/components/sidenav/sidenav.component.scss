@@ -1,17 +1,15 @@
 @import '../../styles/admin-variables';
 @import '../../styles/admin-mixins';
 
-.adm-sidenav {
-	&-header {
-		position: relative;
-		z-index: 4;
+.sidenav-header-container {
+	position: relative;
+	z-index: 4;
 
-		height: $sidenav-header-height;
+	height: $sidenav-header-height;
 
-		background-color: $primary-background-color;
-	}
+	background-color: $primary-background-color;
 
-	&-title {
+	&__title {
 		padding: 15px 15px 10px 25px;
 
 		color: lighten(#000, 30%);
@@ -39,7 +37,7 @@
 	}
 }
 
-.adm-sidenav-content {
+.sidenav-container {
 	position: relative;
 
 	overflow: auto;
@@ -48,31 +46,34 @@
 	height: calc(100vh - #{$sidenav-header-height});
 
 	background-color: $primary-background-color;
+}
 
-	&-icon {
+.sidenav-container-list {
+	&__icon {
 		padding-right: 0 !important; /* stylelint-disable-line declaration-no-important */
 
 		color: darken($material-icon-color, 10%);
 	}
+}
 
-	a {
-		transition: all 0.5s linear;
+.sidenav-container-list__item {
+	transition: all 0.5s linear;
 
-		&:hover {
-			border-radius: 5px;
-		}
+	&:hover {
+		border-radius: 5px;
 	}
 
-	p {
+	&-text {
 		font-size: $font-size-default;
 		line-height: 30px;
 
 		padding-left: 15px;
 	}
 
-	.adm-sidenav-list-item-selected {
+	&--is-selected {
 		border-radius: 5px;
-		background-color: $list-item-highlight-color;
+		// override background set by material selector : .mat-nav-list .mat-list-item.mat-list-item-focus
+		background-color: $theme-pallete-color-a !important; /* stylelint-disable-line declaration-no-important */
 
 		@include box-shadow();
 	}
