@@ -1,0 +1,17 @@
+<button md-icon-button [md-menu-trigger-for]="themeMenu" mdTooltip="Select a theme!">
+  <md-icon>format_color_fill</md-icon>
+</button>
+
+<md-menu class="theme-picker-menu-container" #themeMenu="mdMenu" x-position="before">
+	<md-grid-list cols="2">
+		<md-grid-tile *ngFor="let theme of themes">
+			<div md-menu-item (click)="installTheme(theme)" class="theme-picker-menu-container__item">
+				<div class="theme-picker-menu-container__item-content">
+					<md-icon class="theme-picker-menu-container__item-icon"
+						*ngIf="currentTheme === theme">check_circle</md-icon>
+					<div class="theme-picker-menu-container__item-background" [style.background]="theme.primary"></div>
+				</div>
+			</div>
+		</md-grid-tile>
+	</md-grid-list>
+</md-menu>

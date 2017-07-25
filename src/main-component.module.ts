@@ -19,6 +19,7 @@ import {
 	SettingsComponent,
 	SideNavComponent,
 	StatusFilterComponent,
+	ThemePickerComponent,
 	UserComponent,
 
 } from './components';
@@ -40,6 +41,7 @@ const ADMIN_APP_COMPONENTS = [
 	SettingsComponent,
 	SideNavComponent,
 	StatusFilterComponent,
+	ThemePickerComponent,
 	UserComponent,
 ];
 
@@ -55,13 +57,18 @@ const AG_ENTRY_COMPONENTS = [
 	StatusFilterComponent,
 ];
 
+const ADMIN_ROOT_COMPONENTS = [
+	SideNavComponent,
+	ThemePickerComponent,
+];
+
 @NgModule({
 	declarations: [...ADMIN_APP_COMPONENTS],
 	entryComponents: [...ADMIN_ENTRY_COMPONENTS],
 	exports: [
 		AppMaterialModule,
 		AppRoutingModule,
-		SideNavComponent,
+		...ADMIN_ROOT_COMPONENTS,
 	],
 	imports: [
 		AgGridModule.withComponents([

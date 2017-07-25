@@ -13,7 +13,7 @@ import { AppComponentModule } from './main-component.module';
 		AppComponentModule,
 		BrowserAnimationsModule,
 		BrowserModule,
+		FormsModule,
 	],
-	providers: [],
 })
 export class MainComponent { }
