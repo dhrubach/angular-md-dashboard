@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 import { ICellRendererAngularComp } from 'ag-grid-angular/main';
 import {
@@ -18,6 +18,8 @@ export class DetailPanelComponent implements ICellRendererAngularComp {
 	private detailGridOptions: GridOptions;
 	private detailColumnDefinitions: ColDef[];
 
+	constructor(private elementRef: ElementRef) { }
+
 	public refresh?(params: any): void {
 		throw new Error('Method not implemented.');
 	}
@@ -32,6 +34,7 @@ export class DetailPanelComponent implements ICellRendererAngularComp {
 		];
 
 		this.setUpDetailGrid(this.params);
+		this.consumeMouseWheelOnDetailGrid();
 	}
 
 	public afterGuiAttached?(params?: IAfterGuiAttachedParams): void {
@@ -48,4 +51,17 @@ export class DetailPanelComponent implements ICellRendererAngularComp {
 			rowHeight: 30,
 		};
 	}
+
+	private consumeMouseWheelOnDetailGrid(): void {
+		const detailPanelContainer =
+			this.elementRef.nativeElement.querySelector('.detail-panel-container') as HTMLElement;
+
+		const mouseWheelListener = ($event) => {
+			event.stopPropagation();
+		}
+
+		detailPanelContainer.addEventListener('mousewheel', mouseWheelListener);
+		detailPanelContainer.addEventListener('DOMMouseScroll', mouseWheelListener);
+	}
+
 }
