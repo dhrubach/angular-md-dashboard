@@ -2,7 +2,19 @@
 @import './styles/admin-global';
 
 @import '../node_modules/normalize.css/normalize';
-@import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber';
+
+@import '../node_modules/@angular/material/theming';
+@import './styles/admin-theme';
+
+@include mat-core();
+
+$primary: mat-palette($mat-amber);
+$accent: mat-palette($mat-grey, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+@include admin-app-theme($theme);
+
 @import '../node_modules/chartist/dist/chartist';
 @import './assets/fonts/material-icons';
 @import '../node_modules/ag-grid/dist/styles/ag-grid';
@@ -10,7 +22,6 @@
 
 @import './styles/admin-chart';
 @import './styles/admin-sidenav';
-
 @import './styles/admin-grid';
 @import './styles/admin-grid-user';
 @import './styles/admin-grid-exception';

@@ -1,5 +1,5 @@
 <button md-icon-button [md-menu-trigger-for]="themeMenu" mdTooltip="Select a theme!">
-  <md-icon>format_color_fill</md-icon>
+  <md-icon [style.color]="currentTheme.primary">format_color_fill</md-icon>
 </button>
 
 <md-menu class="theme-picker-menu-container" #themeMenu="mdMenu" x-position="before">

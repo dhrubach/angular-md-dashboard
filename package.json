@@ -43,6 +43,7 @@
     "lodash-es": "^4.17.4",
     "moment": "^2.18.1",
     "ng-chartist": "^1.1.1",
+    "ng-pick-datetime": "^4.3.0",
     "normalize.css": "^7.0.0",
     "rxjs": "^5.4.0",
     "zone.js": "^0.8.11"
@@ -58,6 +59,7 @@
     "babel-preset-env": "^1.5.1",
     "css-loader": "^0.28.4",
     "custom-tslint-formatters": "^2.1.0",
+    "extract-loader": "^0.1.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "friendly-errors-webpack-plugin": "^1.6.1",

@@ -14,29 +14,29 @@ export class ThemePickerComponent {
 
 	private themes: IAdminTheme[] = [
 		{
-			accent: '#FFC107',
-			href: 'deeppurple-amber.css',
-			isDark: false,
-			primary: '#673AB7',
-		},
-		{
-			accent: '#E91E63',
-			href: 'indigo-pink.css',
+			accent: '#9e9e9e',
+			href: 'amber-grey.css',
 			isDark: false,
 			isDefault: true,
-			primary: '#3F51B5',
+			primary: '#ffc107',
 		},
 		{
-			accent: '#607D8B',
-			href: 'pink-bluegrey.css',
-			isDark: true,
-			primary: '#E91E63',
+			accent: '#ff5722',
+			href: 'teal-deep-orange.css',
+			isDark: false,
+			primary: '#009688',
 		},
 		{
-			accent: '#4CAF50',
-			href: 'purple-green.css',
+			accent: '#795548',
+			href: 'red-brown.css',
 			isDark: true,
-			primary: '#9C27B0',
+			primary: '#f44336',
+		},
+		{
+			accent: '#ff9800',
+			href: 'indigo-orange.css',
+			isDark: true,
+			primary: '#3f51b5',
 		},
 	];
 
@@ -44,6 +44,8 @@ export class ThemePickerComponent {
 		this.currentTheme = this.themeStorageService.getStoredTheme();
 		if (this.currentTheme) {
 			this.installTheme(this.currentTheme);
+		} else {
+			this.currentTheme = this.themes.find((theme) => theme.isDefault);
 		}
 	}
 
@@ -53,7 +55,7 @@ export class ThemePickerComponent {
 		if (theme.isDefault) {
 			this.styleManager.removeStyle('theme');
 		} else {
-			this.styleManager.setStyle('theme', `assets/${theme.href}`);
+			this.styleManager.setStyle('theme', `${theme.href}`);
 		}
 
 		if (this.currentTheme) {

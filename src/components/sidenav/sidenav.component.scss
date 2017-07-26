@@ -7,8 +7,6 @@
 
 	height: $sidenav-header-height;
 
-	background-color: $primary-background-color;
-
 	&__title {
 		padding: 15px 15px 10px 25px;
 
@@ -44,15 +42,11 @@
 
 	width: $side-navigation-width;
 	height: calc(100vh - #{$sidenav-header-height});
-
-	background-color: $primary-background-color;
 }
 
 .sidenav-container-list {
 	&__icon {
 		padding-right: 0 !important; /* stylelint-disable-line declaration-no-important */
-
-		color: darken($material-icon-color, 10%);
 	}
 }
 
@@ -72,8 +66,6 @@
 
 	&--is-selected {
 		border-radius: 5px;
-		// override background set by material selector : .mat-nav-list .mat-list-item.mat-list-item-focus
-		background-color: $theme-pallete-color-a !important; /* stylelint-disable-line declaration-no-important */
 
 		@include box-shadow();
 	}

@@ -1,0 +1,18 @@
+@import './admin-variables';
+@import './../../node_modules/@angular/material/theming';
+@import './../components/sidenav/sidenav-theme.component';
+
+@mixin admin-app-theme($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+	$warn: map-get($theme, warn);
+	$background: map-get($theme, background);
+	$foreground: map-get($theme, foreground);
+
+	body.yellow-submarine::-webkit-scrollbar-thumb,
+	body.yellow-submarine ::-webkit-scrollbar-thumb {
+		background: darken(mat-color($primary, 300), 10%);
+	}
+
+	@include component-sidenav-theme($theme);
+}

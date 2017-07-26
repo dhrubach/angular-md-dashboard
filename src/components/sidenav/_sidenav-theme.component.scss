@@ -1,0 +1,32 @@
+@import './../../../node_modules/@angular/material/theming';
+
+@mixin component-sidenav-theme($theme) {
+	$primary: map-get($theme, primary);
+	$background: map-get($theme, background);
+
+	.sidenav-header-container {
+		background-color: mat-color($background, background);
+	}
+
+	.sidenav-container {
+		background-color: mat-color($background, background);
+	}
+
+	.sidenav-container-list {
+		&__icon {
+			color: darken($material-icon-color, 10%);
+		}
+	}
+
+	.sidenav-container-list {
+		&__item--is-selected {
+			// override background set by material selector : .mat-nav-list .mat-list-item.mat-list-item-focus
+			background-color: mat-color($primary, 300) !important; /* stylelint-disable-line declaration-no-important */
+
+			.sidenav-container-list__icon,
+			.sidenav-container-list__item-text {
+				color: mat-color($primary, '500-contrast');
+			}
+		}
+	}
+}

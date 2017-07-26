@@ -77,7 +77,7 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-				exclude: /src\\components/,
+				exclude: /src(\\components|\\assets\\custom-themes)/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [
@@ -90,6 +90,26 @@ const config = {
 						{ loader: 'postcss-loader' },
 					]
 				})
+			},
+			{
+				test: /\.scss$/,
+				include: /src\\assets\\custom-themes/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: '[name].css',
+							context: './src/assets/custom-themes/',
+						},
+					},
+					{ loader: 'extract-loader' },
+					{ loader: 'css-loader' },
+					{
+						loader: 'sass-loader',
+						options: { sourceMap: true },
+					},
+					{ loader: 'postcss-loader' },
+				],
 			},
 			{
 				test: /\.html$/,
