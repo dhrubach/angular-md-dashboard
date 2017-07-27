@@ -16,7 +16,7 @@
 	padding: 20px 0;
 }
 
-.card-item {
+.user-card-item {
 	position: relative;
 
 	box-sizing: border-box;
@@ -25,7 +25,7 @@
 	min-height: $user-grid-min-height;
 }
 
-.card-item__card-header {
+.user-card-item__card-header {
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
@@ -41,7 +41,6 @@
 	border-radius: $primary-border-radius;
 
 	@include box-shadow();
-	@include linear-gradient('color-a');
 
 	&-text {
 		font-size: $font-size-header;
@@ -53,12 +52,10 @@
 		line-height: 14px;
 
 		padding-top: 5px;
-
-		color: lighten($primary-dark-color, 40%);
 	}
 }
 
-.card-item__card-content {
+.user-card-item__card-content {
 	height: 100%;
 	margin-top: 10px;
 	padding-top: 10px;

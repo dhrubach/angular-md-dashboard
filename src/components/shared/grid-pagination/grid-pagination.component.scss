@@ -1,7 +1,7 @@
 @import '../../../styles/admin-variables';
 @import '../../../styles/admin-mixins';
 
-.card-item__card-content-pagination {
+.pagination-card-item__card-content {
 	display: flex;
 	align-items: center;
 	flex-flow: row nowrap;
@@ -23,7 +23,6 @@
 		padding: 3px;
 
 		border-radius: 4px;
-		background-color: $theme-pallete-color-a;
 	}
 
 	&-right-action {

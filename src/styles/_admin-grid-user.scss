@@ -1,27 +1,27 @@
 @import 'admin-variables';
 
-.ag-header-cell[colid='status'] {
-	.ag-header-cell-label {
-		text-align: center;
-	}
-}
-
-.ag-body-container {
-	.ag-row {
-		.ag-cell-value[colid='status'] {
-			display: flex;
-			align-items: center;
-			flex-direction: row;
-			justify-content: center;
-		}
-
-		.ag-cell-value[colid='remaining'] {
-			text-align: right;
+#user-grid {
+	.ag-header-cell[colid='status'] {
+		.ag-header-cell-label {
+			text-align: center;
 		}
 	}
-}
 
-.ag-material {
+	.ag-body-container {
+		.ag-row {
+			.ag-cell-value[colid='status'] {
+				display: flex;
+				align-items: center;
+				flex-direction: row;
+				justify-content: center;
+			}
+
+			.ag-cell-value[colid='remaining'] {
+				text-align: right;
+			}
+		}
+	}
+
 	.ag-menu {
 		transition: opacity 0.5s ease-in-out;
 
@@ -30,14 +30,6 @@
 
 		&:hover {
 			opacity: 1;
-		}
-
-		.ag-filter {
-			.mat-checkbox-checked.mat-accent {
-				.mat-checkbox-background {
-					background-color: $theme-pallete-color-a;
-				}
-			}
 		}
 	}
 }

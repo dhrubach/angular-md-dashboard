@@ -14,8 +14,8 @@ export class ThemePickerComponent {
 
 	private themes: IAdminTheme[] = [
 		{
-			accent: '#9e9e9e',
-			href: 'amber-grey.css',
+			accent: '#00bcd4',
+			href: 'amber-cyan.css',
 			isDark: false,
 			isDefault: true,
 			primary: '#ffc107',

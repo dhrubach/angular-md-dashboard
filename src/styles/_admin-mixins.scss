@@ -1,3 +1,4 @@
+@import './../../node_modules/@angular/material/theming';
 @import './admin-variables';
 
 @mixin box-shadow() {
@@ -26,8 +27,6 @@
 	}
 }
 
-@mixin linear-gradient($theme) {
-	@if $theme == 'color-a' {
-		background: linear-gradient(to top right, #ffd22e 0%, #efe552 100%);
-	}
+@mixin linear-gradient($primary) {
+	background: linear-gradient(to top right, mat-color($primary, 500) 0%, mat-color($primary, 200) 100%);
 }

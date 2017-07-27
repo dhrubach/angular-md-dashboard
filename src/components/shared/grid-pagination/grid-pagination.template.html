@@ -1,8 +1,8 @@
-<div class="card-item__card-content-pagination">
-	<div class="card-item__card-content-pagination-left-text">
+<div class="pagination-card-item__card-content">
+	<div class="pagination-card-item__card-content-left-text">
 		<span>{{startIndex}} to {{lastIndex}} of {{totalRecords}}</span>
 	</div>
-	<div class="card-item__card-content-pagination-right-action">
+	<div class="pagination-card-item__card-content-right-action">
 		<button md-raised-button
 				color="accent"
 				(click)="refreshPageView('first')"
@@ -15,7 +15,7 @@
 				[disabled]="disableFirstAndPrevious">
 			Previous
 		</button>
-		<span class="card-item__card-content-pagination-right-action-text">
+		<span class="pagination-card-item__card-content-right-action-text">
 			Page {{currentPage + 1}} of {{totalPage}}
 		</span>
 		<button md-raised-button

@@ -58,7 +58,7 @@ export class DetailPanelComponent implements ICellRendererAngularComp {
 
 		const mouseWheelListener = ($event) => {
 			event.stopPropagation();
-		}
+		};
 
 		detailPanelContainer.addEventListener('mousewheel', mouseWheelListener);
 		detailPanelContainer.addEventListener('DOMMouseScroll', mouseWheelListener);

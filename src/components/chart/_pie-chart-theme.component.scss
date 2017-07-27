@@ -1,0 +1,11 @@
+@import './../../../node_modules/@angular/material/theming';
+
+@mixin component-pie-chart-theme($theme) {
+	$primary: map-get($theme, primary);
+
+	.pie-chart-item__table-row {
+		&--is-focus-in {
+			background: lighten(mat-color($primary, 500), 10%);
+		}
+	}
+}

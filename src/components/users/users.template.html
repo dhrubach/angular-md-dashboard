@@ -1,13 +1,13 @@
 <div class="user-grid-container">
-	<md-card class="card-item">
-		<md-card-header class="card-item__card-header">
-			<div class="card-item__card-header-text">Application Users</div>
-			<div class="card-item__card-header-secondary-text">{{onlineUsers}} users online</div>
+	<md-card class="user-card-item">
+		<md-card-header class="user-card-item__card-header">
+			<div class="user-card-item__card-header-text">Application Users</div>
+			<div class="user-card-item__card-header-secondary-text">{{onlineUsers}} users online</div>
 		</md-card-header>
-		<md-card-content class="card-item__card-content">
+		<md-card-content class="user-card-item__card-content">
 			<ag-grid-angular #agGrid
 				style="width: 100%; height: 85%;"
-				class="ag-material card-item__card-content-grid" [gridOptions]="gridOptions"
+				class="ag-material user-card-item__card-content-grid" [gridOptions]="gridOptions"
 				[columnDefs]="columnDefs" [rowData]="rowData" id="user-grid">
 			</ag-grid-angular>
 			<grid-pagination (onActionButtonClick)="refreshPageView($event)"></grid-pagination>

@@ -15,8 +15,7 @@
 .pie-chart-item__chart-content {
 	display: flex;
 	align-items: center;
-	flex-direction: row;
-	flex-wrap: nowrap;
+	flex-flow: row nowrap;
 	justify-content: space-between;
 
 	background: linear-gradient(to top right, #faf2fa 0%, #ebe2eb 100%);
@@ -83,7 +82,6 @@
 
 .pie-chart-item__table-row {
 	&--is-focus-in {
-		background: lighten($theme-pallete-color-a, 10%);
 		font-weight: bold;
 	}
 

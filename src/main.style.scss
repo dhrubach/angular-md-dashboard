@@ -9,7 +9,7 @@
 @include mat-core();
 
 $primary: mat-palette($mat-amber);
-$accent: mat-palette($mat-grey, A200, A100, A400);
+$accent: mat-palette($mat-cyan, A200, A100, A400);
 $theme: mat-light-theme($primary, $accent);
 
 @include angular-material-theme($theme);

@@ -1,0 +1,11 @@
+@import './../../../../node_modules/@angular/material/theming';
+
+@mixin component-grid-pagination-theme($theme) {
+	$accent: map-get($theme, accent);
+
+	.pagination-card-item__card-content {
+		&-left-text {
+			background-color: mat-color($accent, 300);
+		}
+	}
+}
