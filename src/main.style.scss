@@ -19,11 +19,13 @@ $theme: mat-light-theme($primary, $accent);
 @import './assets/fonts/material-icons';
 @import '../node_modules/ag-grid/dist/styles/ag-grid';
 @import '../node_modules/ag-grid/dist/styles/theme-material';
+@import '../node_modules/ng-pick-datetime/styles/picker.min.css';
 
 @import './styles/admin-chart';
-@import './styles/admin-sidenav';
+@import './styles/admin-date-time-picker';
 @import './styles/admin-grid';
 @import './styles/admin-grid-user';
 @import './styles/admin-grid-exception';
 @import './styles/admin-pagination';
+@import './styles/admin-sidenav';
 /* stylelint-enable */

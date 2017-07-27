@@ -11,6 +11,7 @@ import {
 } from '../shared/grid-pagination/grid-pagination.component';
 import { IUser, UserDataService } from './users.service';
 
+import { DateTimeFilterComponent } from './../shared/date-time-filter/date-time-filter.component';
 import { StatusFilterComponent } from './statusFilter/statusFilter.component';
 
 @Component({
@@ -50,9 +51,9 @@ export class UserComponent {
 
 		this.columnDefs = [
 			{ headerName: 'User ID', field: 'user', pinned: 'left', width: 125, suppressSizeToFit: true },
-			{ headerName: 'Session Created', field: 'created', width: 200 },
-			{ headerName: 'Session Expires', field: 'expires', width: 200 },
-			{ headerName: 'Last Access Time', field: 'access', width: 200 },
+			{ headerName: 'Session Created', field: 'created', filterFramework: DateTimeFilterComponent, width: 200 },
+			{ headerName: 'Session Expires', field: 'expires', filterFramework: DateTimeFilterComponent, width: 200 },
+			{ headerName: 'Last Access Time', field: 'access', filterFramework: DateTimeFilterComponent, width: 200 },
 			{ headerName: 'Remaining (mm:ss)', field: 'remaining', width: 140, suppressSizeToFit: true },
 			{
 				cellRendererFramework: GridItemStatusComponent,

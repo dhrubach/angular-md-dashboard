@@ -1,14 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AgGridModule } from 'ag-grid-angular/main';
 import { ChartistModule } from 'ng-chartist';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 
 import {
 	BarChartComponent,
 	CardComponent,
 	ChartComponent,
 	DashboardComponent,
+	DateTimeFilterComponent,
 	DetailPanelComponent,
 	ExceptionsComponent,
 	GridItemStatusComponent,
@@ -31,6 +34,7 @@ const ADMIN_APP_COMPONENTS = [
 	CardComponent,
 	ChartComponent,
 	DashboardComponent,
+	DateTimeFilterComponent,
 	DetailPanelComponent,
 	ExceptionsComponent,
 	GridItemStatusComponent,
@@ -52,6 +56,7 @@ const ADMIN_ENTRY_COMPONENTS = [
 ];
 
 const AG_ENTRY_COMPONENTS = [
+	DateTimeFilterComponent,
 	DetailPanelComponent,
 	GridItemStatusComponent,
 	StatusFilterComponent,
@@ -68,6 +73,7 @@ const ADMIN_ROOT_COMPONENTS = [
 	exports: [
 		AppMaterialModule,
 		AppRoutingModule,
+		FormsModule,
 		...ADMIN_ROOT_COMPONENTS,
 	],
 	imports: [
@@ -78,6 +84,8 @@ const ADMIN_ROOT_COMPONENTS = [
 		AppRoutingModule,
 		ChartistModule,
 		CommonModule,
+		DateTimePickerModule,
+		FormsModule,
 	],
 	providers: [],
 })

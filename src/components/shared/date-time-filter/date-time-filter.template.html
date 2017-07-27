@@ -1,0 +1,14 @@
+<div class="datetime-filter-container">
+	<div class="datetime-filter-container__input">
+		From:
+		<input [value]="momentValueFrom | date: 'short'" [(ngModel)]="momentValueFrom"
+			dateTimePicker [showSeconds]="true" class="datetime-popup"
+			(onChange)="setMoment($event)" (click)="inputIdentifier('fromVal')"
+			readonly/>
+		To:
+		<input [value]="momentValueTo | date: 'short'"	[(ngModel)]="momentValueTo"
+			dateTimePicker [showSeconds]="true" (onChange)="setMoment($event)"
+			(click)="inputIdentifier('toVal')" readonly/>
+	</div>
+	<button type="reset" (click)="resetFilter()">Reset</button>
+</div>

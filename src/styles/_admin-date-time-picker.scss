@@ -1,0 +1,19 @@
+@import './admin-variables';
+
+.owl-moment-picker.owl-picker-popup {
+	max-width: 340px;
+	max-height: 460px;
+	border: #777 solid 1px;
+}
+
+.owl-moment-picker-banner {
+	height: 15px;
+}
+
+.owl-moment-picker-moment {
+	.owl-moment-date {
+		.big {
+			font-size: 17px;
+		}
+	}
+}

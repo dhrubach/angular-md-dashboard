@@ -1,0 +1,21 @@
+@import '../../../styles/_admin-variables';
+@import '../../../styles/_admin-mixins';
+
+.datetime-filter-container {
+	position: relative;
+
+	width: 150px;
+	height: 100px;
+}
+
+.datetime-filter-container__input {
+	display: flex;
+	flex-flow: column nowrap;
+}
+
+.datetime-popup {
+	max-width: 340px;
+	max-height: 460px;
+
+	border: #777 solid 1px;
+}
