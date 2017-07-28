@@ -2,20 +2,32 @@
 @import '../../../styles/_admin-mixins';
 
 .datetime-filter-container {
+	font-family: $font-stack;
+	font-size: $font-size-default;
+
 	position: relative;
 
-	width: 150px;
-	height: 100px;
+	min-width: 170px;
+
+	border: 0;
+
+	@include box-shadow();
 }
 
-.datetime-filter-container__input {
+.datetime-filter-container__input-pickers {
+	position: relative;
+
 	display: flex;
+	align-items: flex-start;
 	flex-flow: column nowrap;
+	justify-content: space-between;
+
+	box-sizing: border-box;
+	height: 100%;
+	padding: 15px;
 }
 
-.datetime-popup {
-	max-width: 340px;
-	max-height: 460px;
-
-	border: #777 solid 1px;
+.datetime-input-pickers__from-item,
+.datetime-input-pickers__to-item {
+	width: 100%;
 }

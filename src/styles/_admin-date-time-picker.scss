@@ -1,9 +1,18 @@
 @import './admin-variables';
+@import './admin-mixins';
 
-.owl-moment-picker.owl-picker-popup {
-	max-width: 340px;
-	max-height: 460px;
-	border: #777 solid 1px;
+.owl-moment-picker {
+	font-family: $font-stack;
+	font-size: $font-size-default;
+
+	color: lighten($primary-dark-color, 20%);
+
+	&.owl-picker-popup {
+		max-width: 340px;
+		max-height: 460px;
+
+		@include box-shadow();
+	}
 }
 
 .owl-moment-picker-banner {

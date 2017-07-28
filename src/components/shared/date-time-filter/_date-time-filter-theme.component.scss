@@ -1,0 +1,50 @@
+@import '../../../../node_modules/@angular/material/theming';
+@import './../../../styles/admin-mixins';
+
+@mixin component-date-time-filter-theme($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+	$foreground: map-get($theme, foreground);
+
+	.owl-moment-picker-header {
+		color: mat-color($foreground, text);
+
+		@include linear-gradient($primary);
+	}
+
+	.owl-moment-picker {
+		.owl-svg-icon {
+			fill: mat-color($primary, 500);
+
+			&:hover {
+				fill: mat-color($primary, 700);
+			}
+		}
+	}
+
+	.owl-date-panel-calendar {
+		.owl-date-panel-day,
+		.owl-date-panel-month,
+		.owl-date-panel-year {
+			color: mat-color($foreground, text);
+
+			&.day-show:not(.selected):not(.day-invalid):hover {
+				background: mat-color($accent, 300);
+			}
+
+			&.selected {
+				background: mat-color($accent, 500);
+			}
+		}
+	}
+
+	.owl-time-panel {
+		.owl-time-slider-bar {
+			background: mat-color($accent, 300);
+		}
+
+		.owl-time-panel-inform {
+			color: mat-color($accent, 500);
+		}
+	}
+}

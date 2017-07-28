@@ -2,6 +2,7 @@
 @import './../../node_modules/@angular/material/theming';
 @import './../components/chart/pie-chart-theme.component';
 @import './../components/exceptions/exceptions-theme.component';
+@import './../components/shared/date-time-filter/date-time-filter-theme.component';
 @import './../components/shared/grid-pagination/grid-pagination-theme.component';
 @import './../components/sidenav/sidenav-theme.component';
 @import './../components/users/users-theme.component';
@@ -18,6 +19,7 @@
 		background: darken(mat-color($primary, 300), 10%);
 	}
 
+	@include component-date-time-filter-theme($theme);
 	@include component-exceptions-theme($theme);
 	@include component-grid-pagination-theme($theme);
 	@include component-pie-chart-theme($theme);

@@ -13,13 +13,14 @@ $accent: mat-palette($mat-cyan, A200, A100, A400);
 $theme: mat-light-theme($primary, $accent);
 
 @include angular-material-theme($theme);
-@include admin-app-theme($theme);
 
 @import '../node_modules/chartist/dist/chartist';
 @import './assets/fonts/material-icons';
 @import '../node_modules/ag-grid/dist/styles/ag-grid';
 @import '../node_modules/ag-grid/dist/styles/theme-material';
 @import '../node_modules/ng-pick-datetime/styles/picker.min.css';
+
+@include admin-app-theme($theme);
 
 @import './styles/admin-chart';
 @import './styles/admin-date-time-picker';
