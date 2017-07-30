@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ColDef, Events, GridOptions } from 'ag-grid/main';
 import * as _ from 'lodash';
 
+import { GridItemRemainingTimeComponent } from '../shared/grid-item-remaining-time/grid-item-remaining-time.component';
 import { GridItemStatusComponent } from '../shared/grid-item-status/grid-item-status.component';
 import {
 	GridPaginationComponent,
@@ -11,11 +12,11 @@ import {
 } from '../shared/grid-pagination/grid-pagination.component';
 import { IUser, UserDataService } from './users.service';
 
-import { DateTimeFilterComponent } from './../shared/date-time-filter/date-time-filter.component';
-import { StatusFilterComponent } from './statusFilter/statusFilter.component';
+import { DateTimeFilterComponent } from '../shared/date-time-filter/date-time-filter.component';
+import { StatusFilterComponent } from '../shared/status-filter/status-filter.component';
 
 @Component({
-	providers: [UserDataService],
+	// providers: [UserDataService],
 	selector: 'admin-user',
 	styles: [require('./users.component.scss')],
 	template: require('./users.template.html'),
@@ -54,7 +55,13 @@ export class UserComponent {
 			{ headerName: 'Session Created', field: 'created', filterFramework: DateTimeFilterComponent, width: 200 },
 			{ headerName: 'Session Expires', field: 'expires', filterFramework: DateTimeFilterComponent, width: 200 },
 			{ headerName: 'Last Access Time', field: 'access', filterFramework: DateTimeFilterComponent, width: 200 },
-			{ headerName: 'Remaining (mm:ss)', field: 'remaining', width: 140, suppressSizeToFit: true },
+			{
+				cellRendererFramework: GridItemRemainingTimeComponent,
+				field: 'remaining',
+				headerName: 'Remaining (mm:ss)',
+				suppressSizeToFit: true,
+				width: 140,
+			},
 			{
 				cellRendererFramework: GridItemStatusComponent,
 				field: 'status',

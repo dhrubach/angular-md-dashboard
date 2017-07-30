@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular/main';
 import { ChartistModule } from 'ng-chartist';
 import { DateTimePickerModule } from 'ng-pick-datetime';
+import { SimpleTimer } from 'ng2-simple-timer';
 
 import {
 	BarChartComponent,
@@ -14,6 +15,7 @@ import {
 	DateTimeFilterComponent,
 	DetailPanelComponent,
 	ExceptionsComponent,
+	GridItemRemainingTimeComponent,
 	GridItemStatusComponent,
 	GridPaginationComponent,
 	HostChartDirective,
@@ -24,7 +26,7 @@ import {
 	StatusFilterComponent,
 	ThemePickerComponent,
 	UserComponent,
-
+	UserDataService,
 } from './components';
 import { AppMaterialModule } from './main-material.module';
 import { AppRoutingModule } from './main-routing.module';
@@ -37,6 +39,7 @@ const ADMIN_APP_COMPONENTS = [
 	DateTimeFilterComponent,
 	DetailPanelComponent,
 	ExceptionsComponent,
+	GridItemRemainingTimeComponent,
 	GridItemStatusComponent,
 	GridPaginationComponent,
 	HostChartDirective,
@@ -58,6 +61,7 @@ const ADMIN_ENTRY_COMPONENTS = [
 const AG_ENTRY_COMPONENTS = [
 	DateTimeFilterComponent,
 	DetailPanelComponent,
+	GridItemRemainingTimeComponent,
 	GridItemStatusComponent,
 	StatusFilterComponent,
 ];
@@ -87,6 +91,6 @@ const ADMIN_ROOT_COMPONENTS = [
 		DateTimePickerModule,
 		FormsModule,
 	],
-	providers: [],
+	providers: [SimpleTimer, UserDataService],
 })
 export class AppComponentModule { }

@@ -11,6 +11,5 @@ export * from './exceptions/detail-panel/detail-panel.component';
 export * from './settings/settings.component';
 export * from './shared';
 export * from './sidenav/sidenav.component';
-export * from './users/statusFilter/statusFilter.component';
 export * from './users/users.component';
 export * from './users/users.service';

@@ -5,8 +5,8 @@ import { IFilterAngularComp } from 'ag-grid-angular/main';
 import { IFilterParams } from 'ag-grid/main';
 
 @Component({
-	styles: [require('./statusFilter.component.scss')],
-	template: require('./statusFilter.template.html'),
+	styles: [require('./status-filter.component.scss')],
+	template: require('./status-filter.template.html'),
 })
 export class StatusFilterComponent implements IFilterAngularComp {
 

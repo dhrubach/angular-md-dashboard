@@ -146,6 +146,17 @@ class UserDataService {
 		return this.data;
 	}
 
+	public remainingTimeCallback(callbackUser: IUser): void {
+		const changedUser = this.data.find((user) => user.user === callbackUser.user);
+		if (changedUser) {
+			changedUser.access =
+				moment(changedUser.access, 'MM/DD/YYYY HH:mm:ss').add(1, 'seconds').format('MM/DD/YYYY HH:mm:ss');
+			changedUser.remaining = changedUser.status === 'online'
+				? this.generateFormattedTimeDifference(changedUser.expires, changedUser.access)
+				: '-';
+		}
+	}
+
 	private setTimeRemaining(): void {
 		this.data.map((user) => {
 			user.remaining = user.status === 'online'
