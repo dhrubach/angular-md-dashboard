@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 import { ICellRendererAngularComp } from 'ag-grid-angular/main';
 import { IAfterGuiAttachedParams, ICellRendererParams } from 'ag-grid/main';
@@ -9,26 +9,28 @@ import { IUser, UserDataService } from '../../users/users.service';
 @Component({
 	template: `<div>{{counterMin}}:{{counterSec}}</div>`,
 })
-export class GridItemRemainingTimeComponent implements ICellRendererAngularComp {
+export class GridItemRemainingTimeComponent implements ICellRendererAngularComp, OnDestroy {
 	private params: ICellRendererParams;
 	private counterMin: number;
 	private counterSec: number;
-	private timerId;
+	private timerId: string;
 
-	constructor(private simpleTimer: SimpleTimer, public userService: UserDataService) { }
+	constructor(private simpleTimer: SimpleTimer, public userService: UserDataService) {
+		this.counterMin = 0;
+		this.counterSec = 0;
+	}
 
 	public agInit(params: ICellRendererParams): void {
 		this.params = params;
-		if (this.params.data.remaining !== '-') {
+		if (this.params.data && this.params.data.remaining !== '-') {
 			const timerStartsAt = this.params.data.remaining.split(':');
-			this.counterMin = Number.parseInt(timerStartsAt[0]);
-			this.counterSec = Number.parseInt(timerStartsAt[1]);
+			if (timerStartsAt && timerStartsAt.length) {
+				this.counterMin = Number.parseInt(timerStartsAt[0]);
+				this.counterSec = Number.parseInt(timerStartsAt[1]);
 
-			this.simpleTimer.newTimer('1sec', 1);
-			this.subscribeTimer();
-		} else {
-			this.counterMin = 0;
-			this.counterSec = 0;
+				this.simpleTimer.newTimer('1sec', 1);
+				this.subscribeTimer();
+			}
 		}
 	}
 
@@ -36,19 +38,19 @@ export class GridItemRemainingTimeComponent implements ICellRendererAngularComp 
 		throw new Error('Method not implemented.');
 	}
 
-	private subscribeTimer(): void {
+	public ngOnDestroy(): void {
 		if (this.timerId) {
 			this.simpleTimer.unsubscribe(this.timerId);
-			this.timerId = undefined;
-		} else {
-			if (!(this.counterMin === 0 && this.counterSec === 0)) {
-				this.timerId = this.simpleTimer.subscribe('1sec', (e) => this.timerCallback());
-			}
+		}
+	}
+
+	private subscribeTimer(): void {
+		if (!(this.counterMin === 0 && this.counterSec === 0)) {
+			this.timerId = this.simpleTimer.subscribe('1sec', (e) => this.timerCallback());
 		}
 	}
 
 	private timerCallback() {
-		this.userService.remainingTimeCallback(this.params.data);
 		if ((this.counterMin === 0 && this.counterSec > 0) || (this.counterMin > 0)) {
 			this.counterSec--;
 			if (this.counterSec < 0) {

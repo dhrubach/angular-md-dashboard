@@ -17,10 +17,6 @@ export class GridItemStatusComponent implements ICellRendererAngularComp {
 
 	private params: ICellRendererParams;
 
-	public refresh(params: any): void {
-		throw new Error('Method not implemented.');
-	}
-
 	public agInit(params: ICellRendererParams): void {
 		this.params = params;
 	}

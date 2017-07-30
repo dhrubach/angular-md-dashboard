@@ -1,9 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 
-import { ColDef, Events, GridOptions } from 'ag-grid/main';
+import { ColDef, Events, GridOptions, RowNode } from 'ag-grid/main';
 import * as _ from 'lodash';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
-import { GridItemRemainingTimeComponent } from '../shared/grid-item-remaining-time/grid-item-remaining-time.component';
 import { GridItemStatusComponent } from '../shared/grid-item-status/grid-item-status.component';
 import {
 	GridPaginationComponent,
@@ -16,16 +17,18 @@ import { DateTimeFilterComponent } from '../shared/date-time-filter/date-time-fi
 import { StatusFilterComponent } from '../shared/status-filter/status-filter.component';
 
 @Component({
-	// providers: [UserDataService],
 	selector: 'admin-user',
 	styles: [require('./users.component.scss')],
 	template: require('./users.template.html'),
 })
-export class UserComponent {
+export class UserComponent implements OnDestroy {
+
 	private gridOptions: GridOptions;
 	private rowData: IUser[];
 	private columnDefs: ColDef[];
 	private onlineUsers: number;
+	private refreshUserData$: Observable<number>;
+	private refreshUserDataSubscription: Subscription;
 
 	@ViewChild(GridPaginationComponent)
 	private paginationComponent: GridPaginationComponent;
@@ -55,13 +58,7 @@ export class UserComponent {
 			{ headerName: 'Session Created', field: 'created', filterFramework: DateTimeFilterComponent, width: 200 },
 			{ headerName: 'Session Expires', field: 'expires', filterFramework: DateTimeFilterComponent, width: 200 },
 			{ headerName: 'Last Access Time', field: 'access', filterFramework: DateTimeFilterComponent, width: 200 },
-			{
-				cellRendererFramework: GridItemRemainingTimeComponent,
-				field: 'remaining',
-				headerName: 'Remaining (mm:ss)',
-				suppressSizeToFit: true,
-				width: 140,
-			},
+			{ headerName: 'Remaining (mm:ss)', field: 'remaining', width: 140, suppressSizeToFit: true },
 			{
 				cellRendererFramework: GridItemStatusComponent,
 				field: 'status',
@@ -74,9 +71,11 @@ export class UserComponent {
 
 		this.rowData = this.dataService.getData();
 
-		this.onlineUsers = _.filter(this.rowData, (data) => {
-			return data.status === 'online';
-		}).length;
+		this.getOnlineUsers(this.rowData);
+
+		this.refreshUserData$ = Observable.interval(5000);
+
+		this.setUpRemainingTimeUpdateTimer();
 	}
 
 	public onPaginationPageLoaded(): void {
@@ -89,6 +88,12 @@ export class UserComponent {
 
 		this.paginationComponent.setActionButtonState(config);
 		this.paginationComponent.setPageLabels(config);
+	}
+
+	public ngOnDestroy(): void {
+		if (this.refreshUserDataSubscription) {
+			this.refreshUserDataSubscription.unsubscribe();
+		}
 	}
 
 	private refreshPageView(buttonType: PaginationActionType) {
@@ -106,5 +111,28 @@ export class UserComponent {
 				this.gridOptions.api.paginationGoToLastPage();
 				break;
 		}
+	}
+
+	private setUpRemainingTimeUpdateTimer(): void {
+		this.refreshUserData$.subscribe(() => {
+			if (this.gridOptions && this.gridOptions.api) {
+				this.gridOptions.api.forEachNodeAfterFilter((node: RowNode) => {
+					const currentStatus = node.data['status'];
+					if (currentStatus === 'online') {
+						const { remaining, status } = this.dataService.refreshData(node.data['user']);
+						node.data['remaining'] = remaining;
+						node.data['status'] = status;
+					}
+				});
+				this.gridOptions.api.refreshCells(this.gridOptions.api.getRenderedNodes(), ['remaining', 'status']);
+				this.getOnlineUsers(this.dataService.getData());
+			}
+		});
+	}
+
+	private getOnlineUsers(users: IUser[]): void {
+		this.onlineUsers = _.filter(users, (data) => {
+			return data.status === 'online';
+		}).length;
 	}
 }

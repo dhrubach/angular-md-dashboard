@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import * as moment from 'moment';
+import { Observable } from 'rxjs/Observable';
 
 interface IUser {
 	user: string;
@@ -13,12 +14,15 @@ interface IUser {
 
 @Injectable()
 class UserDataService {
+
+	private static dateFormat: string = 'MM/DD/YYYY HH:mm:ss';
 	private data: IUser[];
+	private updateUserData$: Observable<number>;
 
 	constructor() {
 		this.data = [
 			{
-				access: '06/21/2017 09:25:13',
+				access: '06/21/2017 09:38:01',
 				created: '06/21/2017 09:23:13',
 				expires: '06/21/2017 09:38:13',
 				remaining: '',
@@ -139,6 +143,8 @@ class UserDataService {
 			},
 		];
 
+		this.updateUserData$ = Observable.interval(1000);
+
 		this.setTimeRemaining();
 	}
 
@@ -146,15 +152,12 @@ class UserDataService {
 		return this.data;
 	}
 
-	public remainingTimeCallback(callbackUser: IUser): void {
-		const changedUser = this.data.find((user) => user.user === callbackUser.user);
-		if (changedUser) {
-			changedUser.access =
-				moment(changedUser.access, 'MM/DD/YYYY HH:mm:ss').add(1, 'seconds').format('MM/DD/YYYY HH:mm:ss');
-			changedUser.remaining = changedUser.status === 'online'
-				? this.generateFormattedTimeDifference(changedUser.expires, changedUser.access)
-				: '-';
-		}
+	public refreshData(username: string): {
+		remaining: string;
+		status: string;
+	} {
+		const userObject = this.data.find((uobj) => uobj.user === username);
+		return userObject ? { remaining: userObject.remaining, status: userObject.status } : null;
 	}
 
 	private setTimeRemaining(): void {
@@ -163,18 +166,37 @@ class UserDataService {
 				? this.generateFormattedTimeDifference(user.expires, user.access)
 				: '-';
 		});
+
+		this.updateUserData$.subscribe(() => this.updateTimeRemaining());
+	}
+
+	private updateTimeRemaining(): void {
+		this.data.map((user) => {
+			if (user.status === 'online') {
+				const newRemainingTime = moment(user.remaining, 'mm:ss').subtract(1, 'seconds').format('mm:ss');
+				user.remaining = newRemainingTime === '00:00' ? '-' : newRemainingTime;
+				if (user.remaining === '-') {
+					user.status = 'orphan';
+				}
+			}
+		});
 	}
 
 	private generateFormattedTimeDifference(expires: string, access: string): string {
 		const diffInSeconds =
 			moment(expires, 'MM/DD/YYYY HH:mm:ss')
 				.diff(moment(access, 'MM/DD/YYYY HH:mm:ss'), 'seconds');
-		const durationDifference = moment.duration(diffInSeconds, 'seconds');
-		const durationInMinutes = Math.floor(durationDifference.asMinutes());
-		const durationInSeconds = diffInSeconds - (durationInMinutes * 60);
+		if (diffInSeconds > 0) {
+			const durationDifference = moment.duration(diffInSeconds, 'seconds');
+			const durationInMinutes = Math.floor(durationDifference.asMinutes());
+			const durationInSeconds = diffInSeconds - (durationInMinutes * 60);
 
-		return `${durationInMinutes}:${durationInSeconds}`;
+			return `${durationInMinutes}:${durationInSeconds}`;
+		}
+
+		return '-';
 	}
+
 }
 
 export { IUser, UserDataService };
