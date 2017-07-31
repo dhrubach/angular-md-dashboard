@@ -29,9 +29,9 @@ export class SideNavComponent implements OnInit {
 				title: 'Exceptions',
 			},
 			{
-				iconLigatureName: 'settings',
-				routerLink: 'settings',
-				title: 'Settings',
+				iconLigatureName: 'file_upload',
+				routerLink: 'upload',
+				title: 'Upload',
 			},
 		];
 	}

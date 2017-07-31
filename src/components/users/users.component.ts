@@ -17,7 +17,7 @@ import { DateTimeFilterComponent } from '../shared/date-time-filter/date-time-fi
 import { StatusFilterComponent } from '../shared/status-filter/status-filter.component';
 
 @Component({
-	selector: 'admin-user',
+	selector: 'adm-user',
 	styles: [require('./users.component.scss')],
 	template: require('./users.template.html'),
 })
