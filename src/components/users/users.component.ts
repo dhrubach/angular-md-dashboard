@@ -73,7 +73,7 @@ export class UserComponent implements OnDestroy {
 
 		this.getOnlineUsers(this.rowData);
 
-		this.refreshUserData$ = Observable.interval(5000);
+		this.refreshUserData$ = Observable.interval(3000);
 
 		this.setUpRemainingTimeUpdateTimer();
 	}

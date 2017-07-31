@@ -20,6 +20,12 @@
 				text-align: right;
 			}
 		}
+
+		.ag-row--change-status-offline {
+			animation-name: highlight-row;
+			animation-duration: 3s;
+			animation-iteration-count: 1;
+		}
 	}
 
 	.ag-menu {
@@ -30,6 +36,24 @@
 
 		&:hover {
 			opacity: 1;
+		}
+	}
+
+	@keyframes highlight-row {
+		from {
+			font-weight: normal;
+		}
+
+		25% {
+			font-weight: bold;
+		}
+
+		50% {
+			font-weight: bolder;
+		}
+
+		to {
+			font-weight: normal;
 		}
 	}
 }

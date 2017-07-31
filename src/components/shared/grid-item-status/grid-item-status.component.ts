@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Renderer } from '@angular/core';
+import { ɵBrowserDomAdapter } from '@angular/platform-browser';
 
 import { ICellRendererAngularComp } from 'ag-grid-angular/main';
 import { IAfterGuiAttachedParams, ICellRendererParams } from 'ag-grid/main';
@@ -23,5 +24,13 @@ export class GridItemStatusComponent implements ICellRendererAngularComp {
 
 	public afterGuiAttached(params?: IAfterGuiAttachedParams): void {
 		throw new Error('Method not implemented.');
+	}
+
+	public refresh(params: any): void {
+		if (params.value !== this.params.value) {
+			this.params = params;
+			document.querySelector(`#user-grid .ag-body-container .ag-row[row="${this.params.rowIndex}"]`)
+				.classList.add('ag-row--change-status-offline');
+		}
 	}
 }

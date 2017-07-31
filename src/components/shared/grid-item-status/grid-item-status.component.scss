@@ -11,6 +11,8 @@
 }
 
 .grid-row__cell-status {
+	transition: background 2s ease-in-out;
+
 	&--is-online {
 		background: green;
 
