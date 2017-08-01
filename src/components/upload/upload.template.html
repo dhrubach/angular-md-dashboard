@@ -1,22 +1,28 @@
-<div class="settings-container-grid">
-	<md-card class="settings-card-item">
-		<md-card-header class="settings-card-item__card-header">
-			<div class="settings-card-item__card-header-text">Uploads</div>
+<div class="upload-container">
+	<md-card class="upload-card-item">
+		<md-card-header class="upload-card-item__card-header">
+			<div class="upload-card-item__card-header-text">Uploads</div>
 		</md-card-header>
-		<md-card-content class="settings-card-item__card-content ">
-			<md-grid-list cols="4">
-				<md-grid-tile *ngFor="let tile of logo">
-					<md-grid-tile-header class="settings-grid-tile__header">
-						<label *ngIf="!tile.edit" (click)="tile.edit=true">{{tile.logoName}}</label>
-						<input class="settings-grid-tile__header-input form-control"
-							*ngIf="tile.edit" type="text" [(ngModel)]="tile.logoName">
-						{{name}}
-						<button class="settings-grid-tile__header-archive">Archive</button>
+		<md-card-content class="upload-card-item__card-content ">
+			<md-grid-list cols="4" gutterSize="20">
+				<md-grid-tile *ngFor="let tile of logo" class="upload-grid-tile">
+					<md-grid-tile-header class="upload-grid-tile__header">
+						<md-input-container class="upload-grid-tile__header-input-container" color="accent">
+							<input class="upload-grid-tile__header-input" mdInput type="text" [(ngModel)]="tile.logoName" floatPlaceholder="never">
+						</md-input-container>
+						<md-icon class="upload-grid-tile__header-icon upload-grid-tile__header-icon--is-close">
+							close
+						</md-icon>
 					</md-grid-tile-header>
 					<img [alt]="tile.logoName" src="{{tile.url}}" />
-					<md-grid-tile-footer class="settings-grid-tile__footer">
-						<md-icon class="settings-grid-tile__footer-icon"
-							(click)="save(tile,index)">
+					<md-grid-tile-footer class="upload-grid-tile__footer">
+						<div class="upload-grid-tile__footer-icon">
+							<md-icon class="upload-grid-tile__footer-icon--is-update">
+								update
+							</md-icon>
+							<span class="upload-grid-tile__footer-icon-text">{{tile.update}}</span>
+						</div>
+						<md-icon class="upload-grid-tile__footer-icon upload-grid-tile__footer-icon--is-save" (click)="save(tile,index)">
 							save
 						</md-icon>
 					</md-grid-tile-footer>

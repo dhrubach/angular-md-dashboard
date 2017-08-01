@@ -4,8 +4,9 @@ interface ILogo {
 	edit: boolean;
 	id: number;
 	logoName: string;
-	url: string;
 	status: string;
+	update: string;
+	url: string;
 }
 
 @Injectable()
@@ -20,6 +21,7 @@ class UploadDataService {
 				id: 1,
 				logoName: 'Primerica',
 				status: 'enable',
+				update: '08/01/2017',
 				url: require('../../assets/logo/logo-1.jpg'),
 			},
 			{
@@ -27,6 +29,7 @@ class UploadDataService {
 				id: 2,
 				logoName: 'Meeder',
 				status: 'enable',
+				update: '08/01/2017',
 				url: require('../../assets/logo/logo-2.jpg'),
 			},
 			{
@@ -34,6 +37,7 @@ class UploadDataService {
 				id: 3,
 				logoName: 'Horizon Investments',
 				status: 'disable',
+				update: '08/01/2017',
 				url: require('../../assets/logo/logo-4.png'),
 			},
 			{
@@ -41,6 +45,7 @@ class UploadDataService {
 				id: 4,
 				logoName: 'LockWood Advisors',
 				status: 'enable',
+				update: '08/01/2017',
 				url: require('../../assets/logo/logo-5.jpg'),
 			},
 			{
@@ -48,6 +53,7 @@ class UploadDataService {
 				id: 5,
 				logoName: 'Morning Star',
 				status: 'enable',
+				update: '08/01/2017',
 				url: require('../../assets/logo/logo-6.jpg'),
 			},
 			{
@@ -55,6 +61,7 @@ class UploadDataService {
 				id: 6,
 				logoName: 'Invesco',
 				status: 'disable',
+				update: '08/01/2017',
 				url: require('../../assets/logo/logo-7.png'),
 			},
 			{
@@ -62,6 +69,71 @@ class UploadDataService {
 				id: 7,
 				logoName: 'Sage',
 				status: 'enable',
+				update: '08/01/2017',
+				url: require('../../assets/logo/logo-8.jpg'),
+			},
+			{
+				edit: false,
+				id: 8,
+				logoName: 'Sage',
+				status: 'enable',
+				update: '08/01/2017',
+				url: require('../../assets/logo/logo-8.jpg'),
+			},
+			{
+				edit: false,
+				id: 9,
+				logoName: 'Sage',
+				status: 'enable',
+				update: '08/01/2017',
+				url: require('../../assets/logo/logo-8.jpg'),
+			},
+			{
+				edit: false,
+				id: 10,
+				logoName: 'Sage',
+				status: 'enable',
+				update: '08/01/2017',
+				url: require('../../assets/logo/logo-8.jpg'),
+			},
+			{
+				edit: false,
+				id: 11,
+				logoName: 'Sage',
+				status: 'enable',
+				update: '08/01/2017',
+				url: require('../../assets/logo/logo-8.jpg'),
+			},
+			{
+				edit: false,
+				id: 12,
+				logoName: 'Sage',
+				status: 'enable',
+				update: '08/01/2017',
+				url: require('../../assets/logo/logo-8.jpg'),
+			},
+			{
+				edit: false,
+				id: 13,
+				logoName: 'Sage',
+				status: 'enable',
+				update: '08/01/2017',
+				url: require('../../assets/logo/logo-8.jpg'),
+			},
+			{
+				edit: false,
+				id: 14,
+				logoName: 'Sage',
+				status: 'enable',
+				update: '08/01/2017',
+				url: require('../../assets/logo/logo-8.jpg'),
+			},
+			{
+				edit: false,
+				id: 15,
+				logoName: 'Sage',
+				status: 'enable',
+				update: '08/01/2017',
 				url: require('../../assets/logo/logo-8.jpg'),
 			},
 		];

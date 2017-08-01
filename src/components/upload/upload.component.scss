@@ -1,7 +1,7 @@
 @import '../../styles/_admin-variables';
 @import '../../styles/_admin-mixins';
 
-.settings-container-grid {
+.upload-container {
 	position: relative;
 
 	display: flex;
@@ -12,20 +12,17 @@
 
 	box-sizing: border-box;
 	height: calc(100% - 64px);
-	margin: 0 20px;
-	padding: 20px 0;
+	padding: 20px;
 }
 
-.settings-card-item {
+.upload-card-item {
 	position: relative;
 
 	box-sizing: border-box;
 	width: 100%;
-	height: 100%;
-	min-height: $user-grid-min-height;
 }
 
-.settings-card-item__card-header {
+.upload-card-item__card-header {
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
@@ -48,44 +45,71 @@
 	}
 }
 
-.settings-card-item__card-content {
-	height: 100%;
+.upload-card-item__card-content {
 	margin-top: 10px;
 	padding-top: 10px;
 }
 
-.settings-grid-tile__header {
-	margin: 10px;
+.upload-grid-tile {
+	@include box-shadow();
 
-	background: #aed581;
+	&__header {
+		justify-content: space-between;
 
-	&-input {
-		font-size: 14px;
+		color: $primary-dark-color;
+		background-color: transparent;
 
-		width: 150px;
-		height: 45px;
+		&-icon {
+			width: 15px;
+			height: 20px;
 
-		color: white;
-		border: none;
-		background: #aed581;
-	}
+			cursor: pointer;
+		}
 
-	&-archive {
-		margin-left: 40px;
+		&-input-container {
+			width: 80%;
+			margin-top: 10px;
+		}
 	}
 }
 
-.settings-grid-tile__footer {
-	margin: 10px;
+.upload-grid-tile__footer {
+	justify-content: space-between;
 
-	background: #aed581;
+	background: transparent;
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 16px;
+
+		width: 90%;
+		height: 1px;
+
+		content: '';
+
+		background-color: rgba(180, 180, 180, 0.3);
+	}
 
 	&-icon {
-		font-size: 30px;
+		display: flex;
+		align-items: center;
+		flex-flow: row nowrap;
+		justify-content: flex-start;
 
-		margin-top: -7px;
-		margin-left: 210px;
+		&-text {
+			font-family: $font-stack;
+			font-style: italic;
+		}
 
-		cursor: pointer;
+		&--is-update {
+			padding-right: 10px;
+		}
+
+		&--is-save {
+			font-size: 24px;
+
+			cursor: pointer;
+		}
 	}
 }

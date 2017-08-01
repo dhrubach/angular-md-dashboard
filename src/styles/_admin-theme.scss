@@ -5,6 +5,7 @@
 @import './../components/shared/date-time-filter/date-time-filter-theme.component';
 @import './../components/shared/grid-pagination/grid-pagination-theme.component';
 @import './../components/sidenav/sidenav-theme.component';
+@import './../components/upload/upload-theme.component';
 @import './../components/users/users-theme.component';
 
 @mixin admin-app-theme($theme) {
@@ -24,5 +25,6 @@
 	@include component-grid-pagination-theme($theme);
 	@include component-pie-chart-theme($theme);
 	@include component-sidenav-theme($theme);
+	@include component-upload-theme($theme);
 	@include component-user-theme($theme);
 }
