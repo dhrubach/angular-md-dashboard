@@ -10,6 +10,7 @@ import {
 	MdMenuModule,
 	MdSidenavModule,
 	MdToolbarModule,
+	MdTooltipModule,
 } from '@angular/material';
 
 @NgModule({
@@ -24,6 +25,7 @@ import {
 		MdMenuModule,
 		MdSidenavModule,
 		MdToolbarModule,
+		MdTooltipModule,
 	],
 })
 export class AppMaterialModule { }

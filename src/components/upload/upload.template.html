@@ -5,14 +5,18 @@
 		</md-card-header>
 		<md-card-content class="upload-card-item__card-content ">
 			<md-grid-list cols="4" gutterSize="20">
-				<md-grid-tile *ngFor="let tile of logo" class="upload-grid-tile">
+				<md-grid-tile *ngFor="let tile of logos" class="upload-grid-tile" [class.upload-grid-tile--is-archived]="tile.status === 'disable'">
 					<md-grid-tile-header class="upload-grid-tile__header">
-						<md-input-container class="upload-grid-tile__header-input-container" color="accent">
+						<md-input-container class="upload-grid-tile__header-input-container" color="accent" [mdTooltip]="test" [mdTooltipPosition]="below">
 							<input class="upload-grid-tile__header-input" mdInput type="text" [(ngModel)]="tile.logoName" floatPlaceholder="never">
 						</md-input-container>
-						<md-icon class="upload-grid-tile__header-icon upload-grid-tile__header-icon--is-close">
-							close
-						</md-icon>
+						<div class="upload-grid-tile__header-icon-container">
+							<span mdTooltip="archive" [mdTooltipShowDelay]="0.3">
+								<md-icon class="upload-grid-tile__header-icon upload-grid-tile__header-icon--is-close" (click)="archive(tile)">
+									close
+								</md-icon>
+							</span>
+						</div>
 					</md-grid-tile-header>
 					<img [alt]="tile.logoName" src="{{tile.url}}" />
 					<md-grid-tile-footer class="upload-grid-tile__footer">
@@ -22,9 +26,13 @@
 							</md-icon>
 							<span class="upload-grid-tile__footer-icon-text">{{tile.update}}</span>
 						</div>
-						<md-icon class="upload-grid-tile__footer-icon upload-grid-tile__footer-icon--is-save" (click)="save(tile,index)">
-							save
-						</md-icon>
+						<div class="upload-grid-tile__footer-icon-save">
+							<span mdTooltip="save" [mdTooltipShowDelay]="0.3">
+								<md-icon class="upload-grid-tile__footer-icon upload-grid-tile__footer-icon--is-save" (click)="save(tile,index)">
+									save
+								</md-icon>
+							</span>
+						</div>
 					</md-grid-tile-footer>
 				</md-grid-tile>
 			</md-grid-list>

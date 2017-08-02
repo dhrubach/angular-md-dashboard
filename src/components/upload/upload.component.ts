@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { ArchiveComponent } from './archive/archive.component';
 import { ILogo, UploadDataService } from './upload.service';
 
 @Component({
@@ -9,12 +8,23 @@ import { ILogo, UploadDataService } from './upload.service';
 	styles: [require('./upload.component.scss')],
 	template: require('./upload.template.html'),
 })
-export class UploadComponent {
+export class UploadComponent implements OnInit {
 
-	private logo: ILogo[];
+	private logos: ILogo[];
 
-	constructor(private uploadService: UploadDataService) {
-		this.logo = this.uploadService.getData();
+	constructor(private uploadService: UploadDataService) { }
+
+	public ngOnInit(): void {
+		this.fetchGridData();
+	}
+
+	private archive(logo: ILogo): void {
+		logo.status = 'disable';
+		setTimeout(() => {
+			if (this.uploadService.markAsArchived(logo.id)) {
+				this.fetchGridData();
+			}
+		}, 1000);
 	}
 
 	private save(data, index): void {
@@ -22,4 +32,8 @@ export class UploadComponent {
 		this.uploadService.saveData(data);
 	}
 
+	private fetchGridData(): void {
+		this.logos = this.uploadService.getData()
+			.filter((logo) => logo.status === 'active');
+	}
 }

@@ -117,7 +117,7 @@ const config = {
 				use: 'raw-loader'
 			},
 			{
-				test: /\.(ttf|eof|svg|eot)(\?[\s\S]+)?$/,
+				test: /\.(ttf|eof|svg|eot|jpg|png)(\?[\s\S]+)?$/,
 				use: 'file-loader'
 			},
 			{

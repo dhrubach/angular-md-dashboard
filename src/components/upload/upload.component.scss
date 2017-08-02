@@ -51,7 +51,15 @@
 }
 
 .upload-grid-tile {
+	transition: opacity 0.5s ease-in-out 0.1s;
+
+	opacity: 1;
+
 	@include box-shadow();
+
+	&--is-archived {
+		opacity: 0.2;
+	}
 
 	&__header {
 		justify-content: space-between;
