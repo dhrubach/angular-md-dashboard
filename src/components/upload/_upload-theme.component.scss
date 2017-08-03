@@ -3,6 +3,7 @@
 
 @mixin component-upload-theme($theme) {
 	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
 	$foreground: map-get($theme, foreground);
 
 	.upload-card-item__card-header {
@@ -16,5 +17,9 @@
 	.upload-grid-tile__footer-icon,
 	.upload-grid-tile__header-icon {
 		color: mat-color($foreground, icon);
+	}
+
+	.upload-form-card-item__form-table-image-select {
+		background-color: mat-color($accent, A200);
 	}
 }

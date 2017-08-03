@@ -129,7 +129,7 @@ class UploadDataService {
 
 	public markAsArchived(id: number): boolean {
 		const logo = this.imagesData.find((image) => image.id === id);
-		if(logo) {
+		if (logo) {
 			logo.status = 'archive';
 			return true;
 		}
@@ -141,4 +141,4 @@ class UploadDataService {
 	}
 }
 
-export { ILogo, UploadDataService } ;
+export { ILogo, UploadDataService };

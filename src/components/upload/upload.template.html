@@ -40,13 +40,19 @@
 								</md-input-container>
 							</td>
 							<td>
-								<button md-raised-button color="accent">Choose File</button>
+								<label for="upload-form-image" class="upload-form-card-item__form-table-image-select mat-raised-button">Select image</label>
+								<input type="file" id="upload-form-image" [ngStyle]="{ 'display': 'none' }" accept="image/*" (change)="showImagePreview($event)">
 							</td>
 						</tr>
 					</table>
-					<div class="upload-form-card-item__form-preview">
-
-					</div>
+					<md-card class="upload-image-card-item" *ngIf="showPreviewBlock">
+						<md-card-content class="upload-image-card-item__card-content">
+							<img src="{{url}}">
+						</md-card-content>
+						<md-card-footer class="upload-image-card-item__card-footer">
+							<button md-raised-button color="accent">Save</button>
+						</md-card-footer>
+					</md-card>
 				</form>
 			</md-card-content>
 		</md-card>
