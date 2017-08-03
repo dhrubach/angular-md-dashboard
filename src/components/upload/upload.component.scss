@@ -92,6 +92,16 @@
 
 	width: 400px;
 	height: 200px;
+
+	transition: opacity 0.7s ease-in 0.2s;
+
+	&--preview-hidden {
+		opacity: 0;
+	}
+
+	&--preview-show {
+		opacity: 1;
+	}
 }
 
 .upload-image-card-item__card-header {
@@ -120,9 +130,10 @@
 .upload-image-card-item__card-footer {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 
-	padding: 15px;
+	box-sizing: border-box;
+	padding: 10px;
 
 	border-top: 1px solid rgba(180, 180, 180, 0.3);
 }

@@ -5,38 +5,40 @@
 				<div class="upload-form-card-item__card-header-text">Upload image</div>
 			</md-card-header>
 			<md-card-content class="upload-form-card-item__card-content">
-				<form class="upload-form-card-item__form">
+				<form class="upload-form-card-item__form" #uploadForm="ngForm">
 					<table class="upload-form-card-item__form-table">
 						<tr>
 							<td>
 								<md-input-container class="upload-form-card-item__form-table-log-number" color="accent">
-									<input mdInput placeholder="Log Number">
+									<input mdInput placeholder="Log Number" [(ngModel)]="newLogo.logNumber" required name="logNumber">
+									<md-error>Log Number is required</md-error>
 								</md-input-container>
 							</td>
 							<td>
 								<md-input-container class="upload-form-card-item__form-table-display-name" color="accent">
-									<input mdInput placeholder="Display Name">
+									<input mdInput placeholder="Display Name" [(ngModel)]="newLogo.logoName" required name="displayName">
+									<md-error>Display Name is required</md-error>
 								</md-input-container>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<md-input-container class="upload-form-card-item__form-table-description" color="accent">
-									<input mdInput placeholder="Description">
+									<input mdInput placeholder="Description" name="description" [(ngModel)]="newLogo.description">
 								</md-input-container>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<md-input-container class="upload-form-card-item__form-table-purpose" color="accent">
-									<input mdInput placeholder="Purpose">
+									<input mdInput placeholder="Purpose" name="purpose" [(ngModel)]="newLogo.purpose">
 								</md-input-container>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<md-input-container class="upload-form-card-item__form-table-provider" color="accent">
-									<input mdInput placeholder="Provider">
+									<input mdInput placeholder="Provider" name="provider" [(ngModel)]="newLogo.provider">
 								</md-input-container>
 							</td>
 							<td>
@@ -45,12 +47,15 @@
 							</td>
 						</tr>
 					</table>
-					<md-card class="upload-image-card-item" *ngIf="showPreviewBlock">
+					<md-card class="upload-image-card-item"
+						[class.upload-image-card-item--preview-hidden]="!showPreviewBlock"
+						[class.upload-image-card-item--preview-show]="showPreviewBlock">
 						<md-card-content class="upload-image-card-item__card-content">
-							<img src="{{url}}">
+							<img src="{{newLogo.url}}">
 						</md-card-content>
 						<md-card-footer class="upload-image-card-item__card-footer">
-							<button md-raised-button color="accent">Save</button>
+							<button md-raised-button color="accent" (click)="save()" [disabled]="uploadForm.invalid" class="upload-image-card-item__card-footer-save">Save</button>
+							<button md-raised-button color="accent" (click)="resetTemplateState()">Reset</button>
 						</md-card-footer>
 					</md-card>
 				</form>
@@ -71,7 +76,8 @@
 							</md-input-container>
 							<div class="upload-grid-tile__header-icon-container">
 								<span mdTooltip="archive" [mdTooltipShowDelay]="0.3">
-								<md-icon class="upload-grid-tile__header-icon upload-grid-tile__header-icon--is-close" (click)="archive(tile)">
+								<md-icon class="upload-grid-tile__header-icon upload-grid-tile__header-icon--is-close"
+									(click)="archive(tile)">
 									close
 								</md-icon>
 							</span>
@@ -87,7 +93,8 @@
 							</div>
 							<div class="upload-grid-tile__footer-icon-save">
 								<span mdTooltip="save" [mdTooltipShowDelay]="0.3">
-								<md-icon class="upload-grid-tile__footer-icon upload-grid-tile__footer-icon--is-save" (click)="save(tile,index)">
+								<md-icon class="upload-grid-tile__footer-icon upload-grid-tile__footer-icon--is-save"
+									(click)="update(tile.logoName,index)">
 									save
 								</md-icon>
 							</span>

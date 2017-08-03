@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AbstractControl, FormGroup, NgForm } from '@angular/forms';
+
+import * as moment from 'moment';
 
 import { ILogo, UploadDataService } from './upload.service';
 
@@ -10,14 +13,17 @@ import { ILogo, UploadDataService } from './upload.service';
 })
 export class UploadComponent implements OnInit {
 
-	private uploadedFile: File;
 	private logos: ILogo[];
+	private newLogo;
 	private showPreviewBlock: boolean;
-	private url: string;
+	private uploadedFile: File;
+
+	@ViewChild('uploadForm') private uploadForm: NgForm;
 
 	constructor(private uploadService: UploadDataService) { }
 
 	public ngOnInit(): void {
+		this.resetTemplateState();
 		this.fetchGridData();
 	}
 
@@ -35,9 +41,36 @@ export class UploadComponent implements OnInit {
 			.filter((logo) => logo.status === 'active');
 	}
 
-	private save(data, index): void {
-		data.edit = true;
-		this.uploadService.saveData(data);
+	private resetTemplateState(): void {
+		this.newLogo = {
+			description: '',
+			logNumber: '',
+			logoName: '',
+			provider: '',
+			purpose: '',
+			url: '',
+		};
+
+		const currentFormGroup = this.uploadForm.form;
+		if (currentFormGroup && currentFormGroup.controls) {
+			Object.keys(currentFormGroup.controls).forEach((controlName) => {
+				const control: AbstractControl = currentFormGroup.controls[controlName];
+				if (control) {
+					control.reset('');
+				}
+			});
+		}
+
+		this.showPreviewBlock = false;
+	}
+
+	private save(): void {
+		this.newLogo.status = 'active';
+		this.newLogo.update = moment().format('MM/DD/YYYY');
+
+		this.uploadService.saveData(this.newLogo);
+		this.fetchGridData();
+		this.resetTemplateState();
 	}
 
 	private showImagePreview(event: Event): void {
@@ -48,12 +81,16 @@ export class UploadComponent implements OnInit {
 			if (this.uploadedFile && this.uploadedFile.size) {
 				const reader = new FileReader();
 				reader.onload = (evt: Event) => {
-					this.url = (evt.target as any).result;
+					this.newLogo.url = (evt.target as any).result;
 					this.showPreviewBlock = true;
 				};
 				reader.readAsDataURL(this.uploadedFile);
 			}
 		}
+	}
+
+	private update(name: string, index: number): void {
+		this.uploadService.updateData(name, index);
 	}
 
 }

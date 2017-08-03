@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
 
+import * as _ from 'lodash-es';
+
 interface ILogo {
-	id: number;
+	description?: string;
+	id?: number;
 	logoName: string;
+	logNumber?: string;
+	provider?: string;
+	purpose?: string;
 	status: 'active' | 'disable' | 'archive';
 	update: string;
 	url: string;
@@ -136,8 +142,21 @@ class UploadDataService {
 		return false;
 	}
 
-	public saveData(newData) {
-		this.imagesData = newData;
+	public saveData(newData: ILogo) {
+		const newId: number = this.imagesData.map((image) => {
+			return image.id;
+		}).sort((a, b) => a > b ? 1 : -1)[0];
+
+		newData.id = newId;
+
+		this.imagesData.unshift(newData);
+	}
+
+	public updateData(logoName: string, index: number): void {
+		const updatedLogo = this.imagesData.find((logo) => logo.id === index);
+		if (updatedLogo) {
+			updatedLogo.logoName = logoName;
+		}
 	}
 }
 
