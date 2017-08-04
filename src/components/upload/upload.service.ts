@@ -143,11 +143,11 @@ class UploadDataService {
 	}
 
 	public saveData(newData: ILogo) {
-		const newId: number = this.imagesData.map((image) => {
-			return image.id;
-		}).sort((a, b) => a > b ? 1 : -1)[0];
+		let newId = this.imagesData.reduce((acc, image) => {
+			return Math.max(acc, image.id);
+		}, 0);
 
-		newData.id = newId;
+		newData.id = ++newId;
 
 		this.imagesData.unshift(newData);
 	}
