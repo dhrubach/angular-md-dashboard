@@ -12,13 +12,12 @@ import {
 	DashboardComponent,
 	DetailPanelComponent,
 	ExceptionsComponent,
-	GridItemRemainingTimeComponent,
 	HostChartDirective,
 	LineChartComponent,
 	PieChartComponent,
 	SideNavComponent,
 	ThemePickerComponent,
-} from './components';
+} from './app';
 import { AppMaterialModule } from './main-material.module';
 import { AppRoutingModule } from './main-routing.module';
 

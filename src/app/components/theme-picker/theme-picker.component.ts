@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StyleManagerService } from './../style-manager/style-manager.service';
+import { StyleManagerService } from './style-manager/style-manager.service';
 import { IAdminTheme, ThemeStorageService } from './theme-storage/theme-storage.service';
 
 @Component({

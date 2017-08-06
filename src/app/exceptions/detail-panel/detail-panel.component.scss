@@ -6,8 +6,7 @@
 
 	display: flex;
 	align-items: center;
-	flex-direction: row;
-	flex-wrap: nowrap;
+	flex-flow: row nowrap;
 	justify-content: center;
 
 	box-sizing: border-box;

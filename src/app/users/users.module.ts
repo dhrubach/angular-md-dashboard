@@ -3,13 +3,11 @@ import { RouterModule } from '@angular/router';
 
 import { AgGridModule } from 'ag-grid-angular/main';
 import { AppMaterialModule } from '../../main-material.module';
-import { DateTimeFilterModule } from '../shared';
+import { DateTimeFilterModule } from '../components';
 
 import { routes } from './users.routes';
 
-import { GridItemStatusComponent } from '../shared/grid-item-status/grid-item-status.component';
-import { GridPaginationComponent } from '../shared/grid-pagination/grid-pagination.component';
-import { StatusFilterComponent } from '../shared/status-filter/status-filter.component';
+import { GridItemStatusComponent, GridPaginationComponent, StatusFilterComponent } from '../components';
 import { UserComponent } from './users.component';
 import { UserDataService } from './users.service';
 

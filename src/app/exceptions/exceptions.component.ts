@@ -3,7 +3,7 @@ import { ColDef, Events, GridOptions } from 'ag-grid/main';
 
 import { filter, forEach, reverse, sortBy } from 'lodash-es';
 
-import { IChartData } from './../chart/chart.component';
+import { IChartData } from './../components';
 import { DetailPanelComponent } from './detail-panel/detail-panel.component';
 import { DetailPanelService, IDetail } from './detail-panel/detail-panel.service';
 import { ExceptionsDataService, IException } from './exceptions.service';

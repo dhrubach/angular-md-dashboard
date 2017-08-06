@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import * as Chartist from 'chartist';
 
-import { ICardData } from './../card/card.component';
-import { IChartData } from './../chart/chart.component';
+import { ICardData } from './../components';
+import { IChartData } from './../components';
 
 @Component({
 	selector: 'adm-dashboard',

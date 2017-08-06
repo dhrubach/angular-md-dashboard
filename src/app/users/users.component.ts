@@ -5,16 +5,15 @@ import * as _ from 'lodash';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-import { GridItemStatusComponent } from '../shared/grid-item-status/grid-item-status.component';
 import {
+	DateTimeFilterComponent,
+	GridItemStatusComponent,
 	GridPaginationComponent,
 	IPagination,
 	PaginationActionType,
-} from '../shared/grid-pagination/grid-pagination.component';
+	StatusFilterComponent,
+} from '../components';
 import { IUser, UserDataService } from './users.service';
-
-import { DateTimeFilterComponent } from '../shared/date-time-filter/date-time-filter.component';
-import { StatusFilterComponent } from '../shared/status-filter/status-filter.component';
 
 @Component({
 	selector: 'adm-user',

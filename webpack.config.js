@@ -47,7 +47,7 @@ const config = {
 			},
 			{
 				test: /\.css$/,
-				exclude: /src\\components/,
+				exclude: /src\\app/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [
@@ -58,7 +58,7 @@ const config = {
 			},
 			{
 				test: /\.css$/,
-				include: /src\\components/,
+				include: /src\\app/,
 				use: [
 					{ loader: 'to-string-loader' },
 					{ loader: 'css-loader' },
@@ -67,7 +67,7 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-				include: /src\\components/,
+				include: /src\\app/,
 				use: [
 					{ loader: 'to-string-loader' },
 					{
@@ -83,7 +83,7 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-				exclude: /src(\\components|\\assets\\custom-themes)/,
+				exclude: /src(\\app|\\assets\\custom-themes)/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [

@@ -1,5 +1,5 @@
-@import '../../../../node_modules/@angular/material/theming';
-@import './../../../styles/admin-mixins';
+@import './../../../../node_modules/@angular/material/theming';
+@import '../../../styles/admin-mixins';
 
 @mixin component-date-time-filter-theme($theme) {
 	$primary: map-get($theme, primary);

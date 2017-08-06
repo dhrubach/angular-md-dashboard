@@ -1,12 +1,12 @@
 @import './admin-variables';
 @import './../../node_modules/@angular/material/theming';
-@import './../components/chart/pie-chart-theme.component';
-@import './../components/exceptions/exceptions-theme.component';
-@import './../components/shared/date-time-filter/date-time-filter-theme.component';
-@import './../components/shared/grid-pagination/grid-pagination-theme.component';
-@import './../components/sidenav/sidenav-theme.component';
-@import './../components/upload/upload-theme.component';
-@import './../components/users/users-theme.component';
+@import './../app/components/chart/pie-chart-theme.component';
+@import './../app/components/date-time-filter/date-time-filter-theme.component';
+@import './../app/components/grid-pagination/grid-pagination-theme.component';
+@import './../app/exceptions/exceptions-theme.component';
+@import './../app/sidenav/sidenav-theme.component';
+@import './../app/upload/upload-theme.component';
+@import './../app/users/users-theme.component';
 
 @mixin admin-app-theme($theme) {
 	$primary: map-get($theme, primary);

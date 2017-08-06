@@ -3,12 +3,12 @@ import { Route } from '@angular/router';
 import {
 	DashboardComponent,
 	ExceptionsComponent,
-} from './components';
+} from './app';
 
 export const routes: Route[] = [
 	{ path: 'dashboard', component: DashboardComponent },
 	{ path: 'exception', component: ExceptionsComponent },
-	{ path: 'upload', loadChildren: './components/upload#UploadModule' },
-	{ path: 'user', loadChildren: './components/users#UsersModule' },
+	{ path: 'upload', loadChildren: './app/upload#UploadModule' },
+	{ path: 'user', loadChildren: './app/users#UsersModule' },
 	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
