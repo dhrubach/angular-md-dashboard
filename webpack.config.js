@@ -21,7 +21,13 @@ const config = {
 				exclude: /node_modules/,
 				use: [
 					{ loader: 'babel-loader' },
-					{ loader: 'ts-loader' }
+					{
+						loader: 'ng-router-loader',
+						options: {
+							debug: false,
+						},
+					},
+					{ loader: 'ts-loader' },
 				]
 			},
 			{

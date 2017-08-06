@@ -4,28 +4,20 @@ import { FormsModule } from '@angular/forms';
 
 import { AgGridModule } from 'ag-grid-angular/main';
 import { ChartistModule } from 'ng-chartist';
-import { DateTimePickerModule } from 'ng-pick-datetime';
 
 import {
 	BarChartComponent,
 	CardComponent,
 	ChartComponent,
 	DashboardComponent,
-	DateTimeFilterComponent,
 	DetailPanelComponent,
 	ExceptionsComponent,
 	GridItemRemainingTimeComponent,
-	GridItemStatusComponent,
-	GridPaginationComponent,
 	HostChartDirective,
 	LineChartComponent,
 	PieChartComponent,
 	SideNavComponent,
-	StatusFilterComponent,
 	ThemePickerComponent,
-	UploadComponent,
-	UserComponent,
-	UserDataService,
 } from './components';
 import { AppMaterialModule } from './main-material.module';
 import { AppRoutingModule } from './main-routing.module';
@@ -35,19 +27,13 @@ const ADMIN_APP_COMPONENTS = [
 	CardComponent,
 	ChartComponent,
 	DashboardComponent,
-	DateTimeFilterComponent,
 	DetailPanelComponent,
 	ExceptionsComponent,
-	GridItemStatusComponent,
-	GridPaginationComponent,
 	HostChartDirective,
 	LineChartComponent,
 	PieChartComponent,
-	UploadComponent,
 	SideNavComponent,
-	StatusFilterComponent,
 	ThemePickerComponent,
-	UserComponent,
 ];
 
 const ADMIN_ENTRY_COMPONENTS = [
@@ -57,10 +43,7 @@ const ADMIN_ENTRY_COMPONENTS = [
 ];
 
 const AG_ENTRY_COMPONENTS = [
-	DateTimeFilterComponent,
 	DetailPanelComponent,
-	GridItemStatusComponent,
-	StatusFilterComponent,
 ];
 
 const ADMIN_ROOT_COMPONENTS = [
@@ -85,9 +68,8 @@ const ADMIN_ROOT_COMPONENTS = [
 		AppRoutingModule,
 		ChartistModule,
 		CommonModule,
-		DateTimePickerModule,
 		FormsModule,
 	],
-	providers: [UserDataService],
+	providers: [],
 })
 export class AppComponentModule { }

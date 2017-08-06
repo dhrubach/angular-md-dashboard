@@ -8,8 +8,5 @@ export * from './chart/pie-chart.component';
 export * from './dashboard/dashboard.component';
 export * from './exceptions/exceptions.component';
 export * from './exceptions/detail-panel/detail-panel.component';
-export * from './upload/upload.component';
 export * from './shared';
 export * from './sidenav/sidenav.component';
-export * from './users/users.component';
-export * from './users/users.service';
