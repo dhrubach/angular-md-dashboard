@@ -9,7 +9,6 @@ import { DetailPanelService, IDetail } from './detail-panel/detail-panel.service
 import { ExceptionsDataService, IException } from './exceptions.service';
 
 @Component({
-	providers: [ExceptionsDataService, DetailPanelService],
 	selector: 'adm-exceptions',
 	styles: [require('./exceptions.component.scss')],
 	template: require('./exceptions.template.html'),

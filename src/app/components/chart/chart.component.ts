@@ -20,7 +20,7 @@ import { PieChartComponent } from './pie-chart.component';
 	selector: 'adm-chart',
 	template: `<ng-template adm-host-chart></ng-template>`,
 })
-class ChartComponent implements AfterViewInit {
+export class ChartComponent implements AfterViewInit {
 
 	@Input() private config: IChartData;
 	@ViewChild(HostChartDirective) private hostChart: HostChartDirective;
@@ -50,5 +50,3 @@ class ChartComponent implements AfterViewInit {
 	}
 
 }
-
-export { ChartComponent, IChartData };
