@@ -8,6 +8,8 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const ForkTSCheckerPlugin = require('fork-ts-checker-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 
 const config = {
 	entry: './src/main.ts',
@@ -149,6 +151,12 @@ const config = {
 			}
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
+			name: 'angular',
+			minChunks: function(module) {
+				return module && module.context && /node_modules(\\|\/)@angular/g.test(module.context);
+			}
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
 			name: 'manifest',
 		}),
 		new ExtractTextPlugin({
@@ -179,6 +187,10 @@ const config = {
 			tslint: false,
 			watch: ['./src'],
 		}),
+		new BundleAnalyzerPlugin({
+			analyzerMode: 'static',
+		}),
+		new IgnorePlugin(/^\.(\\|\/)locale$/, /moment$/),
 	],
 	resolve: {
 		extensions: ['.ts', '.js', '.css', '.scss']

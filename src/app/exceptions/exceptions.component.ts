@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ColDef, Events, GridOptions } from 'ag-grid/main';
 
-import { filter, forEach, reverse, sortBy } from 'lodash-es';
-
 import { IChartData } from './../components';
 import { DetailPanelComponent } from './detail-panel/detail-panel.component';
 import { DetailPanelService, IDetail } from './detail-panel/detail-panel.service';
@@ -125,16 +123,20 @@ export class ExceptionsComponent implements OnInit {
 		const exceptionDataServiceData = this.exceptionDataService.getData();
 		const detailsPanelServiceData = this.detailsPanelService.getData();
 
-		forEach(exceptionDataServiceData, (exception) => {
+		exceptionDataServiceData.forEach((exception) => {
 			const detailsDataByErrorCode =
-				filter(detailsPanelServiceData, (detail) => {
+				detailsPanelServiceData.filter((detail) => {
 					return detail.errorCode === exception.errorCode;
 				});
 			exception.childRecords = detailsDataByErrorCode || [];
 		});
 
-		return reverse(sortBy(exceptionDataServiceData, (exception) => {
-			return exception && exception.childRecords.length || 0;
-		}));
+		return exceptionDataServiceData.sort((a, b) => {
+			const lengthA = a.childRecords.length || 0;
+			const lengthB = b.childRecords.length || 0;
+			return lengthA === lengthB
+				? 0
+				: lengthA > lengthB ? -1 : 1;
+		});
 	}
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import * as moment from 'moment';
+import 'rxjs/add/observable/interval';
 import { Observable } from 'rxjs/Observable';
 
 interface IUser {

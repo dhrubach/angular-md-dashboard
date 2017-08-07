@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import * as _ from 'lodash-es';
-
 interface ILogo {
 	description?: string;
 	id?: number;

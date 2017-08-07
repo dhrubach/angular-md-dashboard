@@ -1,7 +1,7 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 
 import { ColDef, Events, GridOptions, RowNode } from 'ag-grid/main';
-import * as _ from 'lodash';
+import 'rxjs/add/observable/interval';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -129,9 +129,13 @@ export class UserComponent implements OnDestroy {
 		});
 	}
 
-	private getOnlineUsers(users: IUser[]): void {
-		this.onlineUsers = _.filter(users, (data) => {
-			return data.status === 'online';
-		}).length;
+	private getOnlineUsers(users: IUser[] = []): void {
+		if (users.length) {
+			this.onlineUsers = users.filter((data) => {
+				return data.status === 'online';
+			}).length;
+		} else {
+			this.onlineUsers = 0;
+		}
 	}
 }

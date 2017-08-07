@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { IFilterAngularComp } from 'ag-grid-angular/main';
 import { IFilterParams } from 'ag-grid/main';
-import * as moment from 'moment';
+import * as moment from 'moment/moment';
 
 @Component({
 	styles: [require('./date-time-filter.component.scss')],
