@@ -7,6 +7,7 @@ const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const ForkTSCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 
 const config = {
 	entry: './src/main.ts',
@@ -27,7 +28,12 @@ const config = {
 							debug: false,
 						},
 					},
-					{ loader: 'ts-loader' },
+					{
+						loader: 'ts-loader',
+						options: {
+							transpileOnly: true,
+						}
+					},
 				]
 			},
 			{
@@ -169,6 +175,10 @@ const config = {
 		}),
 		new StylelintPlugin(),
 		new FriendlyErrorsPlugin(),
+		new ForkTSCheckerPlugin({
+			tslint: false,
+			watch: ['./src'],
+		}),
 	],
 	resolve: {
 		extensions: ['.ts', '.js', '.css', '.scss']
