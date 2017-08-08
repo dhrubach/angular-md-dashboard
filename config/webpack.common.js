@@ -132,7 +132,6 @@ const rules = [
 			limit: 10000
 		}
 	},
-
 ];
 
 const plugins = [

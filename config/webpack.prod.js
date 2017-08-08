@@ -3,6 +3,7 @@ const commonConfig = require('./webpack.common');
 const helpers = require('./helpers');
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CompressionPlugin = require('compression-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
@@ -15,6 +16,7 @@ const ANALYZE = process.env.ANALYZE || false;
 module.exports = () => {
 
 	const plugins = [
+		new CompressionPlugin(),
 		new DefinePlugin({
 			'ENV': JSON.stringify(ENV),
 			'process.env': {
