@@ -2,8 +2,8 @@
     "compileOnSave": true,
     "compilerOptions": {
         "alwaysStrict": true,
-        "module": "es2015",
-        "target": "es2015",
+        "module": "commonjs",
+        "target": "es5",
         "moduleResolution": "node",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
@@ -15,22 +15,9 @@
         "skipLibCheck": true,
 		"typeRoots": [
 			"node_modules/@types"
-		],
-		"types": [
-			"chalk",
-			"chartist",
-			"jest",
-			"lodash",
-			"node",
-			"source-map",
-			"tapable",
-			"uglify-js",
-			"webpack"
 		]
     },
-	"exclude": [
-		"node_modules",
-		"dist",
+	"include": [
 		"**/*.spec.ts"
 	]
 }
