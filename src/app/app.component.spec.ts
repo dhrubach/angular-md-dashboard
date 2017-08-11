@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -11,7 +12,8 @@ describe('MainComponent', () => {
 			declarations: [AppComponent],
 			imports: [
 				NoopAnimationsModule,
-			]
+			],
+			schemas: [NO_ERRORS_SCHEMA],
 		}).compileComponents();
 	}));
 

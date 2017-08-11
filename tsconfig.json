@@ -13,9 +13,6 @@
             "es2015"
         ],
         "skipLibCheck": true,
-		"typeRoots": [
-			"node_modules/@types"
-		],
 		"types": [
 			"chalk",
 			"chartist",
@@ -31,6 +28,6 @@
 	"exclude": [
 		"node_modules",
 		"dist",
-		"**/*.spec.ts"
+		"src/**/*.spec.ts"
 	]
 }

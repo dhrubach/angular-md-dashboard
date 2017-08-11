@@ -6,6 +6,7 @@
 	"scripts": {
 		"rimraf": "./node_modules/.bin/rimraf",
 		"webpack": "./node_modules/.bin/webpack",
+		"jest": "./node_modules/.bin/jest",
 		"build": "npm run build:dev",
 		"build:dev": "npm run rimraf -- dist && cross-env NODE_ENV=development npm run webpack -- --colors --progress --display-error-details --display-cached",
 		"build:prod": "npm run rimraf -- dist && cross-env NODE_ENV=production npm run webpack -- --colors",
@@ -14,7 +15,7 @@
 		"build:server": "./node_modules/.bin/webpack-dev-server --debug --colors --config ./webpack.config.js",
 		"serve": "./node_modules/.bin/http-server ./dist -p 8080 -d false -o",
 		"serve:prod": "./node_modules/.bin/http-server ./dist -p 8080 -d false -g -o",
-		"test": "jest"
+		"test": "npm run jest -- --config ./src/tests/jest.config.js --colors --no-cache"
 	},
 	"repository": {
 		"type": "git",
@@ -57,6 +58,7 @@
 	},
 	"devDependencies": {
 		"@types/chartist": "^0.9.35",
+		"@types/jasmine": "^2.5.53",
 		"@types/jest": "^20.0.6",
 		"@types/lodash-es": "^4.14.5",
 		"@types/webpack": "^2.2.16",
@@ -81,6 +83,7 @@
 		"imports-loader": "^0.7.1",
 		"jest": "^20.0.4",
 		"jest-preset-angular": "^2.0.5",
+		"karma-sourcemap-loader": "^0.3.7",
 		"ng-router-loader": "^2.1.0",
 		"node-sass": "^4.5.3",
 		"optimize-js-plugin": "0.0.4",
@@ -103,9 +106,5 @@
 		"webpack-bundle-analyzer": "^2.9.0",
 		"webpack-dev-server": "^2.4.5",
 		"webpack-merge": "^4.1.0"
-	},
-	"jest": {
-		"preset": "jest-preset-angular",
-		"setupTestFrameworkScriptFile": "<rootDir>/src/setup-jest.ts"
 	}
 }

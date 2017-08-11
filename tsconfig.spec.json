@@ -1,6 +1,7 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
+		"allowJs": true,
         "alwaysStrict": true,
         "module": "commonjs",
         "target": "es5",
