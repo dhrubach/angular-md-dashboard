@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const helpers = require('./helpers');
 const commonConfig = require('./webpack.common');
@@ -5,6 +6,7 @@ const commonConfig = require('./webpack.common');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const ENV = process.env.NODE_ENV || 'development';
 
@@ -20,6 +22,21 @@ module.exports = function () {
 		},
 
 		plugins: [
+			new webpack.optimize.CommonsChunkPlugin({
+				name: 'vendor',
+				minChunks: function (module) {
+					return module && module.context && module.context.indexOf('node_modules') > -1;
+				}
+			}),
+			new webpack.optimize.CommonsChunkPlugin({
+				name: 'angular',
+				minChunks: function (module) {
+					return module && module.context && /node_modules(\\|\/)@angular/g.test(module.context);
+				}
+			}),
+			new webpack.optimize.CommonsChunkPlugin({
+				name: 'manifest',
+			}),
 			new DefinePlugin({
 				'ENV': JSON.stringify(ENV),
 				'process.env': {
@@ -29,6 +46,7 @@ module.exports = function () {
 			}),
 			new FriendlyErrorsPlugin(),
 			new NamedModulesPlugin(),
+			new StylelintPlugin(),
 		],
 	});
 };

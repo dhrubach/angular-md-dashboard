@@ -5,7 +5,6 @@ const HtmlPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
 const ForkTSCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 
@@ -135,21 +134,6 @@ const rules = [
 ];
 
 const plugins = [
-	new webpack.optimize.CommonsChunkPlugin({
-		name: 'vendor',
-		minChunks: function (module) {
-			return module && module.context && module.context.indexOf('node_modules') > -1;
-		}
-	}),
-	new webpack.optimize.CommonsChunkPlugin({
-		name: 'angular',
-		minChunks: function (module) {
-			return module && module.context && /node_modules(\\|\/)@angular/g.test(module.context);
-		}
-	}),
-	new webpack.optimize.CommonsChunkPlugin({
-		name: 'manifest',
-	}),
 	new ExtractTextPlugin({
 		filename: 'style.css',
 		allChunks: true,
@@ -172,7 +156,6 @@ const plugins = [
 		'window.Tether': 'tether',
 		Chartist: 'chartist',
 	}),
-	new StylelintPlugin(),
 	new ForkTSCheckerPlugin({
 		tslint: false,
 		watch: ['./src'],

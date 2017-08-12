@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
 const helpers = require('./helpers');
@@ -16,6 +17,21 @@ const ANALYZE = process.env.ANALYZE || false;
 module.exports = () => {
 
 	const plugins = [
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'vendor',
+			minChunks: function (module) {
+				return module && module.context && module.context.indexOf('node_modules') > -1;
+			}
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'angular',
+			minChunks: function (module) {
+				return module && module.context && /node_modules(\\|\/)@angular/g.test(module.context);
+			}
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'manifest',
+		}),
 		new CompressionPlugin(),
 		new DefinePlugin({
 			'ENV': JSON.stringify(ENV),
