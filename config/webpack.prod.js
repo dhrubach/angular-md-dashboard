@@ -78,6 +78,8 @@ module.exports = () => {
 
 	return webpackMerge(commonConfig(), {
 
+		entry: './src/main.ts',
+
 		devtool: 'cheap-source-map',
 
 		output: {

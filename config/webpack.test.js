@@ -16,6 +16,23 @@ module.exports = function () {
 			filename: '[name].bundle.js',
 		},
 
+		module: {
+			rules: [
+				{
+					enforce: 'pre',
+					test: /\.js$/,
+					loader: 'source-map-loader',
+					exclude: [
+						/**
+						 * These packages have problems with their sourcemaps
+						 */
+						helpers.root('node_modules/rxjs'),
+						helpers.root('node_modules/@angular')
+					]
+				},
+			],
+		},
+
 		plugins: [
 			new DefinePlugin({
 				'ENV': JSON.stringify(ENV),

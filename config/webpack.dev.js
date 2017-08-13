@@ -13,6 +13,8 @@ const ENV = process.env.NODE_ENV || 'development';
 module.exports = function () {
 	return webpackMerge(commonConfig(), {
 
+		entry: './src/main.ts',
+
 		devtool: 'cheap-module-source-map',
 
 		output: {

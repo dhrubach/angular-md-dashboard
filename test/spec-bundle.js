@@ -24,7 +24,6 @@ testing.TestBed.initTestEnvironment(
 var testContext = require.context('../src', true, /\.spec\.ts/);
 
 function requireAll(requireContext) {
-	console.log(requireContext);
 	return requireContext.keys().map(requireContext);
 }
 

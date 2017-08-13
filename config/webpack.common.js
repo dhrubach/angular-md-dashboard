@@ -165,7 +165,6 @@ const plugins = [
 
 const config = () => {
 	return {
-		entry: './src/main.ts',
 		module: { rules: rules },
 		plugins: plugins,
 		resolve: {
