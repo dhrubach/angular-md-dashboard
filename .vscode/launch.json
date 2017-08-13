@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch via NPM",
+			"runtimeExecutable": "npm",
+			"runtimeArgs": [
+				"test"
+			],
+			"port": 5858
+		},
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Jest",
+			"program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+			"args": [
+				"-i",
+				"--debug",
+				"--setupTestFrameworkScriptFile=${workspaceRoot}\\src\\setup-jest.ts"
+			],
+			"outFiles": [
+				"${workspaceRoot}/dist/**/*"
+			]
+		},
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Karma",
+			"program": "${workspaceRoot}/node_modules/karma/bin/karma",
+			"args": [
+				"start",
+				"karma.conf.js",
+			],
+			"outFiles": [
+				"${workspaceRoot}/test/**/*"
+			]
+		}
+    ]
+}
