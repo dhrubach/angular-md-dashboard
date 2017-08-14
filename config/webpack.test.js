@@ -19,15 +19,16 @@ module.exports = function () {
 		module: {
 			rules: [
 				{
-					enforce: 'pre',
-					test: /\.js$/,
-					loader: 'source-map-loader',
+					test: /\.(js|ts)$/,
+					enforce: 'post',
+					loader: 'istanbul-instrumenter-loader',
+					options: {
+						esModules: true,
+					},
+					include: helpers.root('src'),
 					exclude: [
-						/**
-						 * These packages have problems with their sourcemaps
-						 */
-						helpers.root('node_modules/rxjs'),
-						helpers.root('node_modules/@angular')
+						/\.(e2e|spec)\.ts$/,
+						/node_modules/
 					]
 				},
 			],

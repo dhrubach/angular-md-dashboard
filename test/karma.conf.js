@@ -11,7 +11,7 @@ module.exports = function (config) {
 		 * Enable / disable watching files and executing the tests whenever one of these
 		 * file changes.
 		 */
-		autoWatch: false,
+		autoWatch: true,
 
 		/**
 		 * Base path that will be used to resolve all patterns (e.g. files, exclude).
@@ -86,7 +86,7 @@ module.exports = function (config) {
 		 * http://karma-runner.github.io/1.0/config/preprocessors.html
 		 */
 		preprocessors: {
-			'./test/spec-bundle.js': ['coverage', 'webpack', 'sourcemap'],
+			'./test/spec-bundle.js': ['webpack', 'sourcemap'],
 		},
 
 		/**
@@ -123,7 +123,7 @@ module.exports = function (config) {
 		 * then exit with an exit code of 0 or 1 depending on whether all tests
 		 * passed or any tests failed.
 		 */
-		singleRun: true,
+		singleRun: false,
 
 		/**
 		 * Use webpack to preprocess files in karma.
@@ -141,7 +141,7 @@ module.exports = function (config) {
 		webpackMiddleware: {
 			noInfo: false,
 			stats: {
-				chunks: true,
+				chunks: false,
 				colors: true,
 			}
 		},
