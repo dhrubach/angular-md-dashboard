@@ -28,7 +28,8 @@ module.exports = function (config) {
 		 * http://localhost:9876 on that browser.
 		 */
 		browsers: [
-			'Chrome'
+			'Chrome',
+			'PhantomJS',
 		],
 
 		/**
