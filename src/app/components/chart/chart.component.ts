@@ -1,5 +1,5 @@
 import {
-	AfterViewInit,
+	AfterContentInit,
 	Component,
 	ComponentFactory,
 	ComponentFactoryResolver,
@@ -20,14 +20,14 @@ import { PieChartComponent } from './pie-chart.component';
 	selector: 'adm-chart',
 	template: `<ng-template adm-host-chart></ng-template>`,
 })
-export class ChartComponent implements AfterViewInit {
+export class ChartComponent implements AfterContentInit {
 
 	@Input() private config: IChartData;
 	@ViewChild(HostChartDirective) private hostChart: HostChartDirective;
 
 	constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
-	public ngAfterViewInit(): void {
+	public ngAfterContentInit(): void {
 		let componentFactory: ComponentFactory<BaseChartComponent> = null;
 
 		switch (this.config.chartType) {
