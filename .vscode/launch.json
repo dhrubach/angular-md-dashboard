@@ -22,7 +22,7 @@
 			"args": [
 				"-i",
 				"--debug",
-				"--setupTestFrameworkScriptFile=${workspaceRoot}\\src\\setup-jest.ts"
+				"--config=${workspaceRoot}\\src\\tests\\jest.config.js"
 			],
 			"outFiles": [
 				"${workspaceRoot}/dist/**/*"
