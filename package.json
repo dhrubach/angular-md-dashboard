@@ -20,7 +20,7 @@
 		"serve": "./node_modules/.bin/http-server ./dist -p 8080 -d false -o",
 		"serve:prod": "./node_modules/.bin/http-server ./dist -p 8080 -d false -g -o",
 
-		"test:jest": "npm run jest -- --config ./src/tests/jest.config.js --colors --no-cache",
+		"test:jest": "npm run jest -- --config ./test/jest.config.js --colors --no-cache --runInBand --watchAll",
 		"test:karma": "npm run karma -- start ./karma.conf.js"
 	},
 	"repository": {
