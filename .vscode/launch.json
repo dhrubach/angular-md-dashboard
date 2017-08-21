@@ -22,7 +22,7 @@
 			"args": [
 				"-i",
 				"--debug",
-				"--config=${workspaceRoot}\\src\\tests\\jest.config.js"
+				"--config=${workspaceRoot}\\test\\jest.config.js"
 			],
 			"outFiles": [
 				"${workspaceRoot}/dist/**/*"

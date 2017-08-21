@@ -1,6 +1,6 @@
 module.exports = {
 	"collectCoverage": true,
-	"collectCoverageFrom": ["**/*.ts", "!**/test/**"],
+	"collectCoverageFrom": ["**/*.ts", "!**/test/**", '!**/*.spec.ts'],
 	"coverageDirectory": "<rootDir>/test/coverage/jest",
 	"globals": {
 		"Chartist": {},
@@ -26,7 +26,7 @@ module.exports = {
 	},
 	"rootDir": "../",
 	"setupTestFrameworkScriptFile": "<rootDir>/test/setup-jest.js",
-	"testRegex": "(/__tests__/.*|\\.spec)\\.(ts|js)$",
+	"testRegex": "(/__tests__/.*|\\.test)\\.(ts|js)$",
 	"transform": {
 		"^.+\\.(ts|js|html)$": "<rootDir>/test/preprocessor.js"
 	},
