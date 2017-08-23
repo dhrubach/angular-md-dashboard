@@ -71,11 +71,13 @@ describe('ExceptionsComponent', () => {
 
 	describe('Exception Grid', () => {
 		let gridElementContainer: HTMLElement;
-		let gridElement: Element;
+		let gridDebugElement: DebugElement;
+		let gridNativeElement: any;
 
 		beforeEach(() => {
 			gridElementContainer = el.children.item(1) as HTMLElement;
-			gridElement = gridElementContainer.getElementsByClassName('exception-card-item__card-content-grid').item(0);
+			gridDebugElement = de.query(By.css('ag-grid-angular'));
+			gridNativeElement = gridDebugElement.nativeElement;
 		});
 
 		test('should have grid container', () => {
@@ -84,15 +86,20 @@ describe('ExceptionsComponent', () => {
 		});
 
 		test('should have grid element', () => {
-			expect(gridElement).toBeTruthy();
+			expect(gridNativeElement.id).toEqual('exception-grid');
+			expect(gridNativeElement.className).toEqual('ag-material exception-card-item__card-content-grid');
+			expect(gridDebugElement.componentInstance).toBeDefined();
 		});
 
-		test('should have rendered rows', () => {
-			const gridElementBodyElement = gridElement.getElementsByClassName('ag-body ag-body-viewport') as HTMLCollection;
-			expect(gridElementBodyElement).toBeTruthy();
+		test('should have 2 columns', () => {
+			const columnDefinitions = gridNativeElement.columnDefs;
+			expect(columnDefinitions).toBeDefined();
+			expect(columnDefinitions.length).toEqual(2);
+		});
 
-			const numberOfChildren = gridElementBodyElement.item(0).childNodes;
-			expect(numberOfChildren.length).toEqual(13);
+		test('should have data rows', () => {
+			const rowData = gridNativeElement.rowData;
+			expect(rowData.length).toBeGreaterThanOrEqual(1);
 		});
 	});
 });
