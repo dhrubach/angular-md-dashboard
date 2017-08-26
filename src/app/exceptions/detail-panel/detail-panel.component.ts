@@ -47,7 +47,8 @@ export class DetailPanelComponent implements ICellRendererAngularComp {
 			onGridReady: (params) => {
 				params.api.sizeColumnsToFit();
 			},
-			rowData: records.node.parent.data.childRecords,
+			rowData: records.node.parent && records.node.parent.data
+				&& records.node.parent.data.childRecords || [],
 			rowHeight: 30,
 		};
 	}
