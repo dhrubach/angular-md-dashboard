@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AgGridModule } from 'ag-grid-angular';
-import { ColDef, Events, RowNode } from 'ag-grid/main';
 
 import { UserComponent } from './users.component';
 import { UserDataService } from './users.service';
