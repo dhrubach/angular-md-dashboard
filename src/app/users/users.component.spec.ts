@@ -1,14 +1,12 @@
 import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AgGridModule } from 'ag-grid-angular';
 
 import { UserComponent } from './users.component';
-import { UserDataService } from './users.service';
-
 import { UsersModule } from './users.module';
+import { IUser, UserDataService } from './users.service';
 
 describe('UserComponent', () => {
 	let comp;
@@ -21,7 +19,6 @@ describe('UserComponent', () => {
 			declarations: [],
 			imports: [
 				AgGridModule.withComponents([]),
-				NoopAnimationsModule,
 				UsersModule,
 			],
 			providers: [UserDataService],
@@ -34,32 +31,44 @@ describe('UserComponent', () => {
 		comp = fixture.componentInstance;
 		fixture.detectChanges();
 
-		de = fixture.debugElement.query(By.css('md-card-header'));
+		de = fixture.debugElement.query(By.css('div.user-grid-container'));
 		el = de.nativeElement;
 	});
 
-	it('create user component', async () => {
-		const user = fixture.debugElement.componentInstance;
-		expect(user).toBeTruthy();
+	it('should create user component', async () => {
+		expect(comp).toBeTruthy();
 	});
 
-	it('should create grid API in the component', async () => {
-		fixture.detectChanges();
-		expect(comp.gridOptions.api).toBeTruthy();
+	describe('User Grid', () => {
+		it('should have column definition object', () => {
+			expect(comp.columnDefs).toBeTruthy();
+			expect(comp.columnDefs.length).toEqual(6);
+		});
 	});
 
-	it('should create number of column headers in the grid to be', () => {
-		expect(comp.gridOptions.columnDefs.length).toEqual(6);
+	it('should have a pagination component', () => {
+		expect(comp.paginationComponent.constructor.name).toBe('GridPaginationComponent');
 	});
 
-	it('should create Number of rows in the grid to be', () => {
-		fixture.detectChanges();
-		const NoOfRows = comp.gridOptions.rowData.length;
-		expect(NoOfRows === 15).toBeTruthy();
-	});
+	it('should return number of online users', () => {
+		const users: IUser[] = [
+			{
+				access: '08/28/2017 09:38:01',
+				created: '08/28/2017 09:23:13',
+				expires: '08/28/2017 09:38:13',
+				remaining: '',
+				status: 'online',
+				user: 'TEST1',
+			},
+		];
+		comp.getOnlineUsers(users);
+		expect(comp.onlineUsers).toEqual(1);
 
-	it('should create Header text in the card to be', () => {
-		const headerText = de.nativeNode.children[1].innerText;
-		expect(headerText === 'Application Users').toBeTruthy();
+		users[0].status = 'orphan';
+		comp.getOnlineUsers(users);
+		expect(comp.onlineUsers).toEqual(0);
+
+		comp.getOnlineUsers([]);
+		expect(comp.onlineUsers).toEqual(0);
 	});
 });
