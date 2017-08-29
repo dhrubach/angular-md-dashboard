@@ -28,3 +28,5 @@ function requireAll(requireContext) {
 }
 
 requireAll(testContext);
+
+console.warn = () => {};

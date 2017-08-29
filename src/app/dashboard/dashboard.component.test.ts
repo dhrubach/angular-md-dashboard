@@ -7,7 +7,9 @@ import { ICardData, IChartData } from '../index';
 
 @Component({
 	template: `
-		<adm-card [content]="card.content" [header]="card.header" [icon]="card.icon" [type]="card.type"></adm-card>
+		<adm-card [content]="card.content" [header]="card.header"
+				  [icon]="card.icon" [type]="card.type">
+		</adm-card>
 		<adm-chart [config]="chart"></adm-chart>
 	`
 })
