@@ -103,7 +103,7 @@
 		"karma-webpack": "^2.0.4",
 		"loader-utils": "^1.1.0",
 		"ng-router-loader": "^2.1.0",
-		"node-sass": "^4.5.3",
+		"node-sass": "^7.0.0",
 		"optimize-js-plugin": "0.0.4",
 		"postcss-load-config": "^1.2.0",
 		"postcss-loader": "^2.0.6",
